@@ -1,0 +1,48 @@
+16 registers - R0, R1, R2, R3, R4, R5, R6, R7, R8, R9, RA, RB, RC, RD, RE, RF
+PC (program counter, saves next adress to execute) - RF
+SP (stack pointer, saves last adress of a stack) - RE
+LR (link register, saves the location of the next instruction ) - RD
+SR (status register, saves flags, Z/ZF, C/CF, N/S/SF, V/OF, I/IF) - RC
+• Zero Flag (Z / ZF): Set to 1 if the result of an arithmetic or logical operation is zero.
+• Carry Flag (C / CF): Set to 1 if an addition generated a carry out or a subtraction required a borrow, or for shifting operations.
+• Negative/Sign Flag (N / S / SF): Set to 1 if the result of an operation is negative (matches the most significant bit).
+• Overflow Flag (V / OF): Set to 1 if a signed arithmetic operation exceeds the maximum or minimum limit of the number format.
+• Interrupt Enable/Disable (I / IF): Controls whether the processor accepts external hardware interrupts.
+
+16 bit adress bus
+each adress holds a full 16 bits
+Harvard architecture
+
+Instruction Formats (16-bit total):
+• R-Type (Register arithmetic): [Opcode: 4] [Dest: 4] [Src1: 4] [Src2: 4]
+• I-Type (Immediate/Constants): [Opcode: 4] [Dest: 4] [Immediate: 8]
+• J-Type (Jumps/Branches):      [Opcode: 4] [Address/Offset: 12]
+
+Opcodes (0x0 to 0xF):
+0x0 - NOP   : NOP            : Does absolutely nothing, just moves to the next instruction.
+0x1 - ADD   : ADD R1, R2, R3 : Adds the values in R2 and R3, saves the result in R1.
+0x2 - SUB   : SUB R1, R2, R3 : Subtracts R3 from R2, saves the result in R1.
+0x3 - AND   : AND R1, R2, R3 : Performs a bitwise AND on R2 and R3, saves in R1.
+0x4 - OR    : OR R1, R2, R3  : Performs a bitwise OR on R2 and R3, saves in R1.
+0x5 - XOR   : XOR R1, R2, R3 : Performs a bitwise XOR on R2 and R3, saves in R1.
+0x6 - LSL   : LSL R1, R2, R3 : Shifts the bits of R2 to the left by the amount in R3, saves in R1.
+0x7 - LSR   : LSR R1, R2, R3 : Shifts the bits of R2 to the right by the amount in R3, saves in R1.
+0x8 - LOAD  : LOAD R1, R2    : Reads the value at the memory address stored in R2, saves it into R1.
+0x9 - STORE : STORE R1, R2   : Takes the value in R2 and writes it to the memory address stored in R1.
+0xA - LOADI : LOADI R1, #255 : Loads the exact constant number 255 directly into R1.
+0xB - CMP   : CMP R1, R2     : Subtracts R2 from R1 purely to update flags (like Zero), discards the math result.
+0xC - JMP   : JMP #0x0400    : Unconditionally changes the PC to 0x0400, jumping to a new part of the code.
+0xD - JEQ   : JEQ #0x0400    : Jumps to 0x0400 ONLY if the last CMP showed the two numbers were equal (Z=1).
+0xE - JNE   : JNE #0x0400    : Jumps to 0x0400 ONLY if the last CMP showed the numbers were not equal (Z=0).
+0xF - HALT  : HALT           : Completely stops the processor's while(running) execution loop.
+
+System Boot State:
+• PC initializes to 0x0000 (Execution starts at the absolute beginning of Instruction Memory)
+• SP initializes to 0xFFFF (Stack starts at the very top of Data Memory and grows downwards)
+• All other registers (R0-RD) initialize to 0x0000
+
+Data Memory Map (65,536 Addresses):
+• 0x0000 - 0x7FFF : General Purpose RAM (32K)
+• 0x8000 - 0xEFFF : Heap / Dynamically allocated space
+• 0xF000 - 0xFFFE : Memory-Mapped I/O (Hardware devices, display buffer, etc.)
+• 0xFFFF          : Top of Stack
