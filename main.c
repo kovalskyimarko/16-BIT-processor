@@ -5,18 +5,38 @@
 
 #define REGISTERS_COUNT 16
 
-/* Harvard architecture where the instruction and data memory are separete*/
+/* Harvard architecture where the instruction and data memory are separete */
 uint16_t instruction_memory[65536]; // Instruction ram
 uint16_t data_memory[65536];        // 64K of data ram
 uint16_t reg[REGISTERS_COUNT];
 
 uint8_t debug = 0;
 
+/*
+ * PC (program counter, saves next adress to execute) - RF
+ * SP (stack pointer, saves last adress of a stack) - RE
+ * LR (link register, saves the location of the next instruction ) - RD
+ * SR (status register, saves flags, Z/ZF, C/CF, N/S/SF, V/OF, I/IF) - RC
+*/
 #define PC reg[15]
 #define SP reg[14]
 #define LR reg[13]
 #define SR reg[12]
 
+
+/* 
+ * Flags used by SR
+ * Each one is just a mask
+ * 00000001 (0x01) - FLAG_Z
+ * 00000010 (0x02)- FLAG_C
+ * etc
+ * 
+ * FLAG_Z - if result of last operation is zero
+ * FLAG_C - if two unsigned int exceed the unsigned limit
+ * FLAG_N - if the result is negative
+ * FLAG_V - if two signed int exceed the signed limit
+ * FLAG_I - controls whether cpu will listen to hardware interrupts
+*/
 #define FLAG_Z (1 << 0)
 #define FLAG_C (1 << 1)
 #define FLAG_N (1 << 2)
@@ -27,36 +47,47 @@ void update_flags_add(uint16_t a, uint16_t b, uint32_t result)
 {
     uint16_t r = (uint16_t)result;
 
-    reg[12] &= ~(FLAG_Z | FLAG_C | FLAG_N | FLAG_V);
+    SR &= ~(FLAG_Z | FLAG_C | FLAG_N | FLAG_V);
 
     if (r == 0)
-        reg[12] |= FLAG_Z;
+        SR |= FLAG_Z;
 
     if (result > 0xFFFF)
-        reg[12] |= FLAG_C;
+        SR |= FLAG_C;
 
     if (r & 0x8000)
-        reg[12] |= FLAG_N;
+        SR |= FLAG_N;
 
+    /*
+     * Detect signed overflow (two's complement):
+     * Signed overflow occurs when two operands of the same sign 
+     * produce a result with the opposite sign.
+     * 
+     * 1. ~(a ^ b): High when operands 'a' and 'b' share the same sign.
+     * 2. (a ^ r):  High when result 'r' differs in sign from operand 'a'.
+     * 3. & 0x8000: Isolates the 16th bit (MSB/sign bit) to check if 
+     *              both conditions are met simultaneously.
+     */
     if (((~(a ^ b)) & (a ^ r) & 0x8000) != 0)
-        reg[12] |= FLAG_V;
+        SR |= FLAG_V;
 }
 
 void update_flag_sub(uint16_t a, uint16_t b, uint32_t result)
 {
     uint16_t r = (uint16_t)result;
 
-    reg[12] &= ~(FLAG_Z | FLAG_C | FLAG_N | FLAG_V);
+    SR &= ~(FLAG_Z | FLAG_C | FLAG_N | FLAG_V);
 
     if (r == 0)
-        reg[12] |= FLAG_Z;
+        SR |= FLAG_Z;
 
     if (a < b)
-        reg[12] |= FLAG_C;
+        SR |= FLAG_C;
 
     if (r & 0x8000)
-        reg[12] |= FLAG_N;
+        SR |= FLAG_N;
 
+     /* Same algorithm but first i am checking whether signs are different */
     if (((a ^ b) & (a ^ r) & 0x8000) != 0)
         reg[12] |= FLAG_V;
 }
@@ -85,233 +116,6 @@ void decode_instruction(
     *src2 =  instruction           & 0x000F;     // Next 4 bits
 }
 
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-#include <errno.h>
-#include <limits.h>
-
-#define REGISTERS_COUNT 16
-
-static int parse_register(const char* str, uint16_t* reg)
-{
-    if (!str || str[0] != 'R' || !isdigit((unsigned char)str[1]))
-        return 0;
-
-    char* end;
-    errno = 0;
-    long value = strtol(str + 1, &end, 10);
-
-    if (errno || *end != '\0' || value < 0 ||
-        value >= REGISTERS_COUNT)
-        return 0;
-
-    *reg = (uint16_t)value;
-    return 1;
-}
-
-static int parse_immediate(const char* str, uint16_t* value)
-{
-    if (!str || str[0] != '#')
-        return 0;
-
-    str++;
-
-    if (!*str)
-        return 0;
-
-    char* end;
-    errno = 0;
-    long parsed = strtol(str, &end, 0);
-
-    if (errno || *end != '\0' || parsed < 0 || parsed > 65535)
-        return 0;
-
-    *value = (uint16_t)parsed;
-    return 1;
-}
-
-uint8_t load_assembly(const char* path, uint16_t* memory, size_t max_words)
-{
-    FILE* file = fopen(path, "r");
-
-    if (!file) {
-        perror("Failed to open assembly file");
-        return 0;
-    }
-
-    char line[256];
-    size_t pc = 0;
-    size_t line_number = 0;
-    uint8_t success = 1;
-
-    while (fgets(line, sizeof(line), file)) {
-        line_number++;
-
-        // Reject lines that exceed the buffer.
-        if (!strchr(line, '\n') && !feof(file)) {
-            int ch;
-            while ((ch = fgetc(file)) != '\n' && ch != EOF) {}
-            fprintf(stderr, "Line %zu: line too long\n", line_number);
-            success = 0;
-            break;
-        }
-
-        // Remove comments.
-        char* comment = strchr(line, ';');
-        if (comment)
-            *comment = '\0';
-
-        // Skip leading whitespace.
-        char* p = line;
-        while (isspace((unsigned char)*p))
-            p++;
-
-        if (*p == '\0')
-            continue;
-
-        // Tokenize operands.
-        char* opcode = strtok(p, " \t,\r\n");
-        char* operands[3] = {NULL, NULL, NULL};
-        size_t operand_count = 0;
-
-        while (operand_count < 3 &&
-               (operands[operand_count] = strtok(NULL, " \t,\r\n"))) {
-            operand_count++;
-        }
-
-        // Reject extra operands.
-        if (strtok(NULL, " \t,\r\n")) {
-            fprintf(stderr, "Line %zu: too many operands\n", line_number);
-            success = 0;
-            break;
-        }
-
-        uint16_t instruction = 0;
-        uint16_t rd, r1, r2, imm;
-        int valid = 1;
-
-        if (strcmp(opcode, "NOP") == 0) {
-            valid = operand_count == 0;
-            instruction = 0x0000;
-        }
-        else if (strcmp(opcode, "ADD") == 0 ||
-                 strcmp(opcode, "SUB") == 0 ||
-                 strcmp(opcode, "AND") == 0 ||
-                 strcmp(opcode, "OR")  == 0 ||
-                 strcmp(opcode, "XOR") == 0 ||
-                 strcmp(opcode, "LSL") == 0 ||
-                 strcmp(opcode, "LSR") == 0) {
-
-            valid = operand_count == 3 &&
-                    parse_register(operands[0], &rd) &&
-                    parse_register(operands[1], &r1) &&
-                    parse_register(operands[2], &r2);
-
-            if (valid) {
-                uint16_t opcode_value;
-
-                if      (strcmp(opcode, "ADD") == 0) opcode_value = 0x1;
-                else if (strcmp(opcode, "SUB") == 0) opcode_value = 0x2;
-                else if (strcmp(opcode, "AND") == 0) opcode_value = 0x3;
-                else if (strcmp(opcode, "OR")  == 0) opcode_value = 0x4;
-                else if (strcmp(opcode, "XOR") == 0) opcode_value = 0x5;
-                else if (strcmp(opcode, "LSL") == 0) opcode_value = 0x6;
-                else                                  opcode_value = 0x7;
-
-                instruction = (opcode_value << 12) |
-                              (rd << 8) |
-                              (r1 << 4) |
-                              r2;
-            }
-        }
-        else if (strcmp(opcode, "LOAD") == 0 ||
-                 strcmp(opcode, "STORE") == 0 ||
-                 strcmp(opcode, "CMP") == 0) {
-
-            valid = operand_count == 2 &&
-                    parse_register(operands[0], &rd) &&
-                    parse_register(operands[1], &r1);
-
-            if (valid) {
-                uint16_t opcode_value =
-                    strcmp(opcode, "LOAD") == 0  ? 0x8 :
-                    strcmp(opcode, "STORE") == 0 ? 0x9 : 0xB;
-
-                instruction = (opcode_value << 12) |
-                              (rd << 8) |
-                              (r1 << 4);
-            }
-        }
-        else if (strcmp(opcode, "LOADI") == 0) {
-            valid = operand_count == 2 &&
-                    parse_register(operands[0], &rd) &&
-                    parse_immediate(operands[1], &imm) &&
-                    imm <= 0xFF;
-
-            if (valid)
-                instruction = (0xA << 12) | (rd << 8) | imm;
-        }
-        else if (strcmp(opcode, "JMP") == 0 ||
-                 strcmp(opcode, "JEQ") == 0 ||
-                 strcmp(opcode, "JNE") == 0) {
-
-            valid = operand_count == 1 &&
-                    parse_immediate(operands[0], &imm);
-
-            if (valid) {
-                uint16_t opcode_value =
-                    strcmp(opcode, "JMP") == 0 ? 0xC :
-                    strcmp(opcode, "JEQ") == 0 ? 0xD : 0xE;
-
-                // The instruction format must reserve 12 bits for
-                // the target address.
-                instruction = (opcode_value << 12) | (imm & 0x0FFF);
-            }
-        }
-        else if (strcmp(opcode, "HALT") == 0) {
-            valid = operand_count == 0;
-            instruction = 0xF000;
-        }
-        else {
-            fprintf(stderr, "Line %zu: unknown opcode '%s'\n",
-                    line_number, opcode);
-            success = 0;
-            break;
-        }
-
-        if (!valid) {
-            fprintf(stderr, "Line %zu: invalid operands for %s\n",
-                    line_number, opcode);
-            success = 0;
-            break;
-        }
-
-        if (pc >= max_words) {
-            fprintf(stderr, "Line %zu: instruction memory is full\n",
-                    line_number);
-            success = 0;
-            break;
-        }
-
-        memory[pc++] = instruction;
-    }
-
-    if (ferror(file)) {
-        perror("Error reading assembly file");
-        success = 0;
-    }
-
-    fclose(file);
-
-    if (success)
-        printf("Successfully assembled %zu instructions.\n", pc);
-
-    return success;
-}
-
 uint8_t load_program(const char* path, uint16_t* memory, size_t max_words)
 {
     FILE* file = fopen(path, "rb");
@@ -319,9 +123,6 @@ uint8_t load_program(const char* path, uint16_t* memory, size_t max_words)
     {
         return 0;
     }
-
-
-    int byte;
 
     size_t words_read = fread(memory, sizeof(uint16_t), max_words, file);
     
@@ -344,17 +145,20 @@ int main(int argc, const char* argv[])
 
     if (argc == 2)
     {
-        load_assembly(argv[1], instruction_memory, 65536);
+        if (!load_program(argv[1], instruction_memory, 65536))
+        {
+            printf("Failed to find a bin file\n");
+            return 1;
+        }
     }
     else if (argc == 3 && strcmp(argv[2], "--debug") == 0)
     {
-        load_assembly(argv[1], instruction_memory, 65536);
+        if (!load_program(argv[1], instruction_memory, 65536))
+        {
+            printf("Failed to find a bin file\n");
+            return 1;
+        }
         debug = 1;
-    }
-    else 
-    {
-        printf("Usage: ./main <file.asm> [--debug]\n");
-        return 1;
     }
 
     while (running)
