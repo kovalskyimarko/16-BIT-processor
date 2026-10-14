@@ -173,6 +173,37 @@ int main(int argc, const char* argv[])
         {
             // NOP
             case 0x0:
+
+                // The destination will act as extended instruction
+                switch (dest)
+                {
+                    case 0x0:
+                        break;
+
+                    // PUSH
+                    case 0x1:
+                        data_memory[SP] = reg[src1];
+                        SP--;
+                        break;
+                    
+                    // POP
+                    case 0x2:
+                        SP++;
+                        reg[src1] = data_memory[SP];
+                        break;
+
+                    // CALL
+                    case 0x3:
+                        LR = PC;
+                        PC = reg[src1];
+                        break;
+                    
+                    // RET
+                    case 0x4:
+                        PC = LR;
+                        break;
+                }
+
                 break;
 
             // ADD
@@ -245,14 +276,12 @@ int main(int argc, const char* argv[])
 
             // JMP
             case 0xC:
-                LR = PC;
                 PC = instruction & 0x0FFF;
                 break;
 
             // JEQ
             case 0xD:
                 if (SR & FLAG_Z) {
-                    LR = PC;
                     PC = instruction & 0x0FFF;
                 }
                 break;
@@ -260,7 +289,6 @@ int main(int argc, const char* argv[])
             // JNE
             case 0xE:
                 if (!(SR & FLAG_Z)) {
-                    LR = PC;
                     PC = instruction & 0x0FFF;
                 }
                 break;

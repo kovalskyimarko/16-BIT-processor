@@ -109,6 +109,33 @@ uint8_t load_assembly(const char* path, uint16_t* memory, size_t max_words, size
             valid = operand_count == 0;
             instruction = 0x0000;
         }
+        else if(strcmp(opcode, "PUSH")  == 0 ||
+                strcmp(opcode, "POP")   == 0 ||
+                strcmp(opcode, "CALL")  == 0) {
+            
+            valid = operand_count == 1 &&
+                    parse_register(operands[0], &r1);
+            
+            if (valid)
+            {
+                uint16_t opcode_value = 0x0;
+
+                if      (strcmp(opcode, "PUSH") == 0)       rd = 0x1;
+                else if (strcmp(opcode, "POP")  == 0)       rd = 0x2;
+                else if (strcmp(opcode, "CALL") == 0)       rd = 0x3;
+
+                instruction = (opcode_value << 12) |
+                              (rd           << 8)  |
+                              (r1           << 4);
+            }
+        }
+        else if (strcmp(opcode, "RET") == 0) {
+            valid = operand_count == 0;
+            
+            if (valid) {
+                instruction = (0x0 << 12) | (0x4 << 8);
+            }
+        }
         else if (strcmp(opcode, "ADD") == 0 ||
                  strcmp(opcode, "SUB") == 0 ||
                  strcmp(opcode, "AND") == 0 ||
