@@ -7,6 +7,26 @@
 
 #define REGISTERS_COUNT 16
 #define MAX_INSTRUCTIONS 4096 // Maximum 12-bit address space (0x000 - 0xFFF)
+#define MAX_LABELS 256
+
+typedef struct
+{
+    char name[32];
+    uint16_t address;
+} Label;
+
+Label labels[MAX_LABELS];
+int label_count = 0;
+
+int get_label_address(const char* search_name, uint16_t* out_address) {
+    for (int i = 0; i < label_count; i++) {
+        if (strcmp(labels[i].name, search_name) == 0) {
+            *out_address = labels[i].address;
+            return 1;
+        }
+    }
+    return 0;
+}
 
 static int parse_register(const char* str, uint16_t* reg)
 {
@@ -55,6 +75,32 @@ uint8_t load_assembly(const char* path, uint16_t* memory, size_t max_words, size
     }
 
     char line[256];
+    uint16_t current_pc = 0;
+
+    while (fgets(line, sizeof(line), file)) {
+        char* comment = strchr(line, ';');
+        if (comment) *comment = '\0';
+
+        char* token = strtok(line, " \t,\r\n");
+        if (!token) continue;
+
+        int len = strlen(token);
+        if (token[len - 1] == ':') {
+            token[len - 1] = '\0'; 
+            
+            strcpy(labels[label_count].name, token);
+            labels[label_count].address = current_pc;
+            label_count++;
+        }
+
+        else
+        {
+            current_pc++;
+        }
+    }
+
+    rewind(file);
+
     size_t pc = 0;
     size_t line_number = 0;
     uint8_t success = 1;
@@ -86,6 +132,11 @@ uint8_t load_assembly(const char* path, uint16_t* memory, size_t max_words, size
 
         // Tokenize operands.
         char* opcode = strtok(p, " \t,\r\n");
+        if (opcode[strlen(opcode) - 1] == ':') {
+            opcode = strtok(NULL, " \t,\r\n");
+            if (!opcode) continue;
+        }
+
         char* operands[3] = {NULL, NULL, NULL};
         size_t operand_count = 0;
 
@@ -186,9 +237,14 @@ uint8_t load_assembly(const char* path, uint16_t* memory, size_t max_words, size
         }
         else if (strcmp(opcode, "LOADI") == 0) {
             valid = operand_count == 2 &&
-                    parse_register(operands[0], &rd) &&
-                    parse_immediate(operands[1], &imm) &&
-                    imm <= 0xFF;
+                    parse_register(operands[0], &rd);
+
+            if (!parse_immediate(operands[1], &imm) && !get_label_address(operands[1], &imm))
+            {
+                valid = 0;
+            }
+
+            valid = imm <= 0xFF;
 
             if (valid)
                 instruction = (0xA << 12) | (rd << 8) | imm;
@@ -197,15 +253,27 @@ uint8_t load_assembly(const char* path, uint16_t* memory, size_t max_words, size
                  strcmp(opcode, "JEQ") == 0 ||
                  strcmp(opcode, "JNE") == 0) {
 
-            valid = operand_count == 1 &&
-                    parse_immediate(operands[0], &imm);
+            valid = operand_count == 1;
+
+            uint16_t target_addr;
+
+            if (parse_immediate(operands[0], &target_addr)) {
+                imm = (target_addr & 0x0FFF);
+            } 
+            else if (get_label_address(operands[0], &target_addr)) {
+                imm = (target_addr & 0x0FFF);
+            }
+            else {
+                valid = 0;
+            }
+
 
             if (valid) {
                 uint16_t opcode_value =
                     strcmp(opcode, "JMP") == 0 ? 0xC :
                     strcmp(opcode, "JEQ") == 0 ? 0xD : 0xE;
 
-                instruction = (opcode_value << 12) | (imm & 0x0FFF);
+                instruction = (opcode_value << 12) | (imm);
             }
         }
         else if (strcmp(opcode, "HALT") == 0) {
