@@ -89,18 +89,18 @@ void update_flag_sub(uint16_t a, uint16_t b, uint32_t result)
 
      /* Same algorithm but first i am checking whether signs are different */
     if (((a ^ b) & (a ^ r) & 0x8000) != 0)
-        reg[12] |= FLAG_V;
+        SR |= FLAG_V;
 }
 
 void update_flag_logic(uint16_t result)
 {
-    reg[12] &= ~(FLAG_Z | FLAG_C | FLAG_N | FLAG_V);
+    SR &= ~(FLAG_Z | FLAG_C | FLAG_N | FLAG_V);
 
     if (result == 0)
-        reg[12] |= FLAG_Z;
+        SR |= FLAG_Z;
 
     if (result & 0x8000)
-        reg[12] |= FLAG_N;
+        SR |= FLAG_N;
 }
 
 void decode_instruction(
@@ -159,6 +159,11 @@ int main(int argc, const char* argv[])
             return 1;
         }
         debug = 1;
+    }
+    else
+    {
+        printf("Usage: %s <program.bin> [--debug]\n", argv[0]);
+        return 1;
     }
 
     while (running)
@@ -259,7 +264,15 @@ int main(int argc, const char* argv[])
 
             // STORE
             case 0x9:
-                data_memory[reg[dest]] = reg[src1];
+                if (reg[dest] == 0xFF00)
+                {
+                    putchar((char)reg[src1]);
+                    fflush(stdout);
+                }
+                else
+                {
+                    data_memory[reg[dest]] = reg[src1];
+                }
                 break;
 
             // LOADI
@@ -269,8 +282,8 @@ int main(int argc, const char* argv[])
 
             // CMP
             case 0xB: {
-                uint32_t result = (uint32_t)reg[src1] - (uint32_t)reg[src2];
-                update_flag_sub(reg[src1], reg[src2], result);
+                uint32_t result = (uint32_t)reg[dest] - (uint32_t)reg[src1];
+                update_flag_sub(reg[dest], reg[src1], result);
                 break;
             }
 

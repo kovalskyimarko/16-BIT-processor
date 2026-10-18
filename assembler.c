@@ -244,7 +244,10 @@ uint8_t load_assembly(const char* path, uint16_t* memory, size_t max_words, size
                 valid = 0;
             }
 
-            valid = imm <= 0xFF;
+            if (valid)
+            { 
+                valid = imm <= 0xFF;
+            }
 
             if (valid)
                 instruction = (0xA << 12) | (rd << 8) | imm;
