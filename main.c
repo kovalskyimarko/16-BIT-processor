@@ -116,7 +116,7 @@ void decode_instruction(
     *src2 =  instruction           & 0x000F;     // Next 4 bits
 }
 
-uint8_t load_program(const char* path, uint16_t* memory, size_t max_words)
+uint8_t load_program(const char* path, uint16_t* inst_mem, uint16_t* data_mem)
 {
     FILE* file = fopen(path, "rb");
     if (!file)
@@ -124,11 +124,32 @@ uint8_t load_program(const char* path, uint16_t* memory, size_t max_words)
         return 0;
     }
 
-    size_t words_read = fread(memory, sizeof(uint16_t), max_words, file);
-    
-    printf("Successfully loaded %zu instructions into memory.\n", words_read);
-    
+    uint16_t header[2] = {0, 0};
+    if (fread(header, sizeof(uint16_t), 2, file) != 2) {
+        fprintf(stderr, "Error: Invalid binary header.\n");
+        fclose(file);
+        return 0;
+    }
+
+    uint16_t code_count = header[0];
+    uint16_t data_count = header[1];
+
+    if (fread(inst_mem, sizeof(uint16_t), code_count, file) != code_count) {
+        fprintf(stderr, "Error: Failed to read instructions.\n");
+        fclose(file);
+        return 0;
+    }
+
+    if (data_count > 0) {
+        if (fread(data_mem, sizeof(uint16_t), data_count, file) != data_count) {
+            fprintf(stderr, "Error: Failed to read data segment.\n");
+            fclose(file);
+            return 0;
+        }
+    }
+
     fclose(file);
+    printf("Successfully loaded %u instructions and %u data words.\n", code_count, data_count);
     return 1;
 }
 
@@ -145,25 +166,23 @@ int main(int argc, const char* argv[])
 
     if (argc == 2)
     {
-        if (!load_program(argv[1], instruction_memory, 65536))
+        if (!load_program(argv[1], instruction_memory, data_memory)) 
         {
-            printf("Failed to find a bin file\n");
-            return 1;
+            return EXIT_FAILURE;
         }
     }
     else if (argc == 3 && strcmp(argv[2], "--debug") == 0)
     {
-        if (!load_program(argv[1], instruction_memory, 65536))
+        if (!load_program(argv[1], instruction_memory, data_memory)) 
         {
-            printf("Failed to find a bin file\n");
-            return 1;
+            return EXIT_FAILURE;
         }
         debug = 1;
     }
     else
     {
         printf("Usage: %s <program.bin> [--debug]\n", argv[0]);
-        return 1;
+        return EXIT_FAILURE;
     }
 
     while (running)
