@@ -9,7 +9,9 @@
 #define MAX_INSTRUCTIONS 4096 // Maximum 12-bit address space (0x000 - 0xFFF)
 #define MAX_LABELS 256
 #define MAX_VARIABLES 256
-#define MAX_DATA_WORDS 32768 // 0x0000 - 0x7FFF
+#define MAX_DATA_WORDS 65536
+#define DATA_OFFSET 0x3520
+#define RAM_LIMIT   0xFEFF
 
 typedef enum {
     VAR_INT16,
@@ -26,7 +28,7 @@ Variable variables[MAX_VARIABLES];
 int var_count = 0;
 
 uint16_t data_buffer[MAX_DATA_WORDS];
-uint16_t data_pc = 0;
+uint16_t data_pc = 0x3520;
 
 int get_variable_address(const char* search_name, uint16_t* out_address) {
     for (int i = 0; i < var_count; i++) {
@@ -136,6 +138,11 @@ uint8_t load_assembly(const char* path, uint16_t* memory, size_t max_words, size
                 char val[512];
 
                 if (sscanf(p, "%31s .%31s = %511[^\r\n]", name, type, val) == 3) {
+                    if (data_pc > RAM_LIMIT) {
+                        fprintf(stderr, "Error: Data segment overflow! Exceeded available RAM at 0x%04X\n", RAM_LIMIT);
+                        fclose(file);
+                        return 0;
+                    }
                     Variable* var = &variables[var_count++];
                     strcpy(var->name, name);
                     var->address = data_pc;
@@ -177,6 +184,11 @@ uint8_t load_assembly(const char* path, uint16_t* memory, size_t max_words, size
             strcpy(labels[label_count].name, token);
             labels[label_count].address = current_pc;
             label_count++;
+
+            char* next_token = strtok(NULL, " \t,\r\n");
+            if (next_token != NULL) {
+                current_pc++;
+            }
         }
 
         else
@@ -334,16 +346,21 @@ uint8_t load_assembly(const char* path, uint16_t* memory, size_t max_words, size
                               (r1 << 4);
             }
         }
-        else if (strcmp(opcode, "LOADI") == 0) {
+        else if (strcmp(opcode, "LOADI") == 0 || strcmp(opcode, "LOADHI") == 0) {
             valid = operand_count == 2 &&
                     parse_register(operands[0], &rd) &&
                     (parse_immediate(operands[1], &imm) ||
                      get_label_address(operands[1], &imm) ||
-                     get_variable_address(operands[1], &imm)) &&
-                    (imm <= 0xFF);
+                     get_variable_address(operands[1], &imm));
 
             if (valid)
-                instruction = (0xA << 12) | (rd << 8) | (imm & 0xFF);
+            {
+                if (strcmp(opcode, "LOADI") == 0) {
+                    instruction = (0xA << 12) | (rd << 8) | (imm & 0xFF);
+                } else {
+                    instruction = (0xF << 12) | (rd << 8) | ((imm >> 8) & 0xFF);
+                }
+            }
         }
         else if (strcmp(opcode, "JMP") == 0 ||
                  strcmp(opcode, "JEQ") == 0 ||
@@ -374,7 +391,7 @@ uint8_t load_assembly(const char* path, uint16_t* memory, size_t max_words, size
         }
         else if (strcmp(opcode, "HALT") == 0) {
             valid = operand_count == 0;
-            instruction = 0xF000;
+            instruction = 0x0F00;
         }
         else {
             fprintf(stderr, "Line %zu: unknown opcode '%s'\n",
@@ -435,8 +452,10 @@ static uint8_t save_binary(const char* path, const uint16_t* memory, size_t word
         return 0;
     }
 
+    uint16_t actual_data_count = data_pc - DATA_OFFSET;
+
     // Write the 2-word header: [instruction_count, data_count]
-    uint16_t header[2] = { (uint16_t)word_count, data_pc };
+    uint16_t header[2] = { (uint16_t)word_count, actual_data_count };
     if (fwrite(header, sizeof(uint16_t), 2, file) != 2) {
         perror("Failed to write binary header");
         fclose(file);
@@ -452,7 +471,7 @@ static uint8_t save_binary(const char* path, const uint16_t* memory, size_t word
 
     // Write pre-loaded RAM (_variables:)
     if (data_pc > 0) {
-        if (fwrite(data_buffer, sizeof(uint16_t), data_pc, file) != data_pc) {
+        if (fwrite(&data_buffer[DATA_OFFSET], sizeof(uint16_t), data_pc, file) != data_pc) {
             perror("Failed to write data binary output");
             fclose(file);
             return 0;

@@ -3,38 +3,52 @@ PC (program counter, saves next adress to execute) - RF
 SP (stack pointer, saves last adress of a stack) - RE
 LR (link register, saves the location of the next instruction ) - RD
 SR (status register, saves flags, Z/ZF, C/CF, N/S/SF, V/OF, I/IF) - RC
-• Zero Flag (Z / ZF): Set to 1 if the result of an arithmetic or logical operation is zero.
-• Carry Flag (C / CF): Set to 1 if an addition generated a carry out or a subtraction required a borrow, or for shifting operations.
-• Negative/Sign Flag (N / S / SF): Set to 1 if the result of an operation is negative (matches the most significant bit).
-• Overflow Flag (V / OF): Set to 1 if a signed arithmetic operation exceeds the maximum or minimum limit of the number format.
-• Interrupt Enable/Disable (I / IF): Controls whether the processor accepts external hardware interrupts.
+- Zero Flag (Z / ZF): Set to 1 if the result of an arithmetic or logical operation is zero.
+- Carry Flag (C / CF): Set to 1 if an addition generated a carry out or a subtraction required a borrow, or for shifting operations.
+- Negative/Sign Flag (N / S / SF): Set to 1 if the result of an operation is negative (matches the most significant bit).
+- Overflow Flag (V / OF): Set to 1 if a signed arithmetic operation exceeds the maximum or minimum limit of the number format.
+- Interrupt Enable/Disable (I / IF): Controls whether the processor accepts external hardware interrupts.
 
 16 bit adress bus
 each adress holds a full 16 bits
 Harvard architecture
 
 Instruction Formats (16-bit total):
-• R-Type (Register arithmetic): [Opcode: 4] [Dest: 4] [Src1: 4] [Src2: 4]
-• I-Type (Immediate/Constants): [Opcode: 4] [Dest: 4] [Immediate: 8]
-• J-Type (Jumps/Branches):      [Opcode: 4] [Address/Offset: 12]
+- R-Type (Register arithmetic): [Opcode: 4] [Dest: 4] [Src1: 4] [Src2: 4]
+- I-Type (Immediate/Constants): [Opcode: 4] [Dest: 4] [Immediate: 8]
+- J-Type (Jumps/Branches):      [Opcode: 4] [Address/Offset: 12]
+- S-Type (System / Extended Operations):[Opcode: 4 (0x0)] [Sub-Opcode: 4] [Register: 4] [Unused: 4]
+The second nibble acts as an 8-bit extended opcode:
+   - 0x0000 : NOP   (Dest: 0x0, Reg: 0x0)
+   - 0x01x0 : PUSH  (Dest: 0x1, Reg: Src1)
+   - 0x02x0 : POP   (Dest: 0x2, Reg: Src1)
+   - 0x03x0 : CALL  (Dest: 0x3, Reg: Src1)
+   - 0x0400 : RET   (Dest: 0x4, Reg: 0x0)
+   - 0x0F00 : HALT  (Dest: 0xF, Reg: 0x0)
 
 Opcodes (0x0 to 0xF):
-0x0 - NOP   : NOP            : Does absolutely nothing, just moves to the next instruction.
-0x1 - ADD   : ADD R1, R2, R3 : Adds the values in R2 and R3, saves the result in R1.
-0x2 - SUB   : SUB R1, R2, R3 : Subtracts R3 from R2, saves the result in R1.
-0x3 - AND   : AND R1, R2, R3 : Performs a bitwise AND on R2 and R3, saves in R1.
-0x4 - OR    : OR R1, R2, R3  : Performs a bitwise OR on R2 and R3, saves in R1.
-0x5 - XOR   : XOR R1, R2, R3 : Performs a bitwise XOR on R2 and R3, saves in R1.
-0x6 - LSL   : LSL R1, R2, R3 : Shifts the bits of R2 to the left by the amount in R3, saves in R1.
-0x7 - LSR   : LSR R1, R2, R3 : Shifts the bits of R2 to the right by the amount in R3, saves in R1.
-0x8 - LOAD  : LOAD R1, R2    : Reads the value at the memory address stored in R2, saves it into R1.
-0x9 - STORE : STORE R1, R2   : Takes the value in R2 and writes it to the memory address stored in R1.
-0xA - LOADI : LOADI R1, #255 : Loads the exact constant number 255 directly into R1.
-0xB - CMP   : CMP R1, R2     : Subtracts R2 from R1 purely to update flags (like Zero), discards the math result.
-0xC - JMP   : JMP #0x0400    : Unconditionally changes the PC to 0x0400, jumping to a new part of the code.
-0xD - JEQ   : JEQ #0x0400    : Jumps to 0x0400 ONLY if the last CMP showed the two numbers were equal (Z=1).
-0xE - JNE   : JNE #0x0400    : Jumps to 0x0400 ONLY if the last CMP showed the numbers were not equal (Z=0).
-0xF - HALT  : HALT           : Completely stops the processor's while(running) execution loop.
+0x0 - EXT   : Extended / System instructions (encoded via destination nibble):
+- NOP         : Does absolutely nothing, advances PC.
+- PUSH R1     : Pushes R1 onto the stack (writes to [SP], then SP = SP - 1).
+- POP R1      : Pops from the stack into R1 (SP = SP + 1, then reads [SP]).
+- CALL R1     : Saves return address in LR (R13) and jumps to address in R1.
+- RET         : Restores PC from LR (R13) to return from subroutine.
+- HALT        : Stops the CPU execution loop (running = 0).
+0x1 - ADD   : ADD R1, R2, R3 : Adds R2 and R3, stores result in R1 (updates Z, C, N, V).
+0x2 - SUB   : SUB R1, R2, R3 : Subtracts R3 from R2, stores result in R1 (updates Z, C, N, V).
+0x3 - AND   : AND R1, R2, R3 : Bitwise AND on R2 and R3, stores in R1 (updates Z, N).
+0x4 - OR    : OR R1, R2, R3  : Bitwise OR on R2 and R3, stores in R1 (updates Z, N).
+0x5 - XOR   : XOR R1, R2, R3 : Bitwise XOR on R2 and R3, stores in R1 (updates Z, N).
+0x6 - LSL   : LSL R1, R2, R3 : Shifts R2 left by R3 bits, stores in R1 (updates Z, N).
+0x7 - LSR   : LSR R1, R2, R3 : Shifts R2 right by R3 bits, stores in R1 (updates Z, N).
+0x8 - LOAD  : LOAD R1, R2    : Reads memory address at R2 into R1 (intercepts 0xFF01 for gamepad).
+0x9 - STORE : STORE R1, R2   : Writes value of R2 into memory address at R1 (intercepts 0xFF00 for stdout).
+0xA - LOADI : LOADI R1, #val : Loads immediate 8-bit value into lower byte of R1 (clears upper byte).
+0xB - CMP   : CMP R1, R2     : Subtracts R2 from R1 to set flags (Z, C, N, V), discards math result.
+0xC - JMP   : JMP label/#imm : Unconditionally sets PC to 12-bit target address.
+0xD - JEQ   : JEQ label/#imm : Jumps to target address ONLY if Zero Flag is set (Z == 1).
+0xE - JNE   : JNE label/#imm : Jumps to target address ONLY if Zero Flag is clear (Z == 0).
+0xF - LOADHI: LOADHI R1, #val: Loads immediate 8-bit value into upper byte of R1 (preserves lower byte).
 
 System Boot State:
 • PC initializes to 0x0000 (Execution starts at the absolute beginning of Instruction Memory)
@@ -42,7 +56,6 @@ System Boot State:
 • All other registers (R0-RD) initialize to 0x0000
 
 Data Memory Map (65,536 Addresses):
-• 0x0000 - 0x7FFF : General Purpose RAM (32K)
-• 0x8000 - 0xEFFF : Heap / Dynamically allocated space
-• 0xF000 - 0xFFFE : Memory-Mapped I/O (Hardware devices, display buffer, etc.)
-• 0xFFFF          : Top of Stack
+- 0x0000 - 0x351F : VRAM (160x85 native resolution)
+- 0x3520 - 0xFEFF : General Purpose RAM (Variables grow up from 0x3520; Stack top at 0xFEFF grows down)
+- 0xFF00 - 0xFFFF : Memory-Mapped I/O Hardware

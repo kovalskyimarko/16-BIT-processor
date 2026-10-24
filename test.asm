@@ -1,11 +1,9 @@
 _variables:
     msg .str = "Hello World\n"
-    step .int16 = #1
 
 _code:
-    LOADI R1, #255
-    LOADI R2, #8
-    LSL R1, R1, R2      ; R1 = 0xFF00 (MMIO Terminal)
+    LOADI R1, #0xFF00
+    LOADHI R1, #0xFF00
 
     LOADI R2, msg       ; R2 automatically gets address 0x0000
     LOADI R4, #1
