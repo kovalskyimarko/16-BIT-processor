@@ -10,7 +10,7 @@ const int NATIVE_HEIGHT = 85;
 uint8_t       keys_mask = 0;
 
 #define REGISTERS_COUNT 16
-#define CYCLES_PER_FRAME 20000
+#define CYCLES_PER_FRAME 50000
 
 /* Harvard architecture where the instruction and data memory are separete */
 uint16_t instruction_memory[65536]; // Instruction ram
@@ -48,6 +48,8 @@ int init_SDL() {
     renderer = SDL_CreateRenderer(window, -1, 
         SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     SDL_RenderSetLogicalSize(renderer, NATIVE_WIDTH, NATIVE_HEIGHT);
+
+    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "0");
 
     texture = SDL_CreateTexture(renderer,
         SDL_PIXELFORMAT_RGB565,
@@ -525,6 +527,8 @@ int main(int argc, const char* argv[])
                 }
             }
         }
+
+        data_memory[0xFF01] = keys_mask;
 #endif
 
         int cycles = debug ? 1 : CYCLES_PER_FRAME;
