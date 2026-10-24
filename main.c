@@ -9,6 +9,17 @@ const int NATIVE_HEIGHT = 85;
 // 0WASDKLP  0 - will be set to 1 if any button is pressed
 uint8_t       keys_mask = 0;
 
+#define REGISTERS_COUNT 16
+#define CYCLES_PER_FRAME 20000
+
+/* Harvard architecture where the instruction and data memory are separete */
+uint16_t instruction_memory[65536]; // Instruction ram
+uint16_t data_memory[65536];        // 64K of data ram
+uint16_t reg[REGISTERS_COUNT];
+
+uint8_t debug = 0;
+
+
 #ifndef RASPBERRY_PI
 
 #include <SDL.h>
@@ -18,7 +29,6 @@ const int SCALE = 3; // Make the Mac window 3x bigger
 SDL_Window*   window;
 SDL_Renderer* renderer;
 SDL_Texture*  texture;
-uint16_t*     pixels;
 
 int init_SDL() {
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
@@ -45,12 +55,6 @@ int init_SDL() {
         NATIVE_WIDTH,
         NATIVE_HEIGHT
     );
-
-    pixels = (uint16_t*)malloc(NATIVE_WIDTH * NATIVE_HEIGHT * sizeof(uint16_t));
-
-    for (int i = 0; i < NATIVE_WIDTH * NATIVE_HEIGHT; i++) {
-        pixels[i] = 0xFFFF;
-    }
     
     return 0;
 }
@@ -61,7 +65,7 @@ void update_txt_SDL()
     SDL_RenderClear(renderer);
 
     int pitch = NATIVE_WIDTH * sizeof(uint16_t);
-    SDL_UpdateTexture(texture, NULL, pixels, pitch);
+    SDL_UpdateTexture(texture, NULL, data_memory, pitch);
     SDL_RenderCopy(renderer, texture, NULL, NULL);
 
 
@@ -133,8 +137,6 @@ void loop_SDL()
 
 void destroy_SDL()
 {
-    free(pixels);
-    pixels = NULL;
     SDL_DestroyTexture(texture);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
@@ -142,16 +144,6 @@ void destroy_SDL()
 }
 
 #endif
-
-#define REGISTERS_COUNT 16
-#define CYCLES_PER_FRAME 20000
-
-/* Harvard architecture where the instruction and data memory are separete */
-uint16_t instruction_memory[65536]; // Instruction ram
-uint16_t data_memory[65536];        // 64K of data ram
-uint16_t reg[REGISTERS_COUNT];
-
-uint8_t debug = 0;
 
 /*
  * PC (program counter, saves next adress to execute) - RF
@@ -296,7 +288,7 @@ uint8_t load_program(const char* path, uint16_t* inst_mem, uint16_t* data_mem)
     return 1;
 }
 
-uint16_t stepcpu(uint8_t* running)
+void step_cpu(uint8_t* running)
 {
     uint16_t instruction = instruction_memory[PC];
     PC +=1;
