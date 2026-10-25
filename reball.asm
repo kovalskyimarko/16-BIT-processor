@@ -365,17 +365,12 @@ _variables:
 
 ; --- permanent registers ---
 ; R0  - vram start 0x0000, also just 0
-; R11 - vram end 0x3520
 
 _code:
-    LOADI  R0  #0
-    LOADI  R11 #0x3520
-    LOADHI R11 #0x3520
-
-    LOADI R1 draw_pitch
-    LOADHI R1 draw_pitch
-
-    CALL R1
+    LOADI  R1, draw_pitch
+    LOADHI R1, draw_pitch
+    CALL   R1
+    HALT
 
 draw_pitch:
     LOADI  R2, color_lgreen
@@ -386,73 +381,81 @@ draw_pitch:
     LOADHI R3, color_dgreen
     LOAD   R3, R3             ; R3 = Dark Green
 
-    ADD    R4, R2, R0         ; R4 = Current Color (Starts Light)
-    ADD    R6, R0, R0         ; R6 = Pixels Drawn Counter (Starts 0)
-    
-    LOADI  R7, #1600          
-    LOADHI R7, #1600          ; R7 = Pixels per stripe (1600)
-    
-    LOADI  R8, #160           ; R8 = Pixels per row (160)
-    LOADI  R9, #1             
+    ADD    R4, R2, R0         ; R4 = Current Color (Starts Light Green)
+    XOR    R2, R2, R3         ; R2 = XOR Toggle Mask
 
-    ; 3. Load camera_y
+    LOADI  R6, #0             ; R6 = Row-in-stripe counter (0 to 9)
+    LOADI  R7, #10            ; R7 = 10 rows per grass stripe (10 * 160 = 1600px)
+    LOADI  R9, #1             ; R9 = Constant 1
+
+    ; Load camera_y
     LOADI  R10, camera_y
     LOADHI R10, camera_y
-    LOAD   R10, R10           
-    ADD    R11, R0, R0        ; R11 = Row counter (starts at 0)
+    LOAD   R10, R10           ; R10 = camera_y
+    LOADI  R11, #0            ; R11 = Current Y counter (0 to camera_y)
 
 calc_camera_loop:
-    CMP    R11, R10           ; Have we counted up to camera_y?
-    JEQ    start_drawing      ; If yes, we are ready to draw
+    CMP    R11, R10           ; Reached camera_y?
+    JEQ    start_drawing
 
-    ADD    R11, R11, R9       ; row_counter++
-    ADD    R6, R6, R8         ; pixels_drawn += 160 (one row)
+    ADD    R11, R11, R9       ; camera row_counter++
+    ADD    R6, R6, R9         ; stripe_row_counter++
 
-    CMP    R6, R7             ; Have we reached 1600 pixels?
-    JNE    calc_camera_loop   ; If no, keep counting
+    CMP    R6, R7             ; Reached 10 rows?
+    JNE    calc_camera_loop
 
-    ; If we hit 1600, reset pixel counter to 0 and swap colors
-    ADD    R6, R0, R0         
-    
-    CMP    R4, R2             ; Are we currently Light Green?
-    JEQ    set_calc_dark      
-
-set_calc_light:
-    ADD    R4, R2, R0         ; Switch to Light Green
-    JMP    calc_camera_loop
-
-set_calc_dark:
-    ADD    R4, R3, R0         ; Switch to Dark Green
+    LOADI  R6, #0             ; Reset stripe row counter
+    XOR    R4, R4, R2         ; Flip grass color
     JMP    calc_camera_loop
 
 start_drawing:
-    ADD    R1, R0, R0
-    LOADI  R11, #0x3520
-    LOADHI R11, #0x3520
+    LOADI  R1, #0             ; R1 = VRAM pointer (0x0000)
+    LOADI  R11, #0            ; R11 = screen_x counter (0 to 159)
+    LOADI  R3, #160           ; R3 = Screen width (160)
+
+    LOADI  R10, #0x3520       
+    LOADHI R10, #0x3520       ; R10 = End of VRAM (0x3520)
+
+    ; R5 = 320 - camera_x (White stripe's screen X coordinate)
+    LOADI  R5, #320
+    LOADHI R5, #320
+    LOADI  R8, camera_x
+    LOADHI R8, camera_x
+    LOAD   R8, R8
+    SUB    R5, R5, R8         ; R5 = 320 - camera_x
+
+    ; Load white color into R8
+    LOADI  R8, color_white
+    LOADHI R8, color_white
+    LOAD   R8, R8
 
 draw_pitch_loop:
-    STORE R1 R4
-    ADD R1 R1 R9
-    CMP R1 R11
-    JEQ draw_pitch_end
+    CMP    R11, R5            ; Does screen_x (R11) == stripe_screen_x (R5)?
+    JNE    draw_normal_color
+    STORE  R1, R8             ; Draw white pixel
+    JMP    continue_draw_pitch
 
-    ADD R6 R6 R9
-    CMP R6 R7
-    JNE draw_pitch_loop
+draw_normal_color:
+    STORE  R1, R4             ; Draw current green pixel
 
-swap_colors:
-    ADD R6 R0 R0 ; reset register
-    CMP R4 R2 ; is current color light green
-    JEQ set_dark
-    JMP set_light
+continue_draw_pitch:
+    ADD    R1, R1, R9         ; Next VRAM address (+1)
+    ADD    R11, R11, R9       ; screen_x + 1
+    CMP    R11, R3            ; End of row (160)?
+    ; If end wasn't reached why check if its the end of camera or color switch
+    JNE    draw_pitch_loop
 
-set_dark:
-    ADD R4 R3 R0
-    JMP draw_pitch_loop
+    CMP    R1, R10            ; Reached end of VRAM (0x3520)?
+    JEQ    draw_pitch_end
 
-set_light:
-    ADD R4 R2 R0
-    JMP draw_pitch_loop
+    LOADI  R11, #0            ; Reset screen_x to 0 for next row
+    ADD    R6, R6, R9         ; Increment stripe row counter (+1 row)
+    CMP    R6, R7             ; Reached 10 rows?
+    JNE    draw_pitch_loop
+
+    LOADI  R6, #0             ; Reset stripe row counter
+    XOR    R4, R4, R2         ; Flip green color
+    JMP    draw_pitch_loop
 
 draw_pitch_end:
     HALT
