@@ -458,4 +458,78 @@ continue_draw_pitch:
     JMP    draw_pitch_loop
 
 draw_pitch_end:
+    JMP draw_penalty_box
+
+draw_penalty_box:
+    LOADI  R1 #20          ; Start of the penalty box y
+    LOADI  R2 #65
+    LOADHI R2 #65          ; End of the penalty box y
+
+    LOADI R3 #0             ; Start of the penalty box x
+    LOADI R4 #40           ; End of the penalty box x
+
+    LOADI R5 #0             ; Y-counter
+    ADD R6 R0 R0            ; Memory buffer
+    LOADI  R11, #159        ; Right Box VRAM pointer
+
+    LOADI R7 #160           ; Screen width
+
+    LOADI R8 #1
+
+    LOADI R9 #0             ; X-counter
+    LOADI  R10 color_white
+    LOADHI R10 color_white
+    LOAD   R10 R10
+
+go_to_penalty_box_y:
+    CMP R5 R1
+    JEQ draw_penalty_h_low_box_loop
+
+    ADD R5 R5 R8
+    ADD R6 R6 R7
+    ADD R11, R11, R7
+
+    JMP go_to_penalty_box_y
+
+draw_penalty_h_low_box_loop:
+    CMP R9 R4
+    JEQ draw_penalty_v_box_loop
+
+    STORE R6 R10
+    STORE  R11, R10
+
+    ADD R9 R9 R8
+    ADD R6 R6 R8
+    SUB R11, R11, R8
+
+    JMP draw_penalty_h_low_box_loop
+
+draw_penalty_v_box_loop:
+    CMP R5 R2
+    JEQ draw_penalty_h_high_box_loop
+    
+    STORE R6, R10
+    STORE  R11, R10
+
+    ADD   R6, R6, R7
+    ADD   R11, R11, R7
+    ADD R5 R5 R8
+    JMP draw_penalty_v_box_loop
+
+draw_penalty_h_high_box_loop:
+    CMP R9 R3
+    JEQ end_draw_penalty_box
+
+    STORE R6 R10
+    STORE  R11, R10
+
+    SUB R6 R6 R8
+    ADD R11, R11, R8
+    SUB R9 R9 R8
+    
+    JMP draw_penalty_h_high_box_loop
+
+end_draw_penalty_box:
+    STORE R6 R10        ; Draw one more time because it ends at exactly 0
+    STORE  R11, R10
     HALT

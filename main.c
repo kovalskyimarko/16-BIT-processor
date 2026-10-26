@@ -334,7 +334,7 @@ void step_cpu(uint8_t* running)
                 
                 // HALT
                 case 0xF:
-                    running = 0;
+                    *running = 0;
                     break;
             }
 
@@ -543,6 +543,7 @@ int main(int argc, const char* argv[])
     }
 
 #ifndef RASPBERRY_PI
+    loop_SDL();
     destroy_SDL();
 #endif
 
