@@ -367,6 +367,8 @@ _variables:
 ; R0  - vram start 0x0000, also just 0
 
 _code:
+
+draw_loop:
     LOADI  R1, draw_pitch
     LOADHI R1, draw_pitch
     CALL   R1
@@ -461,75 +463,241 @@ draw_pitch_end:
     JMP draw_penalty_box
 
 draw_penalty_box:
-    LOADI  R1 #20          ; Start of the penalty box y
-    LOADI  R2 #65
-    LOADHI R2 #65          ; End of the penalty box y
+    ; Save current LR, because next calls will overwrite it
+    PUSH R13
 
-    LOADI R3 #0             ; Start of the penalty box x
-    LOADI R4 #40           ; End of the penalty box x
+    LOADI R1, #20             ; R1 = World Y
+    LOADI R2, #0              ; R2 = World X Start
+    LOADI R3, #40             ; R3 = World X End
+    LOADI R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL R4
 
-    LOADI R5 #0             ; Y-counter
-    ADD R6 R0 R0            ; Memory buffer
-    LOADI  R11, #159        ; Right Box VRAM pointer
+    LOADI R1, #40             ; R1 = World X
+    LOADI R2, #20             ; R2 = World Y Start
+    LOADI R3, #65             ; R3 = World Y End
+    LOADI R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL R4
 
-    LOADI R7 #160           ; Screen width
+    LOADI R1, #65             ; R1 = World Y
+    LOADI R2, #0              ; R2 = World X Start
+    LOADI R3, #40             ; R3 = World X End
+    LOADI R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL R4
 
+    LOADI R1, #20             ; R1 = World Y
+    LOADI R2, #600            ; R2 = World X Start
+    LOADHI R2, #600
+    LOADI R3, #640            ; R3 = World X End
+    LOADHI R3, #640
+    LOADI R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL R4
+
+    LOADI R1, #600            ; R1 = World X
+    LOADHI R1, #600
+    LOADI R2, #20             ; R2 = World Y Start
+    LOADI R3, #65             ; R3 = World Y End
+    LOADI R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL R4
+
+    LOADI R1, #65             ; R1 = World Y
+    LOADI R2, #600            ; R2 = World X Start
+    LOADHI R2, #600
+    LOADI R3, #640            ; R3 = World X End
+    LOADHI R3, #640
+    LOADI R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL R4
+
+    POP R13
+    RET
+
+draw_hline:
+    LOADI  R4, camera_y
+    LOADHI R4, camera_y
+    LOAD R4 R4
+
+    CMP R1 R4
+    LOADI  R5 #0x04      ; Load FLAG_N mask (1 << 2).
+    AND R5 R5 R12        ; Check if N-flag was set
+    JNE    abort_hline  ; World_Y < camera_y; N-flag was set
+    
+    LOADI  R4, camera_x
+    LOADHI R4, camera_x
+    LOAD R4 R4
+
+    CMP R3 R4
+    LOADI  R5 #0x04      ; Load FLAG_N mask (1 << 2).
+    AND R5 R5 R12        ; Check if N-flag was set
+    JNE    abort_hline  ; World_X2 < camera_x; N-flag was set
+
+    SUB R2, R2, R4         ; Screen_X1 = World_X1 - camera_x
+    SUB R3, R3, R4         ; Screen_X2 = World_X2 - camera_x
+
+    LOADI  R4, camera_y
+    LOADHI R4, camera_y
+    LOAD   R4, R4
+    SUB    R1, R1, R4      ; Screen_Y = World_Y - camera_y
+
+    LOADI R4, #85
+    CMP   R1, R4
+    LOADI R5, #0x04
+    AND   R5, R5, R12
+    JEQ   abort_hline      ; Screen_Y >= 85
+
+; --- Clamp Screen_X1 to 0 if its negative ---
+    LOADI  R5, #0
+    LOADHI R5, #0x80
+    AND    R4, R2, R5
+    JEQ    hline_skip_left_clip  ; FLAG_Z was set meaning R2 isn't negative
+    LOADI  R2, #0
+
+hline_skip_left_clip:
+    LOADI R4, #160
+    CMP   R2, R4
+    LOADI R5, #0x04
+    AND   R5, R5, RC
+    JEQ   abort_hline      ; Screen_X1 is bigger then 160
+
+; --- Clamp Screen_X2 to 159 if its >=160
+    LOADI R4, #159
+    CMP   R3, R4
+    LOADI R5, #0x04
+    AND   R5, R5, RC
+    JNE   hline_skip_right_clip ; The Sreen_X2 is <159
+    LOADI R3, #159
+
+hline_skip_right_clip:
+    ; R1 - screen Y (0-84)
+    ; R2 - screen X_1 (0-159)
+    ; R3 - screen X_2 (0-159)
+
+    LOADI R4 #160
+    LOADI R5 #0         ; y-counter
+    LOADI R6 #0         ; x-counter
+    LOADI R7 #0         ; VRAM pointer
     LOADI R8 #1
+    LOADI R9 color_white
+    LOADHI R9 color_white
+    LOAD R9 R9
 
-    LOADI R9 #0             ; X-counter
-    LOADI  R10 color_white
-    LOADHI R10 color_white
-    LOAD   R10 R10
-
-go_to_penalty_box_y:
+hline_skip_y:
     CMP R5 R1
-    JEQ draw_penalty_h_low_box_loop
-
+    JEQ hline_skip_x
+    ADD R7 R7 R4
     ADD R5 R5 R8
-    ADD R6 R6 R7
-    ADD R11, R11, R7
+    JMP hline_skip_y
 
-    JMP go_to_penalty_box_y
+hline_skip_x:
+    ADD   R7, R7, R2        ; VRAM = (Y * 160) + X1
+    ADD   R6, R2, R0        ; R6 = X1
 
-draw_penalty_h_low_box_loop:
-    CMP R9 R4
-    JEQ draw_penalty_v_box_loop
+draw_hline_loop:
+    STORE R7 R9
 
-    STORE R6 R10
-    STORE  R11, R10
+    CMP R6 R3               ; Have the game draw X2?
+    JEQ abort_hline
 
-    ADD R9 R9 R8
     ADD R6 R6 R8
-    SUB R11, R11, R8
+    ADD R7 R7 R8
 
-    JMP draw_penalty_h_low_box_loop
+    JMP draw_hline_loop
 
-draw_penalty_v_box_loop:
+abort_hline:
+    RET
+
+draw_vline:
+    LOADI  R4, camera_x
+    LOADHI R4, camera_x
+    LOAD R4 R4
+
+    CMP R1 R4
+    LOADI  R5 #0x04      ; Load FLAG_N mask (1 << 2).
+    AND R5 R5 RC        ; Check if N-flag was set
+    JNE    abort_vline  ; World_X < camera_x; N-flag was set
+    
+    LOADI  R4, camera_y
+    LOADHI R4, camera_y
+    LOAD R4 R4
+
+    CMP R3 R4
+    LOADI  R5 #0x04      ; Load FLAG_N mask (1 << 2).
+    AND R5 R5 RC        ; Check if N-flag was set
+    JNE    abort_vline  ; World_Y2 < camera_y; N-flag was set
+
+    SUB R2, R2, R4         ; Screen_Y1 = World_Y1 - camera_y
+    SUB R3, R3, R4         ; Screen_Y2 = World_Y2 - camera_y
+
+    LOADI  R4, camera_x
+    LOADHI R4, camera_x
+    LOAD   R4, R4
+    SUB    R1, R1, R4      ; Screen_X = World_X - camera_x
+
+    LOADI R4, #160
+    CMP   R1, R4
+    LOADI R5, #0x04
+    AND   R5, R5, RC
+    JEQ   abort_vline      ; Screen_X is bigger then 160
+
+; --- Clamp Screen_Y1 to 0 if its negative ---
+    LOADI  R5, #0
+    LOADHI R5, #0x80
+    AND    R4, R2, R5
+    JEQ    vline_skip_top_clip  ; FLAG_Z was set meaning R2 isn't negative
+    LOADI  R2, #0
+
+vline_skip_top_clip:
+    LOADI R4, #85
+    CMP   R2, R4
+    LOADI R5, #0x04
+    AND   R5, R5, RC
+    JEQ   abort_vline      ; Screen_Y1 is bigger then 85
+
+    LOADI R4, #84
+    CMP   R3, R4
+    LOADI R5, #0x04
+    AND   R5, R5, RC
+    JNE   vline_skip_bottom_clip ; The Sreen_Y2 is smaller then 84
+    LOADI R3, #84
+
+
+vline_skip_bottom_clip:
+    ; R1 - screen X (0-159)
+    ; R2 - screen Y_1 (0-84)
+    ; R3 - screen Y_2 (0-84)
+
+    LOADI R4 #160
+    LOADI R5 #0         ; y-counter
+    LOADI R7 #0         ; VRAM pointer
+    LOADI R8 #1
+    LOADI R9 color_white
+    LOADHI R9 color_white
+    LOAD R9 R9
+
+vline_skip_y:
     CMP R5 R2
-    JEQ draw_penalty_h_high_box_loop
-    
-    STORE R6, R10
-    STORE  R11, R10
-
-    ADD   R6, R6, R7
-    ADD   R11, R11, R7
+    JEQ vline_skip_x
+    ADD R7 R7 R4
     ADD R5 R5 R8
-    JMP draw_penalty_v_box_loop
+    JMP vline_skip_y
 
-draw_penalty_h_high_box_loop:
-    CMP R9 R3
-    JEQ end_draw_penalty_box
+vline_skip_x:
+    ADD   R7, R7, R1        ; VRAM = (Y * 160) + X1
 
-    STORE R6 R10
-    STORE  R11, R10
+draw_vline_loop:
+    STORE R7 R9
 
-    SUB R6 R6 R8
-    ADD R11, R11, R8
-    SUB R9 R9 R8
-    
-    JMP draw_penalty_h_high_box_loop
+    CMP R5 R3               ; Have the game draw Y2?
+    JEQ abort_vline
 
-end_draw_penalty_box:
-    STORE R6 R10        ; Draw one more time because it ends at exactly 0
-    STORE  R11, R10
-    HALT
+    ADD R5 R5 R8
+    ADD R7 R7 R4
+
+    JMP draw_vline_loop
+
+abort_vline:
+    RET

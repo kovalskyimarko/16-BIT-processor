@@ -61,12 +61,23 @@ int get_label_address(const char* search_name, uint16_t* out_address) {
 
 static int parse_register(const char* str, uint16_t* reg)
 {
-    if (!str || str[0] != 'R' || !isdigit((unsigned char)str[1]))
+    if (!str || str[0] != 'R' || !isxdigit((unsigned char)str[1]))
         return 0;
+
+    // Check if the register string contains any hex letters (A-F, a-f)
+    int use_hex = 0;
+    for (int i = 1; str[i] != '\0'; i++) {
+        char c = str[i];
+        if ((c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f')) {
+            use_hex = 1;
+            break;
+        }
+    }
 
     char* end;
     errno = 0;
-    long value = strtol(str + 1, &end, 10);
+    // Use base 16 if letters are present, otherwise base 10 (keeps R10 as decimal 10)
+    long value = strtol(str + 1, &end, use_hex ? 16 : 10);
 
     if (errno || *end != '\0' || value < 0 || value >= REGISTERS_COUNT)
         return 0;

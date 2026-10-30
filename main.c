@@ -6,8 +6,8 @@
 const int NATIVE_WIDTH = 160;
 const int NATIVE_HEIGHT = 85;
 
-// 0WASDKLP  0 - will be set to 1 if any button is pressed
-uint8_t       keys_mask = 0;
+// 00000000XWASDKLP  X - will be set to 1 if any button is pressed
+uint16_t keys_mask = 0;
 
 #define REGISTERS_COUNT 16
 #define CYCLES_PER_FRAME 50000
