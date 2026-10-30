@@ -432,7 +432,105 @@ draw_loop:
     LOADI R2, draw_players
     LOADHI R2, draw_players
     CALL R2
-    HALT
+
+    LOADI  R3, #0xFF02
+    LOADHI R3, #0xFF02
+    LOADI  R4, #1
+    STORE  R3, R4
+
+check_for_movement:
+    LOADI R3 #0xFF01
+    LOADHI R3 #0xFF01
+    LOAD R3 R3
+
+    LOADI R4 #0x40
+    LOADHI R4 #0x40
+    AND R4 R4 R3
+    JNE move_w
+        
+    LOADI R4 #0x20
+    LOADHI R4 #0x20
+    AND R4 R4 R3
+    JNE move_a
+
+    LOADI R4 #0x10
+    LOADHI R4 #0x10
+    AND R4 R4 R3
+    JNE move_s
+
+    LOADI R4 #0x08
+    LOADHI R4 #0x08
+    AND R4 R4 R3
+    JNE move_d
+
+    JMP draw_loop
+
+move_w:
+    LOADI R4 camera_y
+    LOADHI R4 camera_y
+    LOAD R6 R4
+
+    LOADI R5 #5
+    CMP R6 R5
+    LOADI  R7 #0x04           ; Load FLAG_N mask (1 << 2).
+    AND R7 R7 RC               ; Check if N-flag was set
+    JNE    check_for_movement  ; camera_y < 5; N-flag was set
+
+    LOADI  R8, #2
+    SUB R6 R6 R8
+    STORE R4 R6
+    JMP draw_loop
+
+move_s:
+    LOADI R4 camera_y
+    LOADHI R4 camera_y
+    LOAD R6 R4
+
+    LOADI R5 #255
+    LOADHI R5 #255
+    CMP R6 R5
+    LOADI  R7 #0x04           ; Load FLAG_N mask (1 << 2).
+    AND R7 R7 RC               ; Check if N-flag was set
+    JEQ    check_for_movement  ; camera_y > 250; N-flag wasnt set
+
+    LOADI  R8, #2
+    ADD    R6, R6, R8
+    STORE R4 R6
+    JMP draw_loop
+
+move_a:
+    LOADI R4 camera_x
+    LOADHI R4 camera_x
+    LOAD R6 R4
+
+    LOADI R5 #5
+    LOADHI R5 #5
+    CMP R6 R5
+    LOADI  R7 #0x04           ; Load FLAG_N mask (1 << 2).
+    AND R7 R7 RC               ; Check if N-flag was set
+    JNE    check_for_movement  ; camera_x < 5; N-flag was set
+
+    LOADI  R8, #2
+    SUB    R6, R6, R8
+    STORE R4 R6
+    JMP draw_loop
+
+move_d:
+    LOADI R4 camera_x
+    LOADHI R4 camera_x
+    LOAD R6 R4
+
+    LOADI R5 #480
+    LOADHI R5 #480
+    CMP R6 R5
+    LOADI  R7 #0x04           ; Load FLAG_N mask (1 << 2).
+    AND R7 R7 RC               ; Check if N-flag was set
+    JEQ    check_for_movement  ; camera_x > 475; N-flag wasnt set
+
+    LOADI  R8, #2
+    ADD R6 R6 R8
+    STORE R4 R6    
+    JMP draw_loop
 
 draw_pitch:
     LOADI  R2, color_lgreen

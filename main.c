@@ -10,7 +10,7 @@ const int NATIVE_HEIGHT = 85;
 uint16_t keys_mask = 0;
 
 #define REGISTERS_COUNT 16
-#define CYCLES_PER_FRAME 50000
+#define CYCLES_PER_FRAME 500000
 
 /* Harvard architecture where the instruction and data memory are separete */
 uint16_t instruction_memory[65536]; // Instruction ram
@@ -535,6 +535,12 @@ int main(int argc, const char* argv[])
         for (int i = 0; i < cycles && running; i++)
         {
             step_cpu(&running);
+
+            if (data_memory[0xFF02] != 0)
+            {
+                data_memory[0xFF02] = 0;
+                break;
+            }
         }
 
 #ifndef RASPBERRY_PI
