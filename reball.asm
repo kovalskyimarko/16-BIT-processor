@@ -362,6 +362,62 @@ _variables:
     camera_x     .int16 = #240  ; Start in the middle of the pitch
     camera_y     .int16 = #127
 
+    ; --- PLAYERS POSITION ---
+
+    ; HOME TEAM (4-3-3) - Left to Right
+    player_0_x   .int16 = #25       ; P0  - GK (25, 168)
+    player_0_y   .int16 = #168
+
+    player_1_x   .int16 = #110      ; P1  - Left Back (110, 48)
+    player_1_y   .int16 = #48
+    player_2_x   .int16 = #110      ; P2  - Center Back Left (110, 128)
+    player_2_y   .int16 = #128
+    player_3_x   .int16 = #110      ; P3  - Center Back Right (110, 208)
+    player_3_y   .int16 = #208
+    player_4_x   .int16 = #110      ; P4  - Right Back (110, 288)
+    player_4_y   .int16 = #288
+
+    player_5_x   .int16 = #210      ; P5  - Left Midfielder (210, 88)
+    player_5_y   .int16 = #88
+    player_6_x   .int16 = #210      ; P6  - Central Midfielder (210, 168)
+    player_6_y   .int16 = #168
+    player_7_x   .int16 = #210      ; P7  - Right Midfielder (210, 248)
+    player_7_y   .int16 = #248
+
+    player_8_x   .int16 = #295      ; P8  - Left Winger (295, 72)
+    player_8_y   .int16 = #72
+    player_9_x   .int16 = #295      ; P9  - Center Forward (295, 168)
+    player_9_y   .int16 = #168
+    player_10_x  .int16 = #295      ; P10 - Right Winger (295, 264)
+    player_10_y  .int16 = #264
+
+    ; AWAY TEAM (4-3-3) - Right to Left (Mirrored across X = 320)
+    player_11_x  .int16 = #345      ; P11 - Left Winger (345, 72)
+    player_11_y  .int16 = #72
+    player_12_x  .int16 = #345      ; P12 - Center Forward (345, 168)
+    player_12_y  .int16 = #168
+    player_13_x  .int16 = #345      ; P13 - Right Winger (345, 264)
+    player_13_y  .int16 = #264
+
+    player_14_x  .int16 = #430      ; P14 - Left Midfielder (430, 88)
+    player_14_y  .int16 = #88
+    player_15_x  .int16 = #430      ; P15 - Central Midfielder (430, 168)
+    player_15_y  .int16 = #168
+    player_16_x  .int16 = #430      ; P16 - Right Midfielder (430, 248)
+    player_16_y  .int16 = #248
+
+    player_17_x  .int16 = #530      ; P17 - Left Back (530, 48)
+    player_17_y  .int16 = #48
+    player_18_x  .int16 = #530      ; P18 - Center Back Left (530, 128)
+    player_18_y  .int16 = #128
+    player_19_x  .int16 = #530      ; P19 - Center Back Right (530, 208)
+    player_19_y  .int16 = #208
+    player_20_x  .int16 = #530      ; P20 - Right Back (530, 288)
+    player_20_y  .int16 = #288
+
+    player_21_x  .int16 = #615      ; P21 - GK (615, 168)
+    player_21_y  .int16 = #168
+
 
 ; --- permanent registers ---
 ; R0  - vram start 0x0000, also just 0
@@ -372,6 +428,10 @@ draw_loop:
     LOADI  R1, draw_pitch
     LOADHI R1, draw_pitch
     CALL   R1
+
+    LOADI R2, draw_players
+    LOADHI R2, draw_players
+    CALL R2
     HALT
 
 draw_pitch:
@@ -466,7 +526,7 @@ draw_penalty_box:
     ; Save current LR, because next calls will overwrite it
     PUSH R13
 
-    LOADI R1, #20             ; R1 = World Y
+    LOADI R1, #80             ; R1 = World Y
     LOADI R2, #0              ; R2 = World X Start
     LOADI R3, #40             ; R3 = World X End
     LOADI R4, draw_hline
@@ -474,20 +534,22 @@ draw_penalty_box:
     CALL R4
 
     LOADI R1, #40             ; R1 = World X
-    LOADI R2, #20             ; R2 = World Y Start
-    LOADI R3, #65             ; R3 = World Y End
+    LOADI R2, #80             ; R2 = World Y Start
+    LOADI R3, #260            ; R3 = World Y End
+    LOADHI R3, #260
     LOADI R4, draw_vline
     LOADHI R4, draw_vline
     CALL R4
 
-    LOADI R1, #65             ; R1 = World Y
+    LOADI R1, #260            ; R1 = World Y
+    LOADHI R1, #260
     LOADI R2, #0              ; R2 = World X Start
     LOADI R3, #40             ; R3 = World X End
     LOADI R4, draw_hline
     LOADHI R4, draw_hline
     CALL R4
 
-    LOADI R1, #20             ; R1 = World Y
+    LOADI R1, #80             ; R1 = World Y
     LOADI R2, #600            ; R2 = World X Start
     LOADHI R2, #600
     LOADI R3, #640            ; R3 = World X End
@@ -498,13 +560,15 @@ draw_penalty_box:
 
     LOADI R1, #600            ; R1 = World X
     LOADHI R1, #600
-    LOADI R2, #20             ; R2 = World Y Start
-    LOADI R3, #65             ; R3 = World Y End
+    LOADI R2, #80             ; R2 = World Y Start
+    LOADI R3, #260            ; R3 = World Y End
+    LOADHI R3, #260
     LOADI R4, draw_vline
     LOADHI R4, draw_vline
     CALL R4
 
-    LOADI R1, #65             ; R1 = World Y
+    LOADI R1, #260            ; R1 = World Y
+    LOADHI R1, #260
     LOADI R2, #600            ; R2 = World X Start
     LOADHI R2, #600
     LOADI R3, #640            ; R3 = World X End
@@ -551,7 +615,7 @@ draw_hline:
 
 ; --- Clamp Screen_X1 to 0 if its negative ---
     LOADI  R5, #0
-    LOADHI R5, #0x80
+    LOADHI R5, #0x8000
     AND    R4, R2, R5
     JEQ    hline_skip_left_clip  ; FLAG_Z was set meaning R2 isn't negative
     LOADI  R2, #0
@@ -645,7 +709,7 @@ draw_vline:
 
 ; --- Clamp Screen_Y1 to 0 if its negative ---
     LOADI  R5, #0
-    LOADHI R5, #0x80
+    LOADHI R5, #0x8000
     AND    R4, R2, R5
     JEQ    vline_skip_top_clip  ; FLAG_Z was set meaning R2 isn't negative
     LOADI  R2, #0
@@ -700,4 +764,152 @@ draw_vline_loop:
     JMP draw_vline_loop
 
 abort_vline:
+    RET
+
+draw_players:
+    LOADI  R2, player_0_x
+    LOADHI R2, player_0_x     ; R2 = Pointer to player coordinates table
+
+    LOADI  R3, #1             ; Constant 1
+    LOADI  RB, #22            ; RB = Total players counter (22)
+
+
+draw_players_loop:
+    LOAD   R4, R2             ; R4 = World_X
+    ADD    R2, R2, R3
+    LOAD   R5, R2             ; R5 = World_Y
+    ADD    R2, R2, R3
+
+    LOADI  R7, camera_y
+    LOADHI R7, camera_y
+    LOAD   R7, R7             ; R7 = camera_y
+
+    LOADI  R8, camera_x
+    LOADHI R8, camera_x
+    LOAD   R8, R8             ; R8 = camera_x
+
+    LOADI  RA, #16
+    SUB    R7, R7, RA         ; camera_y - 16
+    CMP    R5, R7
+    LOADI  R9, #0x04          ; Load FLAG_N mask (1 << 2)
+    AND    R9, R9, RC
+    JNE    draw_players_loop_inc ; World_Y < camera_y - 16; N-flag was set
+    
+    ADD    R7, R7, RA         ; Restore camera_y
+
+    LOADI  RA, #16
+    SUB    R8, R8, RA         ; camera_x - 16
+    CMP    R4, R8
+    LOADI  R9, #0x04
+    AND    R9, R9, RC
+    JNE    draw_players_loop_inc ; World_X < camera_x - 16
+
+    ADD    R8, R8, RA         ; Restore camera_x
+
+    SUB    R4, R4, R8         ; R4 = Screen_X (World_X - camera_x)
+    SUB    R5, R5, R7         ; R5 = Screen_Y (World_Y - camera_y)
+
+    LOADI  R9, #160
+    CMP    R4, R9
+    LOADI  R9, #0x04
+    AND    R9, R9, RC
+    JEQ    draw_players_loop_inc ; Screen_X >= 160; N-flag wasn't set
+
+    LOADI  R9, #85
+    CMP    R5, R9
+    LOADI  R9, #0x04
+    AND    R9, R9, RC
+    JEQ    draw_players_loop_inc ; Screen_Y >= 85; N-flag wasn't set
+
+    LOADI  R1, spr_idle_00
+    LOADHI R1, spr_idle_00    ; R1 = Pointer to sprite row 0
+    LOADI  R7, #16            ; R7 = 16 rows to draw
+
+    LOADI  RA, #0
+    LOADHI RA, #0x8000          ; RA = 0x8000 (Sign bit mask)
+    AND    RA, R5, RA
+    JEQ    player_y_is_pos    ; If Z=1, Screen_Y >= 0
+
+    SUB    R1, R1, R5
+    ADD    R7, R7, R5
+    LOADI  R5, #0
+
+player_y_is_pos:    
+    ADD    R6, R0, R0         ; R6 = VRAM pointer (0)
+    ADD    R9, R0, R0         ; R9 = Y-counter (0)
+    LOADI  R8, #160           ; Screen width
+
+player_skip_y:
+    CMP    R9, R5             ; Reached Screen_Y?
+    JEQ    player_skip_x
+    ADD    R6, R6, R8         ; VRAM += 160
+    ADD    R9, R9, R3         ; Y-counter++
+    JMP    player_skip_y
+
+player_skip_x:
+    ADD    R6, R6, R4         ; VRAM = (Screen_Y * 160) + Screen_X
+
+    PUSH   R2
+    PUSH   RB
+
+    LOADI  R2, color_white
+    LOADHI R2, color_white
+    LOAD   R2, R2             ; R2 = Pixel color
+
+draw_sprite_row:
+    LOADI  RA, #85
+    CMP    R5, RA
+    LOADI  RA, #0x04
+    AND    RA, RA, RC
+    JEQ    done_player_sprite ; If Screen_Y >= 85
+
+    LOAD   R8, R1             ; R8 = 16-bit row bitmap
+    LOADI  R9, #16            ; R9 = 16 columns to draw
+    PUSH   R4                 ; Save starting Screen_X for this row
+
+draw_sprite_col:
+    LOADI  RA, #0
+    LOADHI RA, #0x8000          ; RA = 0x8000
+    AND    RA, R8, RA         ; Check leftmost bit
+    JEQ    skip_sprite_pixel  ; If 0, leave grass underneath
+
+    LOADI  RA, #0
+    LOADHI RA, #0x8000
+    AND    RA, R4, RA         ; Check MSB of current X
+    JNE    skip_sprite_pixel  ; If negative, pixel is off left edge
+
+    LOADI  RA, #160
+    CMP    R4, RA
+    LOADI  RA, #0x04
+    AND    RA, RA, RC
+    JEQ    skip_sprite_pixel  ; If X >= 160, pixel is off right edge
+
+
+    STORE  R6, R2
+
+skip_sprite_pixel:
+    LSL    R8, R8, R3       ; Now leftmost bit holds next bit
+    ADD    R6, R6, R3       ; VRAM pointer++
+    ADD    R4, R4, R3       ; Current X++
+    SUB    R9, R9, R3       ; Column counter--
+    JNE    draw_sprite_col
+
+    POP    R4
+
+    LOADI  RA, #144 ;move VRAM pointer down 1 row and back 16 pixels
+    ADD    R6, R6, RA
+
+    ADD    R1, R1, R3     ; Next row
+    ADD    R5, R5, R3     ; Screen_Y++
+    SUB    R7, R7, R3     ; Row counter--;
+    JNE    draw_sprite_row
+
+done_player_sprite:
+    POP    RB
+    POP    R2
+
+draw_players_loop_inc:
+    SUB    RB, RB, R3         ; players_remaining--
+    JNE    draw_players_loop
+
     RET

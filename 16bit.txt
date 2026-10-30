@@ -52,7 +52,7 @@ Opcodes (0x0 to 0xF):
 
 System Boot State:
 • PC initializes to 0x0000 (Execution starts at the absolute beginning of Instruction Memory)
-• SP initializes to 0xFFFF (Stack starts at the very top of Data Memory and grows downwards)
+• SP initializes to 0xFEFF (Stack starts at the very top of Data Memory and grows downwards)
 • All other registers (R0-RD) initialize to 0x0000
 
 Data Memory Map (65,536 Addresses):
