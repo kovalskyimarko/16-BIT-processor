@@ -8,7 +8,7 @@
 #define REGISTERS_COUNT 16
 #define MAX_INSTRUCTIONS 4096 // Maximum 12-bit address space (0x000 - 0xFFF)
 #define MAX_LABELS 256
-#define MAX_VARIABLES 256
+#define MAX_VARIABLES 1024
 #define MAX_DATA_WORDS 65536
 #define DATA_OFFSET 0x3520
 #define RAM_LIMIT 0xFEFF

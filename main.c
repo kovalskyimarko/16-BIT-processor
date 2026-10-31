@@ -24,7 +24,7 @@ uint8_t debug = 0;
 
 #include <SDL.h>
 
-const int SCALE = 3; // Make the Mac window 3x bigger
+const int SCALE = 4; // Make the Mac window 3x bigger
 
 SDL_Window*   window;
 SDL_Renderer* renderer;

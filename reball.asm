@@ -134,7 +134,506 @@ _variables:
     spr_down_run2_14 .int16 = #0x0FF0 ; ....████████.... (Boots planted)
     spr_down_run2_15 .int16 = #0x0FF0 ; ....████████.... (Boots planted)
 
-    font_start .int16 = #0x0000 ; <--- Keep this label as the anchor
+    ; LEFT GOAL METASPRITE (16x48)
+    ; White frame on the right side, net tapers left
+
+    ; --- LEFT TOP (Segment 1 of 3) ---
+    spr_goal_left_top_00_w1 .int16 = #0x0000
+    spr_goal_left_top_00_w2 .int16 = #0x3333
+    spr_goal_left_top_00_w3 .int16 = #0x2222
+    spr_goal_left_top_00_w4 .int16 = #0x2211
+    spr_goal_left_top_01_w1 .int16 = #0x0000
+    spr_goal_left_top_01_w2 .int16 = #0x0333
+    spr_goal_left_top_01_w3 .int16 = #0x2222
+    spr_goal_left_top_01_w4 .int16 = #0x2211
+    spr_goal_left_top_02_w1 .int16 = #0x0000
+    spr_goal_left_top_02_w2 .int16 = #0x0033
+    spr_goal_left_top_02_w3 .int16 = #0x0000
+    spr_goal_left_top_02_w4 .int16 = #0x0001
+    spr_goal_left_top_03_w1 .int16 = #0x0000
+    spr_goal_left_top_03_w2 .int16 = #0x0033
+    spr_goal_left_top_03_w3 .int16 = #0x0000
+    spr_goal_left_top_03_w4 .int16 = #0x0001
+    spr_goal_left_top_04_w1 .int16 = #0x0000
+    spr_goal_left_top_04_w2 .int16 = #0x0330
+    spr_goal_left_top_04_w3 .int16 = #0x0000
+    spr_goal_left_top_04_w4 .int16 = #0x0001
+    spr_goal_left_top_05_w1 .int16 = #0x0000
+    spr_goal_left_top_05_w2 .int16 = #0x0330
+    spr_goal_left_top_05_w3 .int16 = #0x0000
+    spr_goal_left_top_05_w4 .int16 = #0x0001
+    spr_goal_left_top_06_w1 .int16 = #0x0000
+    spr_goal_left_top_06_w2 .int16 = #0x0330
+    spr_goal_left_top_06_w3 .int16 = #0x0000
+    spr_goal_left_top_06_w4 .int16 = #0x0001
+    spr_goal_left_top_07_w1 .int16 = #0x0000
+    spr_goal_left_top_07_w2 .int16 = #0x0330
+    spr_goal_left_top_07_w3 .int16 = #0x0000
+    spr_goal_left_top_07_w4 .int16 = #0x0001
+    spr_goal_left_top_08_w1 .int16 = #0x0000
+    spr_goal_left_top_08_w2 .int16 = #0x0330
+    spr_goal_left_top_08_w3 .int16 = #0x0000
+    spr_goal_left_top_08_w4 .int16 = #0x0001
+    spr_goal_left_top_09_w1 .int16 = #0x0000
+    spr_goal_left_top_09_w2 .int16 = #0x0330
+    spr_goal_left_top_09_w3 .int16 = #0x0000
+    spr_goal_left_top_09_w4 .int16 = #0x0001
+    spr_goal_left_top_10_w1 .int16 = #0x0000
+    spr_goal_left_top_10_w2 .int16 = #0x0330
+    spr_goal_left_top_10_w3 .int16 = #0x0000
+    spr_goal_left_top_10_w4 .int16 = #0x0001
+    spr_goal_left_top_11_w1 .int16 = #0x0000
+    spr_goal_left_top_11_w2 .int16 = #0x0330
+    spr_goal_left_top_11_w3 .int16 = #0x0000
+    spr_goal_left_top_11_w4 .int16 = #0x0001
+    spr_goal_left_top_12_w1 .int16 = #0x0000
+    spr_goal_left_top_12_w2 .int16 = #0x0330
+    spr_goal_left_top_12_w3 .int16 = #0x0000
+    spr_goal_left_top_12_w4 .int16 = #0x0001
+    spr_goal_left_top_13_w1 .int16 = #0x0000
+    spr_goal_left_top_13_w2 .int16 = #0x0330
+    spr_goal_left_top_13_w3 .int16 = #0x0000
+    spr_goal_left_top_13_w4 .int16 = #0x0001
+    spr_goal_left_top_14_w1 .int16 = #0x0000
+    spr_goal_left_top_14_w2 .int16 = #0x0330
+    spr_goal_left_top_14_w3 .int16 = #0x0000
+    spr_goal_left_top_14_w4 .int16 = #0x0001
+    spr_goal_left_top_15_w1 .int16 = #0x0000
+    spr_goal_left_top_15_w2 .int16 = #0x0330
+    spr_goal_left_top_15_w3 .int16 = #0x0000
+    spr_goal_left_top_15_w4 .int16 = #0x0001
+
+    ; --- LEFT MIDDLE (Segment 2 of 3) ---
+    spr_goal_left_mid_00_w1 .int16 = #0x0000
+    spr_goal_left_mid_00_w2 .int16 = #0x0330
+    spr_goal_left_mid_00_w3 .int16 = #0x0000
+    spr_goal_left_mid_00_w4 .int16 = #0x0001
+    spr_goal_left_mid_01_w1 .int16 = #0x0000
+    spr_goal_left_mid_01_w2 .int16 = #0x0330
+    spr_goal_left_mid_01_w3 .int16 = #0x0000
+    spr_goal_left_mid_01_w4 .int16 = #0x0001
+    spr_goal_left_mid_02_w1 .int16 = #0x0000
+    spr_goal_left_mid_02_w2 .int16 = #0x0330
+    spr_goal_left_mid_02_w3 .int16 = #0x0000
+    spr_goal_left_mid_02_w4 .int16 = #0x0001
+    spr_goal_left_mid_03_w1 .int16 = #0x0000
+    spr_goal_left_mid_03_w2 .int16 = #0x0330
+    spr_goal_left_mid_03_w3 .int16 = #0x0000
+    spr_goal_left_mid_03_w4 .int16 = #0x0001
+    spr_goal_left_mid_04_w1 .int16 = #0x0000
+    spr_goal_left_mid_04_w2 .int16 = #0x0330
+    spr_goal_left_mid_04_w3 .int16 = #0x0000
+    spr_goal_left_mid_04_w4 .int16 = #0x0001
+    spr_goal_left_mid_05_w1 .int16 = #0x0000
+    spr_goal_left_mid_05_w2 .int16 = #0x0330
+    spr_goal_left_mid_05_w3 .int16 = #0x0000
+    spr_goal_left_mid_05_w4 .int16 = #0x0001
+    spr_goal_left_mid_06_w1 .int16 = #0x0000
+    spr_goal_left_mid_06_w2 .int16 = #0x0330
+    spr_goal_left_mid_06_w3 .int16 = #0x0000
+    spr_goal_left_mid_06_w4 .int16 = #0x0001
+    spr_goal_left_mid_07_w1 .int16 = #0x0000
+    spr_goal_left_mid_07_w2 .int16 = #0x0330
+    spr_goal_left_mid_07_w3 .int16 = #0x0000
+    spr_goal_left_mid_07_w4 .int16 = #0x0001
+    spr_goal_left_mid_08_w1 .int16 = #0x0000
+    spr_goal_left_mid_08_w2 .int16 = #0x0330
+    spr_goal_left_mid_08_w3 .int16 = #0x0000
+    spr_goal_left_mid_08_w4 .int16 = #0x0001
+    spr_goal_left_mid_09_w1 .int16 = #0x0000
+    spr_goal_left_mid_09_w2 .int16 = #0x0330
+    spr_goal_left_mid_09_w3 .int16 = #0x0000
+    spr_goal_left_mid_09_w4 .int16 = #0x0001
+    spr_goal_left_mid_10_w1 .int16 = #0x0000
+    spr_goal_left_mid_10_w2 .int16 = #0x0330
+    spr_goal_left_mid_10_w3 .int16 = #0x0000
+    spr_goal_left_mid_10_w4 .int16 = #0x0001
+    spr_goal_left_mid_11_w1 .int16 = #0x0000
+    spr_goal_left_mid_11_w2 .int16 = #0x0330
+    spr_goal_left_mid_11_w3 .int16 = #0x0000
+    spr_goal_left_mid_11_w4 .int16 = #0x0001
+    spr_goal_left_mid_12_w1 .int16 = #0x0000
+    spr_goal_left_mid_12_w2 .int16 = #0x0330
+    spr_goal_left_mid_12_w3 .int16 = #0x0000
+    spr_goal_left_mid_12_w4 .int16 = #0x0001
+    spr_goal_left_mid_13_w1 .int16 = #0x0000
+    spr_goal_left_mid_13_w2 .int16 = #0x0330
+    spr_goal_left_mid_13_w3 .int16 = #0x0000
+    spr_goal_left_mid_13_w4 .int16 = #0x0001
+    spr_goal_left_mid_14_w1 .int16 = #0x0000
+    spr_goal_left_mid_14_w2 .int16 = #0x0330
+    spr_goal_left_mid_14_w3 .int16 = #0x0000
+    spr_goal_left_mid_14_w4 .int16 = #0x0001
+    spr_goal_left_mid_15_w1 .int16 = #0x0000
+    spr_goal_left_mid_15_w2 .int16 = #0x0330
+    spr_goal_left_mid_15_w3 .int16 = #0x0000
+    spr_goal_left_mid_15_w4 .int16 = #0x0001
+
+    ; --- LEFT BOTTOM (Segment 3 of 3) ---
+    spr_goal_left_bot_00_w1 .int16 = #0x0000
+    spr_goal_left_bot_00_w2 .int16 = #0x0330
+    spr_goal_left_bot_00_w3 .int16 = #0x0000
+    spr_goal_left_bot_00_w4 .int16 = #0x0001
+    spr_goal_left_bot_01_w1 .int16 = #0x0000
+    spr_goal_left_bot_01_w2 .int16 = #0x0330
+    spr_goal_left_bot_01_w3 .int16 = #0x0000
+    spr_goal_left_bot_01_w4 .int16 = #0x0001
+    spr_goal_left_bot_02_w1 .int16 = #0x0000
+    spr_goal_left_bot_02_w2 .int16 = #0x0330
+    spr_goal_left_bot_02_w3 .int16 = #0x0000
+    spr_goal_left_bot_02_w4 .int16 = #0x0001
+    spr_goal_left_bot_03_w1 .int16 = #0x0000
+    spr_goal_left_bot_03_w2 .int16 = #0x0330
+    spr_goal_left_bot_03_w3 .int16 = #0x0000
+    spr_goal_left_bot_03_w4 .int16 = #0x0001
+    spr_goal_left_bot_04_w1 .int16 = #0x0000
+    spr_goal_left_bot_04_w2 .int16 = #0x0330
+    spr_goal_left_bot_04_w3 .int16 = #0x0000
+    spr_goal_left_bot_04_w4 .int16 = #0x0001
+    spr_goal_left_bot_05_w1 .int16 = #0x0000
+    spr_goal_left_bot_05_w2 .int16 = #0x0330
+    spr_goal_left_bot_05_w3 .int16 = #0x0000
+    spr_goal_left_bot_05_w4 .int16 = #0x0001
+    spr_goal_left_bot_06_w1 .int16 = #0x0000
+    spr_goal_left_bot_06_w2 .int16 = #0x0330
+    spr_goal_left_bot_06_w3 .int16 = #0x0000
+    spr_goal_left_bot_06_w4 .int16 = #0x0001
+    spr_goal_left_bot_07_w1 .int16 = #0x0000
+    spr_goal_left_bot_07_w2 .int16 = #0x0330
+    spr_goal_left_bot_07_w3 .int16 = #0x0000
+    spr_goal_left_bot_07_w4 .int16 = #0x0001
+    spr_goal_left_bot_08_w1 .int16 = #0x0000
+    spr_goal_left_bot_08_w2 .int16 = #0x0330
+    spr_goal_left_bot_08_w3 .int16 = #0x0000
+    spr_goal_left_bot_08_w4 .int16 = #0x0001
+    spr_goal_left_bot_09_w1 .int16 = #0x0000
+    spr_goal_left_bot_09_w2 .int16 = #0x0330
+    spr_goal_left_bot_09_w3 .int16 = #0x0000
+    spr_goal_left_bot_09_w4 .int16 = #0x0001
+    spr_goal_left_bot_10_w1 .int16 = #0x0000
+    spr_goal_left_bot_10_w2 .int16 = #0x0330
+    spr_goal_left_bot_10_w3 .int16 = #0x0000
+    spr_goal_left_bot_10_w4 .int16 = #0x0001
+    spr_goal_left_bot_11_w1 .int16 = #0x0000
+    spr_goal_left_bot_11_w2 .int16 = #0x0330
+    spr_goal_left_bot_11_w3 .int16 = #0x0000
+    spr_goal_left_bot_11_w4 .int16 = #0x0001
+    spr_goal_left_bot_12_w1 .int16 = #0x0000
+    spr_goal_left_bot_12_w2 .int16 = #0x0033
+    spr_goal_left_bot_12_w3 .int16 = #0x0000
+    spr_goal_left_bot_12_w4 .int16 = #0x0001
+    spr_goal_left_bot_13_w1 .int16 = #0x0000
+    spr_goal_left_bot_13_w2 .int16 = #0x0033
+    spr_goal_left_bot_13_w3 .int16 = #0x0000
+    spr_goal_left_bot_13_w4 .int16 = #0x0001
+    spr_goal_left_bot_14_w1 .int16 = #0x0000
+    spr_goal_left_bot_14_w2 .int16 = #0x0333
+    spr_goal_left_bot_14_w3 .int16 = #0x2222
+    spr_goal_left_bot_14_w4 .int16 = #0x2211
+    spr_goal_left_bot_15_w1 .int16 = #0x0000
+    spr_goal_left_bot_15_w2 .int16 = #0x3333
+    spr_goal_left_bot_15_w3 .int16 = #0x2222
+    spr_goal_left_bot_15_w4 .int16 = #0x2211
+
+    ; RIGHT GOAL METASPRITE (16x48)
+    ; White frame on the left side, net tapers right
+
+    ; --- RIGHT TOP (Segment 1 of 3) ---
+    spr_goal_right_top_00_w1 .int16 = #0x1122
+    spr_goal_right_top_00_w2 .int16 = #0x2222
+    spr_goal_right_top_00_w3 .int16 = #0x3333
+    spr_goal_right_top_00_w4 .int16 = #0x0000
+    spr_goal_right_top_01_w1 .int16 = #0x1122
+    spr_goal_right_top_01_w2 .int16 = #0x2222
+    spr_goal_right_top_01_w3 .int16 = #0x3330
+    spr_goal_right_top_01_w4 .int16 = #0x0000
+    spr_goal_right_top_02_w1 .int16 = #0x1000
+    spr_goal_right_top_02_w2 .int16 = #0x0000
+    spr_goal_right_top_02_w3 .int16 = #0x3300
+    spr_goal_right_top_02_w4 .int16 = #0x0000
+    spr_goal_right_top_03_w1 .int16 = #0x1000
+    spr_goal_right_top_03_w2 .int16 = #0x0000
+    spr_goal_right_top_03_w3 .int16 = #0x3300
+    spr_goal_right_top_03_w4 .int16 = #0x0000
+    spr_goal_right_top_04_w1 .int16 = #0x1000
+    spr_goal_right_top_04_w2 .int16 = #0x0000
+    spr_goal_right_top_04_w3 .int16 = #0x0330
+    spr_goal_right_top_04_w4 .int16 = #0x0000
+    spr_goal_right_top_05_w1 .int16 = #0x1000
+    spr_goal_right_top_05_w2 .int16 = #0x0000
+    spr_goal_right_top_05_w3 .int16 = #0x0330
+    spr_goal_right_top_05_w4 .int16 = #0x0000
+    spr_goal_right_top_06_w1 .int16 = #0x1000
+    spr_goal_right_top_06_w2 .int16 = #0x0000
+    spr_goal_right_top_06_w3 .int16 = #0x0330
+    spr_goal_right_top_06_w4 .int16 = #0x0000
+    spr_goal_right_top_07_w1 .int16 = #0x1000
+    spr_goal_right_top_07_w2 .int16 = #0x0000
+    spr_goal_right_top_07_w3 .int16 = #0x0330
+    spr_goal_right_top_07_w4 .int16 = #0x0000
+    spr_goal_right_top_08_w1 .int16 = #0x1000
+    spr_goal_right_top_08_w2 .int16 = #0x0000
+    spr_goal_right_top_08_w3 .int16 = #0x0330
+    spr_goal_right_top_08_w4 .int16 = #0x0000
+    spr_goal_right_top_09_w1 .int16 = #0x1000
+    spr_goal_right_top_09_w2 .int16 = #0x0000
+    spr_goal_right_top_09_w3 .int16 = #0x0330
+    spr_goal_right_top_09_w4 .int16 = #0x0000
+    spr_goal_right_top_10_w1 .int16 = #0x1000
+    spr_goal_right_top_10_w2 .int16 = #0x0000
+    spr_goal_right_top_10_w3 .int16 = #0x0330
+    spr_goal_right_top_10_w4 .int16 = #0x0000
+    spr_goal_right_top_11_w1 .int16 = #0x1000
+    spr_goal_right_top_11_w2 .int16 = #0x0000
+    spr_goal_right_top_11_w3 .int16 = #0x0330
+    spr_goal_right_top_11_w4 .int16 = #0x0000
+    spr_goal_right_top_12_w1 .int16 = #0x1000
+    spr_goal_right_top_12_w2 .int16 = #0x0000
+    spr_goal_right_top_12_w3 .int16 = #0x0330
+    spr_goal_right_top_12_w4 .int16 = #0x0000
+    spr_goal_right_top_13_w1 .int16 = #0x1000
+    spr_goal_right_top_13_w2 .int16 = #0x0000
+    spr_goal_right_top_13_w3 .int16 = #0x0330
+    spr_goal_right_top_13_w4 .int16 = #0x0000
+    spr_goal_right_top_14_w1 .int16 = #0x1000
+    spr_goal_right_top_14_w2 .int16 = #0x0000
+    spr_goal_right_top_14_w3 .int16 = #0x0330
+    spr_goal_right_top_14_w4 .int16 = #0x0000
+    spr_goal_right_top_15_w1 .int16 = #0x1000
+    spr_goal_right_top_15_w2 .int16 = #0x0000
+    spr_goal_right_top_15_w3 .int16 = #0x0330
+    spr_goal_right_top_15_w4 .int16 = #0x0000
+
+    ; --- RIGHT MIDDLE (Segment 2 of 3) ---
+    spr_goal_right_mid_00_w1 .int16 = #0x1000
+    spr_goal_right_mid_00_w2 .int16 = #0x0000
+    spr_goal_right_mid_00_w3 .int16 = #0x0330
+    spr_goal_right_mid_00_w4 .int16 = #0x0000
+    spr_goal_right_mid_01_w1 .int16 = #0x1000
+    spr_goal_right_mid_01_w2 .int16 = #0x0000
+    spr_goal_right_mid_01_w3 .int16 = #0x0330
+    spr_goal_right_mid_01_w4 .int16 = #0x0000
+    spr_goal_right_mid_02_w1 .int16 = #0x1000
+    spr_goal_right_mid_02_w2 .int16 = #0x0000
+    spr_goal_right_mid_02_w3 .int16 = #0x0330
+    spr_goal_right_mid_02_w4 .int16 = #0x0000
+    spr_goal_right_mid_03_w1 .int16 = #0x1000
+    spr_goal_right_mid_03_w2 .int16 = #0x0000
+    spr_goal_right_mid_03_w3 .int16 = #0x0330
+    spr_goal_right_mid_03_w4 .int16 = #0x0000
+    spr_goal_right_mid_04_w1 .int16 = #0x1000
+    spr_goal_right_mid_04_w2 .int16 = #0x0000
+    spr_goal_right_mid_04_w3 .int16 = #0x0330
+    spr_goal_right_mid_04_w4 .int16 = #0x0000
+    spr_goal_right_mid_05_w1 .int16 = #0x1000
+    spr_goal_right_mid_05_w2 .int16 = #0x0000
+    spr_goal_right_mid_05_w3 .int16 = #0x0330
+    spr_goal_right_mid_05_w4 .int16 = #0x0000
+    spr_goal_right_mid_06_w1 .int16 = #0x1000
+    spr_goal_right_mid_06_w2 .int16 = #0x0000
+    spr_goal_right_mid_06_w3 .int16 = #0x0330
+    spr_goal_right_mid_06_w4 .int16 = #0x0000
+    spr_goal_right_mid_07_w1 .int16 = #0x1000
+    spr_goal_right_mid_07_w2 .int16 = #0x0000
+    spr_goal_right_mid_07_w3 .int16 = #0x0330
+    spr_goal_right_mid_07_w4 .int16 = #0x0000
+    spr_goal_right_mid_08_w1 .int16 = #0x1000
+    spr_goal_right_mid_08_w2 .int16 = #0x0000
+    spr_goal_right_mid_08_w3 .int16 = #0x0330
+    spr_goal_right_mid_08_w4 .int16 = #0x0000
+    spr_goal_right_mid_09_w1 .int16 = #0x1000
+    spr_goal_right_mid_09_w2 .int16 = #0x0000
+    spr_goal_right_mid_09_w3 .int16 = #0x0330
+    spr_goal_right_mid_09_w4 .int16 = #0x0000
+    spr_goal_right_mid_10_w1 .int16 = #0x1000
+    spr_goal_right_mid_10_w2 .int16 = #0x0000
+    spr_goal_right_mid_10_w3 .int16 = #0x0330
+    spr_goal_right_mid_10_w4 .int16 = #0x0000
+    spr_goal_right_mid_11_w1 .int16 = #0x1000
+    spr_goal_right_mid_11_w2 .int16 = #0x0000
+    spr_goal_right_mid_11_w3 .int16 = #0x0330
+    spr_goal_right_mid_11_w4 .int16 = #0x0000
+    spr_goal_right_mid_12_w1 .int16 = #0x1000
+    spr_goal_right_mid_12_w2 .int16 = #0x0000
+    spr_goal_right_mid_12_w3 .int16 = #0x0330
+    spr_goal_right_mid_12_w4 .int16 = #0x0000
+    spr_goal_right_mid_13_w1 .int16 = #0x1000
+    spr_goal_right_mid_13_w2 .int16 = #0x0000
+    spr_goal_right_mid_13_w3 .int16 = #0x0330
+    spr_goal_right_mid_13_w4 .int16 = #0x0000
+    spr_goal_right_mid_14_w1 .int16 = #0x1000
+    spr_goal_right_mid_14_w2 .int16 = #0x0000
+    spr_goal_right_mid_14_w3 .int16 = #0x0330
+    spr_goal_right_mid_14_w4 .int16 = #0x0000
+    spr_goal_right_mid_15_w1 .int16 = #0x1000
+    spr_goal_right_mid_15_w2 .int16 = #0x0000
+    spr_goal_right_mid_15_w3 .int16 = #0x0330
+    spr_goal_right_mid_15_w4 .int16 = #0x0000
+
+    ; --- RIGHT BOTTOM (Segment 3 of 3) ---
+    spr_goal_right_bot_00_w1 .int16 = #0x1000
+    spr_goal_right_bot_00_w2 .int16 = #0x0000
+    spr_goal_right_bot_00_w3 .int16 = #0x0330
+    spr_goal_right_bot_00_w4 .int16 = #0x0000
+    spr_goal_right_bot_01_w1 .int16 = #0x1000
+    spr_goal_right_bot_01_w2 .int16 = #0x0000
+    spr_goal_right_bot_01_w3 .int16 = #0x0330
+    spr_goal_right_bot_01_w4 .int16 = #0x0000
+    spr_goal_right_bot_02_w1 .int16 = #0x1000
+    spr_goal_right_bot_02_w2 .int16 = #0x0000
+    spr_goal_right_bot_02_w3 .int16 = #0x0330
+    spr_goal_right_bot_02_w4 .int16 = #0x0000
+    spr_goal_right_bot_03_w1 .int16 = #0x1000
+    spr_goal_right_bot_03_w2 .int16 = #0x0000
+    spr_goal_right_bot_03_w3 .int16 = #0x0330
+    spr_goal_right_bot_03_w4 .int16 = #0x0000
+    spr_goal_right_bot_04_w1 .int16 = #0x1000
+    spr_goal_right_bot_04_w2 .int16 = #0x0000
+    spr_goal_right_bot_04_w3 .int16 = #0x0330
+    spr_goal_right_bot_04_w4 .int16 = #0x0000
+    spr_goal_right_bot_05_w1 .int16 = #0x1000
+    spr_goal_right_bot_05_w2 .int16 = #0x0000
+    spr_goal_right_bot_05_w3 .int16 = #0x0330
+    spr_goal_right_bot_05_w4 .int16 = #0x0000
+    spr_goal_right_bot_06_w1 .int16 = #0x1000
+    spr_goal_right_bot_06_w2 .int16 = #0x0000
+    spr_goal_right_bot_06_w3 .int16 = #0x0330
+    spr_goal_right_bot_06_w4 .int16 = #0x0000
+    spr_goal_right_bot_07_w1 .int16 = #0x1000
+    spr_goal_right_bot_07_w2 .int16 = #0x0000
+    spr_goal_right_bot_07_w3 .int16 = #0x0330
+    spr_goal_right_bot_07_w4 .int16 = #0x0000
+    spr_goal_right_bot_08_w1 .int16 = #0x1000
+    spr_goal_right_bot_08_w2 .int16 = #0x0000
+    spr_goal_right_bot_08_w3 .int16 = #0x0330
+    spr_goal_right_bot_08_w4 .int16 = #0x0000
+    spr_goal_right_bot_09_w1 .int16 = #0x1000
+    spr_goal_right_bot_09_w2 .int16 = #0x0000
+    spr_goal_right_bot_09_w3 .int16 = #0x0330
+    spr_goal_right_bot_09_w4 .int16 = #0x0000
+    spr_goal_right_bot_10_w1 .int16 = #0x1000
+    spr_goal_right_bot_10_w2 .int16 = #0x0000
+    spr_goal_right_bot_10_w3 .int16 = #0x0330
+    spr_goal_right_bot_10_w4 .int16 = #0x0000
+    spr_goal_right_bot_11_w1 .int16 = #0x1000
+    spr_goal_right_bot_11_w2 .int16 = #0x0000
+    spr_goal_right_bot_11_w3 .int16 = #0x0330
+    spr_goal_right_bot_11_w4 .int16 = #0x0000
+    spr_goal_right_bot_12_w1 .int16 = #0x1000
+    spr_goal_right_bot_12_w2 .int16 = #0x0000
+    spr_goal_right_bot_12_w3 .int16 = #0x3300
+    spr_goal_right_bot_12_w4 .int16 = #0x0000
+    spr_goal_right_bot_13_w1 .int16 = #0x1000
+    spr_goal_right_bot_13_w2 .int16 = #0x0000
+    spr_goal_right_bot_13_w3 .int16 = #0x3300
+    spr_goal_right_bot_13_w4 .int16 = #0x0000
+    spr_goal_right_bot_14_w1 .int16 = #0x1122
+    spr_goal_right_bot_14_w2 .int16 = #0x2222
+    spr_goal_right_bot_14_w3 .int16 = #0x3330
+    spr_goal_right_bot_14_w4 .int16 = #0x0000
+    spr_goal_right_bot_15_w1 .int16 = #0x1122
+    spr_goal_right_bot_15_w2 .int16 = #0x2222
+    spr_goal_right_bot_15_w3 .int16 = #0x3333
+    spr_goal_right_bot_15_w4 .int16 = #0x0000
+
+    ; --- BALL texture ---
+    ; Row 00: Empty padding
+    spr_ball_00_w1 .int16 = #0x0000
+    spr_ball_00_w2 .int16 = #0x0000
+    spr_ball_00_w3 .int16 = #0x0000
+    spr_ball_00_w4 .int16 = #0x0000
+
+    ; Row 01: Empty padding
+    spr_ball_01_w1 .int16 = #0x0000
+    spr_ball_01_w2 .int16 = #0x0000
+    spr_ball_01_w3 .int16 = #0x0000
+    spr_ball_01_w4 .int16 = #0x0000
+
+    ; Row 02: Empty padding
+    spr_ball_02_w1 .int16 = #0x0000
+    spr_ball_02_w2 .int16 = #0x0000
+    spr_ball_02_w3 .int16 = #0x0000
+    spr_ball_02_w4 .int16 = #0x0000
+
+    ; Row 03: Top of the ball curve (...222...)
+    spr_ball_03_w1 .int16 = #0x0000
+    spr_ball_03_w2 .int16 = #0x0002
+    spr_ball_03_w3 .int16 = #0x2200
+    spr_ball_03_w4 .int16 = #0x0000
+
+    ; Row 04: Upper curve & corner panels (.2211122.)
+    spr_ball_04_w1 .int16 = #0x0000
+    spr_ball_04_w2 .int16 = #0x0221
+    spr_ball_04_w3 .int16 = #0x1122
+    spr_ball_04_w4 .int16 = #0x0000
+
+    ; Row 05: Upper-mid corner panels (.2211122.)
+    spr_ball_05_w1 .int16 = #0x0000
+    spr_ball_05_w2 .int16 = #0x0221
+    spr_ball_05_w3 .int16 = #0x1122
+    spr_ball_05_w4 .int16 = #0x0000
+
+    ; Row 06: Center-top pentagon tip (211121112)
+    spr_ball_06_w1 .int16 = #0x0000
+    spr_ball_06_w2 .int16 = #0x2111
+    spr_ball_06_w3 .int16 = #0x2111
+    spr_ball_06_w4 .int16 = #0x2000
+
+    ; Row 07: Horizontal center pentagon (211222112)
+    spr_ball_07_w1 .int16 = #0x0000
+    spr_ball_07_w2 .int16 = #0x2112
+    spr_ball_07_w3 .int16 = #0x2211
+    spr_ball_07_w4 .int16 = #0x2000
+
+    ; Row 08: Center-bottom pentagon tip (211121112)
+    spr_ball_08_w1 .int16 = #0x0000
+    spr_ball_08_w2 .int16 = #0x2111
+    spr_ball_08_w3 .int16 = #0x2111
+    spr_ball_08_w4 .int16 = #0x2000
+
+    ; Row 09: Lower-mid corner panels (.2211122.)
+    spr_ball_09_w1 .int16 = #0x0000
+    spr_ball_09_w2 .int16 = #0x0221
+    spr_ball_09_w3 .int16 = #0x1122
+    spr_ball_09_w4 .int16 = #0x0000
+
+    ; Row 10: Lower curve & corner panels (.2211122.)
+    spr_ball_10_w1 .int16 = #0x0000
+    spr_ball_10_w2 .int16 = #0x0221
+    spr_ball_10_w3 .int16 = #0x1122
+    spr_ball_10_w4 .int16 = #0x0000
+
+    ; Row 11: Bottom curve (...222...)
+    spr_ball_11_w1 .int16 = #0x0000
+    spr_ball_11_w2 .int16 = #0x0002
+    spr_ball_11_w3 .int16 = #0x2200
+    spr_ball_11_w4 .int16 = #0x0000
+
+    ; Row 12: Empty padding
+    spr_ball_12_w1 .int16 = #0x0000
+    spr_ball_12_w2 .int16 = #0x0000
+    spr_ball_12_w3 .int16 = #0x0000
+    spr_ball_12_w4 .int16 = #0x0000
+
+    ; Row 13: Empty padding
+    spr_ball_13_w1 .int16 = #0x0000
+    spr_ball_13_w2 .int16 = #0x0000
+    spr_ball_13_w3 .int16 = #0x0000
+    spr_ball_13_w4 .int16 = #0x0000
+
+    ; Row 14: Empty padding
+    spr_ball_14_w1 .int16 = #0x0000
+    spr_ball_14_w2 .int16 = #0x0000
+    spr_ball_14_w3 .int16 = #0x0000
+    spr_ball_14_w4 .int16 = #0x0000
+
+    ; Row 15: Empty padding
+    spr_ball_15_w1 .int16 = #0x0000
+    spr_ball_15_w2 .int16 = #0x0000
+    spr_ball_15_w3 .int16 = #0x0000
+    spr_ball_15_w4 .int16 = #0x0000
+
+    font_start .int16 = #0x0000 ; anchor
 
     ; --- ASCII 32: Space ---
     font_032_0 .int16 = #0x0000 
@@ -421,6 +920,8 @@ _variables:
     color_dgreen .int16 = #0x0520  ; Deep mower stripe grass
     color_white  .int16 = #0xFFFF  ; Pitch lines, the ball, UI text
 
+    active_palette .int16 = #0x0000
+
     ; --- PLAYER & TEAM COLORS ---
     color_black   .int16 = #0x0000  ; Referee, boot details, text shadows
     color_skin    .int16 = #0xFEA0  ; Classic retro peach/skin tone
@@ -431,20 +932,33 @@ _variables:
     color_red     .int16 = #0xF800  ; Team 1 Jersey (Pure Red)
     color_blue   .int16 = #0x03FF  ;  Team 2 Jersey (Cyan)
 
+    ; --- GOAL PALETTE ---
+    goal_white  .int16 = #0xFFFF  ; Index 1: Goal Posts and Crossbar
+    goal_net    .int16 = #0xAD55  ; Index 2: Light Grey Netting
+    goal_shadow .int16 = #0x52AA  ; Index 3: Dark Grey Netting (Depth)
+
+    ; --- BALL PALETTE ---
+    ball_white  .int16 = #0xFFFF  ; Index 1: Goal Posts and Crossbar
+    ball_black  .int16 = #0x0000  ; Index 2: Light Grey Netting
+
     ; --- OTHER COLORS ---
     color_yellow .int16 = #0xFFE0  ; Standard arcade color for "PRESS BUTTON TO START"
 
     ; --- DIFFERENT STATE VARIABLES ---
-    state      .int16 = #1 ; State of draw 1 - main menu 2 - playing
-    ai_level   .int16 = #1 ; Level of ai 1 - easiest 2 - medium 3 - hardest
-    red_score  .int16 = #0 ; Team red score
-    blue_score .int16 = #0 ; Team blue score
+    state      .int16 = #1  ; State of draw 1 - main menu 2 - playing
+    ai_level   .int16 = #1  ; Level of ai 1 - easiest 2 - medium 3 - hardest
+    red_score  .int16 = #0  ; Team red score
+    blue_score .int16 = #0  ; Team blue score
+    selected_p   .int16 = #9 ; Current selected player
 
     field_width  .int16 = #640  ; 4x screen width
     field_height .int16 = #340  ; 4x screen height
 
     camera_x     .int16 = #240  ; Start in the middle of the pitch
     camera_y     .int16 = #127
+
+    ball_x       .int16 = #312
+    ball_y       .int16 = #164
 
     ; --- PLAYERS POSITION ---
 
@@ -550,22 +1064,106 @@ check_for_movement:
     JMP draw_loop
 
 move_w:
+    LOADI RB #1
+    LOADI R5 #2
+
+    LOADI R7 #0                ; 2 - counter
+    LOADI R8 #0                ; player index counter
+
+    LOADI R9 selected_p
+    LOADHI R9 selected_p
+    LOAD R9 R9
+
+    LOADI RA player_0_x
+    LOADHI RA player_0_x
+
+go_to_selected_player_w:
+    CMP R8 R9
+    JEQ move_w_end
+
+    ADD R7 R7 RB
+    CMP R7 R5
+    JNE go_to_selected_player_w
+    ADD R7 R0 R0
+    ADD R8 R8 RB
+    JMP go_to_selected_player_w
+
+move_w_end:
+    ADD RA RA R8
+    ADD RA RA R8               ; 2 words per player (x, y)
+    ADD RA RA RB               ; +1 offset for player_y
+    LOAD R7 RA
+
+    ; Clamp player Y to top of field (Y >= 2)
+    LOADI R5 #2
+    CMP R7 R5
+    LOADI R8 #0x04
+    AND R8 R8 RC
+    JNE check_for_movement
+
+    LOADI R8 #1
+    SUB R7 R7 R8
+    STORE RA R7
+
+    ; Move camera_y only if camera_y >= 5
     LOADI R4 camera_y
     LOADHI R4 camera_y
     LOAD R6 R4
 
     LOADI R5 #5
     CMP R6 R5
-    LOADI  R7 #0x04           ; Load FLAG_N mask (1 << 2).
+    LOADI R7 #0x04             ; Load FLAG_N mask (1 << 2).
     AND R7 R7 RC               ; Check if N-flag was set
-    JNE    check_for_movement  ; camera_y < 5; N-flag was set
+    JNE draw_loop              ; camera_y < 5: skip camera move, still redraw player
 
-    LOADI  R8, #2
     SUB R6 R6 R8
     STORE R4 R6
     JMP draw_loop
 
 move_s:
+    LOADI RB #1
+    LOADI R5 #2
+
+    LOADI R7 #0                ; 2 - counter
+    LOADI R8 #0                ; player index counter
+
+    LOADI R9 selected_p
+    LOADHI R9 selected_p
+    LOAD R9 R9
+
+    LOADI RA player_0_x
+    LOADHI RA player_0_x
+
+go_to_selected_player_s:
+    CMP R8 R9
+    JEQ move_s_end
+
+    ADD R7 R7 RB
+    CMP R7 R5
+    JNE go_to_selected_player_s
+    ADD R7 R0 R0
+    ADD R8 R8 RB
+    JMP go_to_selected_player_s
+
+move_s_end:
+    ADD RA RA R8
+    ADD RA RA R8               ; 2 words per player (x, y)
+    ADD RA RA RB               ; +1 offset for player_y
+    LOAD R7 RA
+
+    ; Clamp player Y to bottom of field (Y < 324, i.e. field_height 340 - sprite 16)
+    LOADI R5 #324
+    LOADHI R5 #324
+    CMP R7 R5
+    LOADI R8 #0x04
+    AND R8 R8 RC
+    JEQ check_for_movement
+
+    LOADI R8 #1
+    ADD R7 R7 R8
+    STORE RA R7
+
+    ; Move camera_y only if camera_y < 255
     LOADI R4 camera_y
     LOADHI R4 camera_y
     LOAD R6 R4
@@ -573,16 +1171,56 @@ move_s:
     LOADI R5 #255
     LOADHI R5 #255
     CMP R6 R5
-    LOADI  R7 #0x04           ; Load FLAG_N mask (1 << 2).
+    LOADI R7 #0x04             ; Load FLAG_N mask (1 << 2).
     AND R7 R7 RC               ; Check if N-flag was set
-    JEQ    check_for_movement  ; camera_y > 250; N-flag wasnt set
+    JEQ draw_loop              ; camera_y >= 255: skip camera move, still redraw player
 
-    LOADI  R8, #2
-    ADD    R6, R6, R8
+    ADD R6 R6 R8
     STORE R4 R6
     JMP draw_loop
 
 move_a:
+    LOADI RB #1
+    LOADI R5 #2
+
+    LOADI R7 #0                ; 2 - counter
+    LOADI R8 #0                ; player index counter
+
+    LOADI R9 selected_p
+    LOADHI R9 selected_p
+    LOAD R9 R9
+
+    LOADI RA player_0_x
+    LOADHI RA player_0_x
+
+go_to_selected_player_a:
+    CMP R8 R9
+    JEQ move_a_end
+
+    ADD R7 R7 RB
+    CMP R7 R5
+    JNE go_to_selected_player_a
+    ADD R7 R0 R0
+    ADD R8 R8 RB
+    JMP go_to_selected_player_a
+
+move_a_end:
+    ADD RA RA R8
+    ADD RA RA R8               ; 2 words per player (points to player_x)
+    LOAD R7 RA
+
+    ; Clamp player X to left of field (X >= 2)
+    LOADI R5 #2
+    CMP R7 R5
+    LOADI R8 #0x04
+    AND R8 R8 RC
+    JNE check_for_movement
+
+    LOADI R8 #1
+    SUB R7 R7 R8
+    STORE RA R7
+
+    ; Move camera_x only if camera_x >= 5
     LOADI R4 camera_x
     LOADHI R4 camera_x
     LOAD R6 R4
@@ -590,16 +1228,57 @@ move_a:
     LOADI R5 #5
     LOADHI R5 #5
     CMP R6 R5
-    LOADI  R7 #0x04           ; Load FLAG_N mask (1 << 2).
+    LOADI R7 #0x04             ; Load FLAG_N mask (1 << 2).
     AND R7 R7 RC               ; Check if N-flag was set
-    JNE    check_for_movement  ; camera_x < 5; N-flag was set
+    JNE draw_loop              ; camera_x < 5: skip camera move, still redraw player
 
-    LOADI  R8, #2
-    SUB    R6, R6, R8
+    SUB R6 R6 R8
     STORE R4 R6
     JMP draw_loop
 
 move_d:
+    LOADI RB #1
+    LOADI R5 #2
+
+    LOADI R7 #0                ; 2 - counter
+    LOADI R8 #0                ; player index counter
+
+    LOADI R9 selected_p
+    LOADHI R9 selected_p
+    LOAD R9 R9
+
+    LOADI RA player_0_x
+    LOADHI RA player_0_x
+
+go_to_selected_player_d:
+    CMP R8 R9
+    JEQ move_d_end
+
+    ADD R7 R7 RB
+    CMP R7 R5
+    JNE go_to_selected_player_d
+    ADD R7 R0 R0
+    ADD R8 R8 RB
+    JMP go_to_selected_player_d
+
+move_d_end:
+    ADD RA RA R8
+    ADD RA RA R8               ; 2 words per player (points to player_x)
+    LOAD R7 RA
+
+    ; Clamp player X to right of field (X < 624, i.e. field_width 640 - sprite 16)
+    LOADI R5 #624
+    LOADHI R5 #624
+    CMP R7 R5
+    LOADI R8 #0x04
+    AND R8 R8 RC
+    JEQ check_for_movement
+
+    LOADI R8 #1
+    ADD R7 R7 R8
+    STORE RA R7
+
+    ; Move camera_x only if camera_x < 480
     LOADI R4 camera_x
     LOADHI R4 camera_x
     LOAD R6 R4
@@ -607,13 +1286,12 @@ move_d:
     LOADI R5 #480
     LOADHI R5 #480
     CMP R6 R5
-    LOADI  R7 #0x04           ; Load FLAG_N mask (1 << 2).
+    LOADI R7 #0x04             ; Load FLAG_N mask (1 << 2).
     AND R7 R7 RC               ; Check if N-flag was set
-    JEQ    check_for_movement  ; camera_x > 475; N-flag wasnt set
+    JEQ draw_loop              ; camera_x >= 480: skip camera move, still redraw player
 
-    LOADI  R8, #2
     ADD R6 R6 R8
-    STORE R4 R6    
+    STORE R4 R6
     JMP draw_loop
 
 draw_pitch:
@@ -710,12 +1388,12 @@ draw_penalty_box:
 
     LOADI R1, #80             ; R1 = World Y
     LOADI R2, #20              ; R2 = World X Start
-    LOADI R3, #70             ; R3 = World X End
+    LOADI R3, #90             ; R3 = World X End
     LOADI R4, draw_hline
     LOADHI R4, draw_hline
     CALL R4
 
-    LOADI R1, #70             ; R1 = World X
+    LOADI R1, #90             ; R1 = World X
     LOADI R2, #80             ; R2 = World Y Start
     LOADI R3, #260            ; R3 = World Y End
     LOADHI R3, #260
@@ -726,22 +1404,22 @@ draw_penalty_box:
     LOADI R1, #260            ; R1 = World Y
     LOADHI R1, #260
     LOADI R2, #20              ; R2 = World X Start
-    LOADI R3, #70             ; R3 = World X End
+    LOADI R3, #90             ; R3 = World X End
     LOADI R4, draw_hline
     LOADHI R4, draw_hline
     CALL R4
 
     LOADI R1, #80             ; R1 = World Y
-    LOADI R2, #580            ; R2 = World X Start
-    LOADHI R2, #580
+    LOADI R2, #560            ; R2 = World X Start
+    LOADHI R2, #560
     LOADI R3, #630            ; R3 = World X End
     LOADHI R3, #630
     LOADI R4, draw_hline
     LOADHI R4, draw_hline
     CALL R4
 
-    LOADI R1, #580            ; R1 = World X
-    LOADHI R1, #580
+    LOADI R1, #560            ; R1 = World X
+    LOADHI R1, #560
     LOADI R2, #80             ; R2 = World Y Start
     LOADI R3, #260            ; R3 = World Y End
     LOADHI R3, #260
@@ -751,14 +1429,65 @@ draw_penalty_box:
 
     LOADI R1, #260            ; R1 = World Y
     LOADHI R1, #260
-    LOADI R2, #580            ; R2 = World X Start
-    LOADHI R2, #580
+    LOADI R2, #560            ; R2 = World X Start
+    LOADHI R2, #560
     LOADI R3, #630            ; R3 = World X End
     LOADHI R3, #630
     LOADI R4, draw_hline
     LOADHI R4, draw_hline
     CALL R4
 
+draw_inner_penalty_box:
+    LOADI R1, #130             ; R1 = World Y
+    LOADI R2, #20              ; R2 = World X Start
+    LOADI R3, #50             ; R3 = World X End
+    LOADI R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL R4
+
+    LOADI R1, #50             ; R1 = World X
+    LOADI R2, #130             ; R2 = World Y Start
+    LOADI R3, #200            ; R3 = World Y End
+    LOADHI R3, #200
+    LOADI R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL R4
+
+    LOADI R1, #200            ; R1 = World Y
+    LOADHI R1, #200
+    LOADI R2, #20              ; R2 = World X Start
+    LOADI R3, #50             ; R3 = World X End
+    LOADI R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL R4
+
+    LOADI R1, #130             ; R1 = World Y
+    LOADI R2, #600            ; R2 = World X Start
+    LOADHI R2, #600
+    LOADI R3, #630            ; R3 = World X End
+    LOADHI R3, #630
+    LOADI R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL R4
+
+    LOADI R1, #600            ; R1 = World X
+    LOADHI R1, #600
+    LOADI R2, #130             ; R2 = World Y Start
+    LOADI R3, #200            ; R3 = World Y End
+    LOADHI R3, #200
+    LOADI R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL R4
+
+    LOADI R1, #200            ; R1 = World Y
+    LOADHI R1, #200
+    LOADI R2, #600            ; R2 = World X Start
+    LOADHI R2, #600
+    LOADI R3, #630            ; R3 = World X End
+    LOADHI R3, #630
+    LOADI R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL R4
 
 draw_out_lines:
     LOADI R1, #10             ; R1 = World Y
@@ -1404,12 +2133,11 @@ abort_vline:
     RET
 
 draw_players:
+    PUSH   R13                
     LOADI  R2, player_0_x
-    LOADHI R2, player_0_x     ; R2 = Pointer to player coordinates table
-
-    LOADI  R3, #1             ; Constant 1
-    LOADI  RB, #22            ; RB = Total players counter (22)
-
+    LOADHI R2, player_0_x     
+    LOADI  R3, #1             
+    LOADI  RB, #22            
 
 draw_players_loop:
     LOAD   R4, R2             ; R4 = World_X
@@ -1417,167 +2145,282 @@ draw_players_loop:
     LOAD   R5, R2             ; R5 = World_Y
     ADD    R2, R2, R3
 
+    ; --- 1. Swap Jersey Color ---
+    LOADI  RA, #12
+    CMP    RB, RA             
+    LOADI  RA, #0x04
+    AND    RA, RA, RC         
+    JNE    set_away_team      
+
+set_home_team:
+    LOADI  RA, color_red       
+    LOADHI RA, color_red
+    LOAD   RA, RA             
+    JMP    update_palette
+set_away_team:
+    LOADI  RA, color_blue      
+    LOADHI RA, color_blue
+    LOAD   RA, RA             
+update_palette:
+    LOADI  R9, color_jersey   
+    LOADHI R9, color_jersey
+    STORE  R9, RA             
+
+    LOADI  R9, active_palette
+    LOADHI R9, active_palette
+    LOADI  RA, color_black
+    LOADHI RA, color_black
+    STORE  R9, RA             
+
+    PUSH   R2                 ; Save coordinate pointer
+    PUSH   RB                 ; Save player counter
+
+    LOADI  R1, spr_idle_00_w1
+    LOADHI R1, spr_idle_00_w1
+    LOADI  R7, draw_sprite
+    LOADHI R7, draw_sprite
+    CALL   R7 
+
+    POP    RB                 ; Restore player counter
+    POP    R2                 ; Restore coordinate pointer
+
+    SUB    RB, RB, R3         ; Next player
+    JNE    draw_players_loop
+
+    POP    R13                ; RESTORE LR
+    JMP draw_goals
+
+draw_goals:
+    PUSH   R13                ; Save LR
+
+    ; Set active palette to goal colors
+    LOADI  R9, active_palette
+    LOADHI R9, active_palette
+    LOADI  RA, goal_white
+    LOADHI RA, goal_white
+    STORE  R9, RA
+
+    ; DRAW LEFT GOAL (3 segments stacked)
+    
+    ; Segment 1: TOP
+    LOADI  R4, #0             ;  X = 0
+    LOADI  R5, #139           ; Y = 139
+    LOADHI R5, #139
+    LOADI  R1, spr_goal_left_top_00_w1
+    LOADHI R1, spr_goal_left_top_00_w1
+    LOADI  R7, draw_sprite
+    LOADHI R7, draw_sprite
+    CALL   R7
+
+    ; Segment 2: MIDDLE
+    LOADI  R4, #0             ;  X = 0
+    LOADI  R5, #155           ; Y = 155
+    LOADHI R5, #155
+    LOADI  R1, spr_goal_left_mid_00_w1
+    LOADHI R1, spr_goal_left_mid_00_w1
+    LOADI  R7, draw_sprite
+    LOADHI R7, draw_sprite
+    CALL   R7
+
+    ; Segment 3: BOTTOM
+    LOADI  R4, #0             ;  X = 0
+    LOADI  R5, #171           ; Y = 171
+    LOADHI R5, #171
+    LOADI  R1, spr_goal_left_bot_00_w1
+    LOADHI R1, spr_goal_left_bot_00_w1
+    LOADI  R7, draw_sprite
+    LOADHI R7, draw_sprite
+    CALL   R7
+
+
+    ; DRAW RIGHT GOAL (3 segments stacked)
+
+    ; Segment 1: TOP
+    LOADI  R4, #624           ;  X = 624
+    LOADHI R4, #624
+    LOADI  R5, #139           ; Y = 139
+    LOADHI R5, #139
+    LOADI  R1, spr_goal_right_top_00_w1
+    LOADHI R1, spr_goal_right_top_00_w1
+    LOADI  R7, draw_sprite
+    LOADHI R7, draw_sprite
+    CALL   R7
+
+    ; Segment 2: MIDDLE
+    LOADI  R4, #624           ;  X = 624
+    LOADHI R4, #624
+    LOADI  R5, #155           ; Y = 155
+    LOADHI R5, #155
+    LOADI  R1, spr_goal_right_mid_00_w1
+    LOADHI R1, spr_goal_right_mid_00_w1
+    LOADI  R7, draw_sprite
+    LOADHI R7, draw_sprite
+    CALL   R7
+
+    ; Segment 3: BOTTOM
+    LOADI  R4, #624           ;  X = 624
+    LOADHI R4, #624
+    LOADI  R5, #171           ; Y = 171
+    LOADHI R5, #171
+    LOADI  R1, spr_goal_right_bot_00_w1
+    LOADHI R1, spr_goal_right_bot_00_w1
+    LOADI  R7, draw_sprite
+    LOADHI R7, draw_sprite
+    CALL   R7
+    JMP draw_ball
+
+draw_ball:
+    LOADI  R9, active_palette
+    LOADHI R9, active_palette
+    LOADI  RA, ball_white
+    LOADHI RA, ball_white
+    STORE  R9, RA
+
+    LOADI  R4, ball_x
+    LOADHI  R4, ball_x
+    LOAD R4 R4
+    LOADI  R5, ball_y
+    LOADHI R5, ball_y
+    LOAD R5 R5
+    LOADI  R1, spr_ball_00_w1
+    LOADHI R1, spr_ball_00_w1
+    LOADI  R7, draw_sprite
+    LOADHI R7, draw_sprite
+    CALL   R7
+    POP    R13
+    RET
+
+draw_sprite:
+    LOADI  R3, #1             ; Guarantee R3 is always 1 for math
+    
+    ; --- 1. Camera Clipping ---
     LOADI  R7, camera_y
     LOADHI R7, camera_y
-    LOAD   R7, R7             ; R7 = camera_y
+    LOAD   R7, R7             
 
     LOADI  R8, camera_x
     LOADHI R8, camera_x
-    LOAD   R8, R8             ; R8 = camera_x
+    LOAD   R8, R8             
 
     LOADI  RA, #16
-    SUB    R7, R7, RA         ; camera_y - 16
+    SUB    R7, R7, RA         
     CMP    R5, R7
-    LOADI  R9, #0x04          ; Load FLAG_N mask (1 << 2)
+    LOADI  R9, #0x04          
     AND    R9, R9, RC
-    JNE    draw_players_loop_inc ; World_Y < camera_y - 16; N-flag was set
+    JNE    abort_draw_sprite  ; Abort this sprite if off screen
     
-    ADD    R7, R7, RA         ; Restore camera_y
+    ADD    R7, R7, RA         
 
     LOADI  RA, #16
-    SUB    R8, R8, RA         ; camera_x - 16
+    SUB    R8, R8, RA         
     CMP    R4, R8
     LOADI  R9, #0x04
     AND    R9, R9, RC
-    JNE    draw_players_loop_inc ; World_X < camera_x - 16
+    JNE    abort_draw_sprite  
 
-    ADD    R8, R8, RA         ; Restore camera_x
-
-    SUB    R4, R4, R8         ; R4 = Screen_X (World_X - camera_x)
-    SUB    R5, R5, R7         ; R5 = Screen_Y (World_Y - camera_y)
+    ADD    R8, R8, RA         
+    SUB    R4, R4, R8         ; Screen X
+    SUB    R5, R5, R7         ; Screen Y
 
     LOADI  R9, #160
     CMP    R4, R9
     LOADI  R9, #0x04
     AND    R9, R9, RC
-    JEQ    draw_players_loop_inc ; Screen_X >= 160; N-flag wasn't set
+    JEQ    abort_draw_sprite  
 
     LOADI  R9, #85
     CMP    R5, R9
     LOADI  R9, #0x04
     AND    R9, R9, RC
-    JEQ    draw_players_loop_inc ; Screen_Y >= 85; N-flag wasn't set
+    JEQ    abort_draw_sprite  
 
-    LOADI  R1, spr_idle_00_w1
-    LOADHI R1, spr_idle_00_w1    ; R1 = Pointer to sprite row 0
-    LOADI  R7, #16            ; R7 = 16 rows to draw
+    LOADI  R7, #16            ; 16 rows to draw
 
     LOADI  RA, #0
-    LOADHI RA, #0x8000          ; RA = 0x8000 (Sign bit mask)
+    LOADHI RA, #0x8000        
     AND    RA, R5, RA
-    JEQ    player_y_is_pos    ; If Z=1, Screen_Y >= 0
+    JEQ    sprite_y_is_pos    
 
-    ADD    R7, R7, R5         ; Remaining rows = 16 + Screen_Y
+    ADD    R7, R7, R5         
+    JEQ    abort_draw_sprite
     LOADI  RA, #2
-    LSL    R5, R5, RA         ; R5 = Screen_Y * 4
-    SUB    R1, R1, R5         ; R1 += (-Screen_Y * 4)
-    LOADI  R5, #0             ; Clamp Screen_Y to 0
+    LSL    R5, R5, RA         
+    SUB    R1, R1, R5         
+    LOADI  R5, #0             
 
-player_y_is_pos:
-    LOADI  RA, #12
-    CMP    RB, RA             ; RB - 12
-    LOADI  RA, #0x04
-    AND    RA, RA, RC         ; Check N-Flag
-    JNE    set_away_team      ; If N-Flag=1 (RB < 12), it's the away team
+sprite_y_is_pos:    
+    ADD    R6, R0, R0         ; VRAM = 0
+    ADD    R9, R0, R0         ; Y-counter = 0
+    LOADI  R8, #160           
 
-set_home_team:
-    LOADI  RA, color_red      ; Get address of original Red
-    LOADHI RA, color_red
-    LOAD   RA, RA             ; RA = 0xF800
-    JMP    update_palette
+sprite_skip_y:
+    CMP    R9, R5             
+    JEQ    sprite_skip_x
+    ADD    R6, R6, R8         
+    ADD    R9, R9, R3         
+    JMP    sprite_skip_y
 
-set_away_team:
-    LOADI  RA, color_blue     ; Get address of Blue
-    LOADHI RA, color_blue
-    LOAD   RA, RA             ; RA = 0x03FF
-
-update_palette:
-    LOADI  R9, color_jersey       ; Target the red slot in the palette array
-    LOADHI R9, color_jersey
-    STORE  R9, RA             ; Overwrite the slot
-
-    ADD    R6, R0, R0         ; R6 = VRAM pointer (0)
-    ADD    R9, R0, R0         ; R9 = Y-counter (0)
-    LOADI  R8, #160           ; Screen width
-
-player_skip_y:
-    CMP    R9, R5             ; Reached Screen_Y?
-    JEQ    player_skip_x
-    ADD    R6, R6, R8         ; VRAM += 160
-    ADD    R9, R9, R3         ; Y-counter++
-    JMP    player_skip_y
-
-player_skip_x:
-    ADD    R6, R6, R4         ; VRAM = (Screen_Y * 160) + Screen_X
-
-    PUSH   R2
-    PUSH   RB
+sprite_skip_x:
+    ADD    R6, R6, R4         
 
 draw_sprite_row:
     LOADI  RA, #85
     CMP    R5, RA
     LOADI  RA, #0x04
     AND    RA, RA, RC
-    JEQ    done_player_sprite ; If Screen_Y >= 85
+    JEQ    abort_draw_sprite  
 
-    LOADI  R9, #4             ; R9 = 4 words per row
-    PUSH   R4                 ; Save starting Screen_X for this row
+    LOADI  R9, #4             
+    PUSH   R4                 ; Save starting Screen_X
 
 draw_sprite_word:
-    LOAD   R8, R1             ; R8 = Current 16-bit word (holds 4 pixels)
-    ADD    R1, R1, R3         ; Advance sprite pointer to next word (+1)
-    LOADI  RB, #4             ; RB = 4 pixels in this word
+    LOAD   R8, R1             
+    ADD    R1, R1, R3         
+    LOADI  RB, #4             
 
 draw_sprite_col:
     LOADI  RA, #12
-    LSR    RA, R8, RA         ; RA = Top 4 bits
-    JEQ    skip_sprite_pixel  ; LSR sets Z=1 if index is 0
+    LSR    RA, R8, RA         
+    JEQ    skip_sprite_pixel  
 
-    LOADI  R2, color_black
-    LOADHI R2, color_black
-    SUB    R2, R2, R3
-    ADD    R2, R2, RA
-    LOAD R2 R2
+    ; --- DYNAMIC PALETTE LOOKUP ---
+    LOADI  R2, active_palette
+    LOADHI R2, active_palette
+    LOAD   R2, R2             ; Load the address of the current base color
+    SUB    R2, R2, R3         ; Subtract 1
+    ADD    R2, R2, RA         ; Add color index
+    LOAD   R2, R2             ; R2 = Final 16-bit color
 
     LOADI  RA, #0
     LOADHI RA, #0x8000
-    AND    RA, R4, RA         ; Check MSB of current X
-    JNE    skip_sprite_pixel  ; If negative, pixel is off left edge
+    AND    RA, R4, RA         
+    JNE    skip_sprite_pixel  
 
     LOADI  RA, #160
     CMP    R4, RA
     LOADI  RA, #0x04
     AND    RA, RA, RC
-    JEQ    skip_sprite_pixel  ; If X >= 160, pixel is off right edge
+    JEQ    skip_sprite_pixel  
 
     STORE  R6, R2
 
 skip_sprite_pixel:
     LOADI  RA, #4
-    LSL    R8, R8, RA       ; Now leftmost bit holds next bit
-    ADD    R6, R6, R3       ; VRAM pointer++
-    ADD    R4, R4, R3       ; Current X++
-    SUB    RB, RB, R3       ; pixel in word counter--
+    LSL    R8, R8, RA         
+    ADD    R6, R6, R3         
+    ADD    R4, R4, R3         
+    SUB    RB, RB, R3         
     JNE    draw_sprite_col
 
-    SUB    R9, R9, R3         ; Word-in-row counter--
+    SUB    R9, R9, R3         
     JNE    draw_sprite_word
 
     POP    R4
-
-    LOADI  RA, #144   ;move VRAM pointer down 1 row and back 16 pixels
+    LOADI  RA, #144   
     ADD    R6, R6, RA
-
-    ADD    R5, R5, R3     ; Screen_Y++
-    SUB    R7, R7, R3     ; Row counter--;
+    ADD    R5, R5, R3         
+    SUB    R7, R7, R3         
     JNE    draw_sprite_row
 
-done_player_sprite:
-    POP    RB
-    POP    R2
-
-draw_players_loop_inc:
-    SUB    RB, RB, R3         ; players_remaining--
-    JNE    draw_players_loop
-
+abort_draw_sprite:
     RET
