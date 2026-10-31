@@ -1,21 +1,102 @@
 _variables:
     ; --- IDLE ---
-    spr_idle_00 .int16 = #0x03C0 ; ......████...... (Top of head / Hair)
-    spr_idle_01 .int16 = #0x07E0 ; .....██████..... (Head)
-    spr_idle_02 .int16 = #0x0FF0 ; ....████████.... (Face)
-    spr_idle_03 .int16 = #0x0FF0 ; ....████████.... (Face / Beard)
-    spr_idle_04 .int16 = #0x07E0 ; .....██████..... (Neck / Chin)
-    spr_idle_05 .int16 = #0x1FF8 ; ...██████████... (Shoulders)
-    spr_idle_06 .int16 = #0x3FFC ; ..████████████.. (Chest / Arms)
-    spr_idle_07 .int16 = #0x73CE ; .███..████..███. (Arms detached from torso)
-    spr_idle_08 .int16 = #0x63C6 ; .██...████...██. (Hands)
-    spr_idle_09 .int16 = #0x07E0 ; .....██████..... (Waist)
-    spr_idle_10 .int16 = #0x0FF0 ; ....████████.... (Shorts)
-    spr_idle_11 .int16 = #0x0E70 ; ....███..███.... (Shorts split)
-    spr_idle_12 .int16 = #0x0660 ; .....██..██..... (Knees / Legs)
-    spr_idle_13 .int16 = #0x0660 ; .....██..██..... (Socks)
-    spr_idle_14 .int16 = #0x1E78 ; ...████..████... (Boots)
-    spr_idle_15 .int16 = #0x1E78 ; ...████..████... (Boots bottom)
+    ; Row 00: ......████...... (Hair)
+    spr_idle_00_w1 .int16 = #0x0000
+    spr_idle_00_w2 .int16 = #0x0055
+    spr_idle_00_w3 .int16 = #0x5500
+    spr_idle_00_w4 .int16 = #0x0000
+
+    ; Row 01: .....██████..... (Head/Hair)
+    spr_idle_01_w1 .int16 = #0x0000
+    spr_idle_01_w2 .int16 = #0x0555
+    spr_idle_01_w3 .int16 = #0x5550
+    spr_idle_01_w4 .int16 = #0x0000
+
+    ; Row 02: ....████████.... (Face)
+    spr_idle_02_w1 .int16 = #0x0000
+    spr_idle_02_w2 .int16 = #0x2222
+    spr_idle_02_w3 .int16 = #0x2222
+    spr_idle_02_w4 .int16 = #0x0000
+
+    ; Row 03: ....████████.... (Face / Beard)
+    spr_idle_03_w1 .int16 = #0x0000
+    spr_idle_03_w2 .int16 = #0x2222
+    spr_idle_03_w3 .int16 = #0x2222
+    spr_idle_03_w4 .int16 = #0x0000
+
+    ; Row 04: .....██████..... (Neck / Chin)
+    spr_idle_04_w1 .int16 = #0x0000
+    spr_idle_04_w2 .int16 = #0x0222
+    spr_idle_04_w3 .int16 = #0x2220
+    spr_idle_04_w4 .int16 = #0x0000
+
+    ; Row 05: ...██████████... (Shoulders / Jersey)
+    spr_idle_05_w1 .int16 = #0x0003
+    spr_idle_05_w2 .int16 = #0x3333
+    spr_idle_05_w3 .int16 = #0x3333
+    spr_idle_05_w4 .int16 = #0x3000
+
+    ; Row 06: ..████████████.. (Short Sleeves & Chest)
+    ; Outer edges use Skin (2), inner uses Jersey (3)
+    spr_idle_06_w1 .int16 = #0x0022
+    spr_idle_06_w2 .int16 = #0x3333
+    spr_idle_06_w3 .int16 = #0x3333
+    spr_idle_06_w4 .int16 = #0x2200
+
+    ; Row 07: .███..████..███. (Arms detached from torso)
+    spr_idle_07_w1 .int16 = #0x0222
+    spr_idle_07_w2 .int16 = #0x0033
+    spr_idle_07_w3 .int16 = #0x3300
+    spr_idle_07_w4 .int16 = #0x2220
+
+    ; Row 08: .██...████...██. (Hands & Waist)
+    spr_idle_08_w1 .int16 = #0x0220
+    spr_idle_08_w2 .int16 = #0x0033
+    spr_idle_08_w3 .int16 = #0x3300
+    spr_idle_08_w4 .int16 = #0x0220
+
+    ; Row 09: .....██████..... (Waist / Jersey)
+    spr_idle_09_w1 .int16 = #0x0000
+    spr_idle_09_w2 .int16 = #0x0333
+    spr_idle_09_w3 .int16 = #0x3330
+    spr_idle_09_w4 .int16 = #0x0000
+
+    ; Row 10: ....████████.... (Shorts)
+    spr_idle_10_w1 .int16 = #0x0000
+    spr_idle_10_w2 .int16 = #0x4444
+    spr_idle_10_w3 .int16 = #0x4444
+    spr_idle_10_w4 .int16 = #0x0000
+
+    ; Row 11: ....███..███.... (Shorts split)
+    spr_idle_11_w1 .int16 = #0x0000
+    spr_idle_11_w2 .int16 = #0x4440
+    spr_idle_11_w3 .int16 = #0x0444
+    spr_idle_11_w4 .int16 = #0x0000
+
+    ; Row 12: .....██..██..... (Knees / Legs)
+    spr_idle_12_w1 .int16 = #0x0000
+    spr_idle_12_w2 .int16 = #0x0220
+    spr_idle_12_w3 .int16 = #0x0220
+    spr_idle_12_w4 .int16 = #0x0000
+
+    ; Row 13: .....██..██..... (Socks)
+    spr_idle_13_w1 .int16 = #0x0000
+    spr_idle_13_w2 .int16 = #0x0440
+    spr_idle_13_w3 .int16 = #0x0440
+    spr_idle_13_w4 .int16 = #0x0000
+
+    ; Row 14: ...████..████... (Boots)
+    spr_idle_14_w1 .int16 = #0x0005
+    spr_idle_14_w2 .int16 = #0x5550
+    spr_idle_14_w3 .int16 = #0x0555
+    spr_idle_14_w4 .int16 = #0x5000
+
+    ; Row 15: ...████..████... (Boots bottom/studs)
+    ; Uses Black (1) for contrast at the bottom of the sprite
+    spr_idle_15_w1 .int16 = #0x0001
+    spr_idle_15_w2 .int16 = #0x1110
+    spr_idle_15_w3 .int16 = #0x0111
+    spr_idle_15_w4 .int16 = #0x1000
 
     ; --- RUN FRAME 1: THE STRIDE (Legs and arms wide) ---
     spr_down_run1_00 .int16 = #0x03C0 ; ......████...... (Top of head)
@@ -341,14 +422,17 @@ _variables:
     color_white  .int16 = #0xFFFF  ; Pitch lines, the ball, UI text
 
     ; --- PLAYER & TEAM COLORS ---
-    color_black  .int16 = #0x0000  ; Referee, boot details, text shadows
-    color_skin   .int16 = #0xFEA0  ; Classic retro peach/skin tone
-    color_red    .int16 = #0xF800  ; Team 1 Jersey (Pure Red)
-    color_blue   .int16 = #0x03FF  ; Team 2 Jersey (Bright Azure/Cyan)
+    color_black   .int16 = #0x0000  ; Referee, boot details, text shadows
+    color_skin    .int16 = #0xFEA0  ; Classic retro peach/skin tone
+    color_jersey   .int16 = #0xF800 ; Jersey color red/blue
+    color_white_t .int16 = #0xFFFF  ; White color for shorts
+    color_brown   .int16 = #0x8200  ; For player hair and leather boots
+
+    color_red     .int16 = #0xF800  ; Team 1 Jersey (Pure Red)
+    color_blue   .int16 = #0x03FF  ;  Team 2 Jersey (Cyan)
 
     ; --- OTHER COLORS ---
     color_yellow .int16 = #0xFFE0  ; Standard arcade color for "PRESS BUTTON TO START"
-    color_brown  .int16 = #0x8200  ; For player hair and leather boots
 
     ; --- DIFFERENT STATE VARIABLES ---
     state      .int16 = #1 ; State of draw 1 - main menu 2 - playing
@@ -386,7 +470,7 @@ _variables:
 
     player_8_x   .int16 = #295      ; P8  - Left Winger (295, 72)
     player_8_y   .int16 = #72
-    player_9_x   .int16 = #295      ; P9  - Center Forward (295, 168)
+    player_9_x   .int16 = #279      ; P9  - Center Forward (295, 168)
     player_9_y   .int16 = #168
     player_10_x  .int16 = #295      ; P10 - Right Winger (295, 264)
     player_10_y  .int16 = #264
@@ -625,13 +709,13 @@ draw_penalty_box:
     PUSH R13
 
     LOADI R1, #80             ; R1 = World Y
-    LOADI R2, #0              ; R2 = World X Start
-    LOADI R3, #40             ; R3 = World X End
+    LOADI R2, #20              ; R2 = World X Start
+    LOADI R3, #70             ; R3 = World X End
     LOADI R4, draw_hline
     LOADHI R4, draw_hline
     CALL R4
 
-    LOADI R1, #40             ; R1 = World X
+    LOADI R1, #70             ; R1 = World X
     LOADI R2, #80             ; R2 = World Y Start
     LOADI R3, #260            ; R3 = World Y End
     LOADHI R3, #260
@@ -641,23 +725,23 @@ draw_penalty_box:
 
     LOADI R1, #260            ; R1 = World Y
     LOADHI R1, #260
-    LOADI R2, #0              ; R2 = World X Start
-    LOADI R3, #40             ; R3 = World X End
+    LOADI R2, #20              ; R2 = World X Start
+    LOADI R3, #70             ; R3 = World X End
     LOADI R4, draw_hline
     LOADHI R4, draw_hline
     CALL R4
 
     LOADI R1, #80             ; R1 = World Y
-    LOADI R2, #600            ; R2 = World X Start
-    LOADHI R2, #600
-    LOADI R3, #640            ; R3 = World X End
-    LOADHI R3, #640
+    LOADI R2, #580            ; R2 = World X Start
+    LOADHI R2, #580
+    LOADI R3, #630            ; R3 = World X End
+    LOADHI R3, #630
     LOADI R4, draw_hline
     LOADHI R4, draw_hline
     CALL R4
 
-    LOADI R1, #600            ; R1 = World X
-    LOADHI R1, #600
+    LOADI R1, #580            ; R1 = World X
+    LOADHI R1, #580
     LOADI R2, #80             ; R2 = World Y Start
     LOADI R3, #260            ; R3 = World Y End
     LOADHI R3, #260
@@ -667,15 +751,470 @@ draw_penalty_box:
 
     LOADI R1, #260            ; R1 = World Y
     LOADHI R1, #260
-    LOADI R2, #600            ; R2 = World X Start
-    LOADHI R2, #600
-    LOADI R3, #640            ; R3 = World X End
-    LOADHI R3, #640
+    LOADI R2, #580            ; R2 = World X Start
+    LOADHI R2, #580
+    LOADI R3, #630            ; R3 = World X End
+    LOADHI R3, #630
     LOADI R4, draw_hline
     LOADHI R4, draw_hline
     CALL R4
 
-    POP R13
+
+draw_out_lines:
+    LOADI R1, #10             ; R1 = World Y
+    LOADI R2, #0              ; R2 = World X Start
+    LOADI R3, #640             ; R3 = World X End
+    LOADHI R3, #640             ; R3 = World X End
+    LOADI R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL R4
+
+    LOADI R1, #330             ; R1 = World Y
+    LOADHI R1, #330             ; R1 = World Y
+    LOADI R2, #0              ; R2 = World X Start
+    LOADI R3, #640             ; R3 = World X End
+    LOADHI R3, #640             ; R3 = World X End
+    LOADI R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL R4
+
+    LOADI R1, #20            ; R1 = World X
+    LOADI R2, #0             ; R2 = World Y Start
+    LOADI R3, #340            ; R3 = World Y End
+    LOADHI R3, #340
+    LOADI R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL R4
+
+    LOADI R1, #630            ; R1 = World X
+    LOADHI R1, #630            ; R1 = World X
+    LOADI R2, #0             ; R2 = World Y Start
+    LOADI R3, #340            ; R3 = World Y End
+    LOADHI R3, #340
+    LOADI R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL R4
+
+draw_circle:
+    ; Exact Midpoint Circle (Center: X=320, Y=171, Radius=20)
+
+    ; --- 1. Top & Bottom Flat Caps (Y = 151 & 191, X = 316..324, len 9) ---
+    LOADI  R1, #151
+    LOADI  R2, #316
+    LOADHI R2, #316
+    LOADI  R3, #324
+    LOADHI R3, #324
+    LOADI  R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL   R4
+
+    LOADI  R1, #191
+    LOADI  R2, #316
+    LOADHI R2, #316
+    LOADI  R3, #324
+    LOADHI R3, #324
+    LOADI  R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL   R4
+
+    ; --- 2. Left & Right Flat Caps (X = 300 & 340, Y = 167..175, len 9) ---
+    LOADI  R1, #300
+    LOADHI R1, #300
+    LOADI  R2, #167
+    LOADI  R3, #175
+    LOADI  R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL   R4
+
+    LOADI  R1, #340
+    LOADHI R1, #340
+    LOADI  R2, #167
+    LOADI  R3, #175
+    LOADI  R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL   R4
+
+    ; --- 3. Step 1 Horizontal (Y = 152 & 190, offsets 5..7, len 3) ---
+    LOADI  R1, #152
+    LOADI  R2, #313
+    LOADHI R2, #313
+    LOADI  R3, #315
+    LOADHI R3, #315
+    LOADI  R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL   R4
+
+    LOADI  R1, #152
+    LOADI  R2, #325
+    LOADHI R2, #325
+    LOADI  R3, #327
+    LOADHI R3, #327
+    LOADI  R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL   R4
+
+    LOADI  R1, #190
+    LOADI  R2, #313
+    LOADHI R2, #313
+    LOADI  R3, #315
+    LOADHI R3, #315
+    LOADI  R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL   R4
+
+    LOADI  R1, #190
+    LOADI  R2, #325
+    LOADHI R2, #325
+    LOADI  R3, #327
+    LOADHI R3, #327
+    LOADI  R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL   R4
+
+    ; --- 4. Step 1 Vertical (X = 301 & 339, offsets 5..7, len 3) ---
+    LOADI  R1, #301
+    LOADHI R1, #301
+    LOADI  R2, #164
+    LOADI  R3, #166
+    LOADI  R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL   R4
+
+    LOADI  R1, #301
+    LOADHI R1, #301
+    LOADI  R2, #176
+    LOADI  R3, #178
+    LOADI  R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL   R4
+
+    LOADI  R1, #339
+    LOADHI R1, #339
+    LOADI  R2, #164
+    LOADI  R3, #166
+    LOADI  R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL   R4
+
+    LOADI  R1, #339
+    LOADHI R1, #339
+    LOADI  R2, #176
+    LOADI  R3, #178
+    LOADI  R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL   R4
+
+    ; --- 5. Step 2 Horizontal (Y = 153 & 189, offsets 8..9, len 2) ---
+    LOADI  R1, #153
+    LOADI  R2, #311
+    LOADHI R2, #311
+    LOADI  R3, #312
+    LOADHI R3, #312
+    LOADI  R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL   R4
+
+    LOADI  R1, #153
+    LOADI  R2, #328
+    LOADHI R2, #328
+    LOADI  R3, #329
+    LOADHI R3, #329
+    LOADI  R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL   R4
+
+    LOADI  R1, #189
+    LOADI  R2, #311
+    LOADHI R2, #311
+    LOADI  R3, #312
+    LOADHI R3, #312
+    LOADI  R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL   R4
+
+    LOADI  R1, #189
+    LOADI  R2, #328
+    LOADHI R2, #328
+    LOADI  R3, #329
+    LOADHI R3, #329
+    LOADI  R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL   R4
+
+    ; --- 6. Step 2 Vertical (X = 302 & 338, offsets 8..9, len 2) ---
+    LOADI  R1, #302
+    LOADHI R1, #302
+    LOADI  R2, #162
+    LOADI  R3, #163
+    LOADI  R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL   R4
+
+    LOADI  R1, #302
+    LOADHI R1, #302
+    LOADI  R2, #179
+    LOADI  R3, #180
+    LOADI  R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL   R4
+
+    LOADI  R1, #338
+    LOADHI R1, #338
+    LOADI  R2, #162
+    LOADI  R3, #163
+    LOADI  R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL   R4
+
+    LOADI  R1, #338
+    LOADHI R1, #338
+    LOADI  R2, #179
+    LOADI  R3, #180
+    LOADI  R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL   R4
+
+    ; --- 7. Step 3 Horizontal (Y = 154 & 188, offset 10, len 2) ---
+    LOADI  R1, #154
+    LOADI  R2, #309
+    LOADHI R2, #309
+    LOADI  R3, #310
+    LOADHI R3, #310
+    LOADI  R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL   R4
+
+    LOADI  R1, #154
+    LOADI  R2, #330
+    LOADHI R2, #330
+    LOADI  R3, #331
+    LOADHI R3, #331
+    LOADI  R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL   R4
+
+    LOADI  R1, #188
+    LOADI  R2, #309
+    LOADHI R2, #309
+    LOADI  R3, #310
+    LOADHI R3, #310
+    LOADI  R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL   R4
+
+    LOADI  R1, #188
+    LOADI  R2, #330
+    LOADHI R2, #330
+    LOADI  R3, #331
+    LOADHI R3, #331
+    LOADI  R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL   R4
+
+    ; --- 8. Step 3 Vertical (X = 303 & 337, Y = 160..161 & 181..182, len 2) ---
+    LOADI  R1, #303
+    LOADHI R1, #303
+    LOADI  R2, #160
+    LOADI  R3, #161
+    LOADI  R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL   R4
+
+    LOADI  R1, #303
+    LOADHI R1, #303
+    LOADI  R2, #181
+    LOADI  R3, #182
+    LOADI  R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL   R4
+
+    LOADI  R1, #337
+    LOADHI R1, #337
+    LOADI  R2, #160
+    LOADI  R3, #161
+    LOADI  R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL   R4
+
+    LOADI  R1, #337
+    LOADHI R1, #337
+    LOADI  R2, #181
+    LOADI  R3, #182
+    LOADI  R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL   R4
+
+    ; --- 9. Exact 45-Degree Diagonal Pixels ---
+
+    ; Y = 155 & 187 (X = 307..308 & 332..333)
+    LOADI  R1, #155
+    LOADI  R2, #307
+    LOADHI R2, #307
+    LOADI  R3, #308
+    LOADHI R3, #308
+    LOADI  R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL   R4
+
+    LOADI  R1, #155
+    LOADI  R2, #332
+    LOADHI R2, #332
+    LOADI  R3, #333
+    LOADHI R3, #333
+    LOADI  R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL   R4
+
+    LOADI  R1, #187
+    LOADI  R2, #307
+    LOADHI R2, #307
+    LOADI  R3, #308
+    LOADHI R3, #308
+    LOADI  R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL   R4
+
+    LOADI  R1, #187
+    LOADI  R2, #332
+    LOADHI R2, #332
+    LOADI  R3, #333
+    LOADHI R3, #333
+    LOADI  R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL   R4
+
+    ; Y = 156 & 186 (X = 306 & 334)
+    LOADI  R1, #156
+    LOADI  R2, #306
+    LOADHI R2, #306
+    LOADI  R3, #306
+    LOADHI R3, #306
+    LOADI  R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL   R4
+
+    LOADI  R1, #156
+    LOADI  R2, #334
+    LOADHI R2, #334
+    LOADI  R3, #334
+    LOADHI R3, #334
+    LOADI  R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL   R4
+
+    LOADI  R1, #186
+    LOADI  R2, #306
+    LOADHI R2, #306
+    LOADI  R3, #306
+    LOADHI R3, #306
+    LOADI  R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL   R4
+
+    LOADI  R1, #186
+    LOADI  R2, #334
+    LOADHI R2, #334
+    LOADI  R3, #334
+    LOADHI R3, #334
+    LOADI  R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL   R4
+
+    ; X = 305 & 335 (Y = 157 & 185)
+    LOADI  R1, #305
+    LOADHI R1, #305
+    LOADI  R2, #157
+    LOADI  R3, #157
+    LOADI  R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL   R4
+
+    LOADI  R1, #305
+    LOADHI R1, #305
+    LOADI  R2, #185
+    LOADI  R3, #185
+    LOADI  R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL   R4
+
+    LOADI  R1, #335
+    LOADHI R1, #335
+    LOADI  R2, #157
+    LOADI  R3, #157
+    LOADI  R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL   R4
+
+    LOADI  R1, #335
+    LOADHI R1, #335
+    LOADI  R2, #185
+    LOADI  R3, #185
+    LOADI  R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL   R4
+
+    ; X = 304 & 336 (Y = 158..159 & 183..184)
+    LOADI  R1, #304
+    LOADHI R1, #304
+    LOADI  R2, #158
+    LOADI  R3, #159
+    LOADI  R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL   R4
+
+    LOADI  R1, #304
+    LOADHI R1, #304
+    LOADI  R2, #183
+    LOADI  R3, #184
+    LOADI  R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL   R4
+
+    LOADI  R1, #336
+    LOADHI R1, #336
+    LOADI  R2, #158
+    LOADI  R3, #159
+    LOADI  R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL   R4
+
+    LOADI  R1, #336
+    LOADHI R1, #336
+    LOADI  R2, #183
+    LOADI  R3, #184
+    LOADI  R4, draw_vline
+    LOADHI R4, draw_vline
+    CALL   R4
+
+    ; --- 10. Center Kick-Off Spot (3x3 square at 320, 171) ---
+    LOADI  R1, #170
+    LOADI  R2, #319
+    LOADHI R2, #319
+    LOADI  R3, #321
+    LOADHI R3, #321
+    LOADI  R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL   R4
+
+    LOADI  R1, #171
+    LOADI  R2, #319
+    LOADHI R2, #319
+    LOADI  R3, #321
+    LOADHI R3, #321
+    LOADI  R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL   R4
+
+    LOADI  R1, #172
+    LOADI  R2, #319
+    LOADHI R2, #319
+    LOADI  R3, #321
+    LOADHI R3, #321
+    LOADI  R4, draw_hline
+    LOADHI R4, draw_hline
+    CALL   R4
+
+    POP    R13
     RET
 
 draw_hline:
@@ -919,8 +1458,8 @@ draw_players_loop:
     AND    R9, R9, RC
     JEQ    draw_players_loop_inc ; Screen_Y >= 85; N-flag wasn't set
 
-    LOADI  R1, spr_idle_00
-    LOADHI R1, spr_idle_00    ; R1 = Pointer to sprite row 0
+    LOADI  R1, spr_idle_00_w1
+    LOADHI R1, spr_idle_00_w1    ; R1 = Pointer to sprite row 0
     LOADI  R7, #16            ; R7 = 16 rows to draw
 
     LOADI  RA, #0
@@ -928,11 +1467,35 @@ draw_players_loop:
     AND    RA, R5, RA
     JEQ    player_y_is_pos    ; If Z=1, Screen_Y >= 0
 
-    SUB    R1, R1, R5
-    ADD    R7, R7, R5
-    LOADI  R5, #0
+    ADD    R7, R7, R5         ; Remaining rows = 16 + Screen_Y
+    LOADI  RA, #2
+    LSL    R5, R5, RA         ; R5 = Screen_Y * 4
+    SUB    R1, R1, R5         ; R1 += (-Screen_Y * 4)
+    LOADI  R5, #0             ; Clamp Screen_Y to 0
 
-player_y_is_pos:    
+player_y_is_pos:
+    LOADI  RA, #12
+    CMP    RB, RA             ; RB - 12
+    LOADI  RA, #0x04
+    AND    RA, RA, RC         ; Check N-Flag
+    JNE    set_away_team      ; If N-Flag=1 (RB < 12), it's the away team
+
+set_home_team:
+    LOADI  RA, color_red      ; Get address of original Red
+    LOADHI RA, color_red
+    LOAD   RA, RA             ; RA = 0xF800
+    JMP    update_palette
+
+set_away_team:
+    LOADI  RA, color_blue     ; Get address of Blue
+    LOADHI RA, color_blue
+    LOAD   RA, RA             ; RA = 0x03FF
+
+update_palette:
+    LOADI  R9, color_jersey       ; Target the red slot in the palette array
+    LOADHI R9, color_jersey
+    STORE  R9, RA             ; Overwrite the slot
+
     ADD    R6, R0, R0         ; R6 = VRAM pointer (0)
     ADD    R9, R0, R0         ; R9 = Y-counter (0)
     LOADI  R8, #160           ; Screen width
@@ -950,10 +1513,6 @@ player_skip_x:
     PUSH   R2
     PUSH   RB
 
-    LOADI  R2, color_white
-    LOADHI R2, color_white
-    LOAD   R2, R2             ; R2 = Pixel color
-
 draw_sprite_row:
     LOADI  RA, #85
     CMP    R5, RA
@@ -961,15 +1520,24 @@ draw_sprite_row:
     AND    RA, RA, RC
     JEQ    done_player_sprite ; If Screen_Y >= 85
 
-    LOAD   R8, R1             ; R8 = 16-bit row bitmap
-    LOADI  R9, #16            ; R9 = 16 columns to draw
+    LOADI  R9, #4             ; R9 = 4 words per row
     PUSH   R4                 ; Save starting Screen_X for this row
 
+draw_sprite_word:
+    LOAD   R8, R1             ; R8 = Current 16-bit word (holds 4 pixels)
+    ADD    R1, R1, R3         ; Advance sprite pointer to next word (+1)
+    LOADI  RB, #4             ; RB = 4 pixels in this word
+
 draw_sprite_col:
-    LOADI  RA, #0
-    LOADHI RA, #0x8000          ; RA = 0x8000
-    AND    RA, R8, RA         ; Check leftmost bit
-    JEQ    skip_sprite_pixel  ; If 0, leave grass underneath
+    LOADI  RA, #12
+    LSR    RA, R8, RA         ; RA = Top 4 bits
+    JEQ    skip_sprite_pixel  ; LSR sets Z=1 if index is 0
+
+    LOADI  R2, color_black
+    LOADHI R2, color_black
+    SUB    R2, R2, R3
+    ADD    R2, R2, RA
+    LOAD R2 R2
 
     LOADI  RA, #0
     LOADHI RA, #0x8000
@@ -982,22 +1550,24 @@ draw_sprite_col:
     AND    RA, RA, RC
     JEQ    skip_sprite_pixel  ; If X >= 160, pixel is off right edge
 
-
     STORE  R6, R2
 
 skip_sprite_pixel:
-    LSL    R8, R8, R3       ; Now leftmost bit holds next bit
+    LOADI  RA, #4
+    LSL    R8, R8, RA       ; Now leftmost bit holds next bit
     ADD    R6, R6, R3       ; VRAM pointer++
     ADD    R4, R4, R3       ; Current X++
-    SUB    R9, R9, R3       ; Column counter--
+    SUB    RB, RB, R3       ; pixel in word counter--
     JNE    draw_sprite_col
+
+    SUB    R9, R9, R3         ; Word-in-row counter--
+    JNE    draw_sprite_word
 
     POP    R4
 
-    LOADI  RA, #144 ;move VRAM pointer down 1 row and back 16 pixels
+    LOADI  RA, #144   ;move VRAM pointer down 1 row and back 16 pixels
     ADD    R6, R6, RA
 
-    ADD    R1, R1, R3     ; Next row
     ADD    R5, R5, R3     ; Screen_Y++
     SUB    R7, R7, R3     ; Row counter--;
     JNE    draw_sprite_row
