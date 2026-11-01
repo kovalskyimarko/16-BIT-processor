@@ -2,6 +2,8 @@
 
 A custom 16-bit processor architecture built from scratch, featuring a two-pass assembler, an SDL2-based emulator, and **Reball**—a full 2D retro football game written in ~4,000 lines of pure assembly to stress-test the hardware design.
 
+![Reball Demo](video/demo.gif)
+
 ---
 
 ## Architecture Overview
