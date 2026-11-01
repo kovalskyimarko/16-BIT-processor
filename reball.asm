@@ -555,58 +555,58 @@ _variables:
     spr_ball_02_w3 .int16 = #0x0000
     spr_ball_02_w4 .int16 = #0x0000
 
-    ; Row 03: Top of the ball curve (...222...)
+    ; Row 03: Empty padding
     spr_ball_03_w1 .int16 = #0x0000
-    spr_ball_03_w2 .int16 = #0x0002
-    spr_ball_03_w3 .int16 = #0x2200
+    spr_ball_03_w2 .int16 = #0x0000
+    spr_ball_03_w3 .int16 = #0x0000
     spr_ball_03_w4 .int16 = #0x0000
 
-    ; Row 04: Upper curve & corner panels (.2211122.)
+    ; Row 04: Top curve (..222..)
     spr_ball_04_w1 .int16 = #0x0000
-    spr_ball_04_w2 .int16 = #0x0221
-    spr_ball_04_w3 .int16 = #0x1122
+    spr_ball_04_w2 .int16 = #0x0002
+    spr_ball_04_w3 .int16 = #0x2200
     spr_ball_04_w4 .int16 = #0x0000
 
-    ; Row 05: Upper-mid corner panels (.2211122.)
+    ; Row 05: Upper corner panels (.22122.)
     spr_ball_05_w1 .int16 = #0x0000
-    spr_ball_05_w2 .int16 = #0x0221
-    spr_ball_05_w3 .int16 = #0x1122
+    spr_ball_05_w2 .int16 = #0x0022
+    spr_ball_05_w3 .int16 = #0x1220
     spr_ball_05_w4 .int16 = #0x0000
 
-    ; Row 06: Center-top pentagon tip (211121112)
+    ; Row 06: Upper white band (2111112)
     spr_ball_06_w1 .int16 = #0x0000
-    spr_ball_06_w2 .int16 = #0x2111
-    spr_ball_06_w3 .int16 = #0x2111
-    spr_ball_06_w4 .int16 = #0x2000
+    spr_ball_06_w2 .int16 = #0x0211
+    spr_ball_06_w3 .int16 = #0x1112
+    spr_ball_06_w4 .int16 = #0x0000
 
-    ; Row 07: Horizontal center pentagon (211222112)
+    ; Row 07: Center spot (2112112)
     spr_ball_07_w1 .int16 = #0x0000
-    spr_ball_07_w2 .int16 = #0x2112
-    spr_ball_07_w3 .int16 = #0x2211
-    spr_ball_07_w4 .int16 = #0x2000
+    spr_ball_07_w2 .int16 = #0x0211
+    spr_ball_07_w3 .int16 = #0x2112
+    spr_ball_07_w4 .int16 = #0x0000
 
-    ; Row 08: Center-bottom pentagon tip (211121112)
+    ; Row 08: Lower white band (2111112)
     spr_ball_08_w1 .int16 = #0x0000
-    spr_ball_08_w2 .int16 = #0x2111
-    spr_ball_08_w3 .int16 = #0x2111
-    spr_ball_08_w4 .int16 = #0x2000
+    spr_ball_08_w2 .int16 = #0x0211
+    spr_ball_08_w3 .int16 = #0x1112
+    spr_ball_08_w4 .int16 = #0x0000
 
-    ; Row 09: Lower-mid corner panels (.2211122.)
+    ; Row 09: Lower corner panels (.22122.)
     spr_ball_09_w1 .int16 = #0x0000
-    spr_ball_09_w2 .int16 = #0x0221
-    spr_ball_09_w3 .int16 = #0x1122
+    spr_ball_09_w2 .int16 = #0x0022
+    spr_ball_09_w3 .int16 = #0x1220
     spr_ball_09_w4 .int16 = #0x0000
 
-    ; Row 10: Lower curve & corner panels (.2211122.)
+    ; Row 10: Bottom curve (..222..)
     spr_ball_10_w1 .int16 = #0x0000
-    spr_ball_10_w2 .int16 = #0x0221
-    spr_ball_10_w3 .int16 = #0x1122
+    spr_ball_10_w2 .int16 = #0x0002
+    spr_ball_10_w3 .int16 = #0x2200
     spr_ball_10_w4 .int16 = #0x0000
 
-    ; Row 11: Bottom curve (...222...)
+    ; Row 11: Empty padding
     spr_ball_11_w1 .int16 = #0x0000
-    spr_ball_11_w2 .int16 = #0x0002
-    spr_ball_11_w3 .int16 = #0x2200
+    spr_ball_11_w2 .int16 = #0x0000
+    spr_ball_11_w3 .int16 = #0x0000
     spr_ball_11_w4 .int16 = #0x0000
 
     ; Row 12: Empty padding
@@ -633,76 +633,6 @@ _variables:
     spr_ball_15_w3 .int16 = #0x0000
     spr_ball_15_w4 .int16 = #0x0000
 
-    font_start .int16 = #0x0000 ; anchor
-
-    ; --- ASCII 32: Space ---
-    font_032_0 .int16 = #0x0000 
-    font_032_1 .int16 = #0x0000
-    font_032_2 .int16 = #0x0000
-    font_032_3 .int16 = #0x0000
-
-    ; --- ASCII 33 to 47: Blank Padding (Punctuation) ---
-    font_pad1_00 .int16 = #0x0000 ; 15 blank characters to keep 
-    font_pad1_01 .int16 = #0x0000 ; the ASCII math perfectly aligned.
-    font_pad1_02 .int16 = #0x0000 ; (Repeated 15 times behind the scenes:
-    font_pad1_03 .int16 = #0x0000 ; maybe later I fill these in with !?.,
-    font_pad1_04 .int16 = #0x0000
-    font_pad1_05 .int16 = #0x0000
-    font_pad1_06 .int16 = #0x0000
-    font_pad1_07 .int16 = #0x0000
-    font_pad1_08 .int16 = #0x0000
-    font_pad1_09 .int16 = #0x0000
-    font_pad1_10 .int16 = #0x0000
-    font_pad1_11 .int16 = #0x0000
-    font_pad1_12 .int16 = #0x0000
-    font_pad1_13 .int16 = #0x0000
-    font_pad1_14 .int16 = #0x0000
-    font_pad1_15 .int16 = #0x0000
-    font_pad1_16 .int16 = #0x0000
-    font_pad1_17 .int16 = #0x0000
-    font_pad1_18 .int16 = #0x0000
-    font_pad1_19 .int16 = #0x0000
-    font_pad1_20 .int16 = #0x0000
-    font_pad1_21 .int16 = #0x0000
-    font_pad1_22 .int16 = #0x0000
-    font_pad1_23 .int16 = #0x0000
-    font_pad1_24 .int16 = #0x0000
-    font_pad1_25 .int16 = #0x0000
-    font_pad1_26 .int16 = #0x0000
-    font_pad1_27 .int16 = #0x0000
-    font_pad1_28 .int16 = #0x0000
-    font_pad1_29 .int16 = #0x0000
-    font_pad1_30 .int16 = #0x0000
-    font_pad1_31 .int16 = #0x0000
-    font_pad1_32 .int16 = #0x0000
-    font_pad1_33 .int16 = #0x0000
-    font_pad1_34 .int16 = #0x0000
-    font_pad1_35 .int16 = #0x0000
-    font_pad1_36 .int16 = #0x0000
-    font_pad1_37 .int16 = #0x0000
-    font_pad1_38 .int16 = #0x0000
-    font_pad1_39 .int16 = #0x0000
-    font_pad1_40 .int16 = #0x0000
-    font_pad1_41 .int16 = #0x0000
-    font_pad1_42 .int16 = #0x0000
-    font_pad1_43 .int16 = #0x0000
-    font_pad1_44 .int16 = #0x0000
-    font_pad1_45 .int16 = #0x0000
-    font_pad1_46 .int16 = #0x0000
-    font_pad1_47 .int16 = #0x0000
-    font_pad1_48 .int16 = #0x0000
-    font_pad1_49 .int16 = #0x0000
-    font_pad1_50 .int16 = #0x0000
-    font_pad1_51 .int16 = #0x0000
-    font_pad1_52 .int16 = #0x0000
-    font_pad1_53 .int16 = #0x0000
-    font_pad1_54 .int16 = #0x0000
-    font_pad1_55 .int16 = #0x0000
-    font_pad1_56 .int16 = #0x0000
-    font_pad1_57 .int16 = #0x0000
-    font_pad1_58 .int16 = #0x0000
-    font_pad1_59 .int16 = #0x0000
-
     ; --- ASCII 48 to 57: Numbers 0 - 9 ---
     font_0_0 .int16 = #0x3844 
     font_0_1 .int16 = #0x4444
@@ -723,197 +653,6 @@ _variables:
     font_3_1 .int16 = #0x0418
     font_3_2 .int16 = #0x0444
     font_3_3 .int16 = #0x3800
-
-    font_4_0 .int16 = #0x0818 
-    font_4_1 .int16 = #0x2848
-    font_4_2 .int16 = #0x7C08
-    font_4_3 .int16 = #0x0800
-
-    font_5_0 .int16 = #0x7C40 
-    font_5_1 .int16 = #0x7804
-    font_5_2 .int16 = #0x0444
-    font_5_3 .int16 = #0x3800
-
-    font_6_0 .int16 = #0x1820 
-    font_6_1 .int16 = #0x4078
-    font_6_2 .int16 = #0x4444
-    font_6_3 .int16 = #0x3800
-
-    font_7_0 .int16 = #0x7C04 
-    font_7_1 .int16 = #0x0810
-    font_7_2 .int16 = #0x2020
-    font_7_3 .int16 = #0x2000
-
-    font_8_0 .int16 = #0x3844 
-    font_8_1 .int16 = #0x4438
-    font_8_2 .int16 = #0x4444
-    font_8_3 .int16 = #0x3800
-
-    font_9_0 .int16 = #0x3844 
-    font_9_1 .int16 = #0x443C
-    font_9_2 .int16 = #0x0408
-    font_9_3 .int16 = #0x3000
-
-    ; --- ASCII 58 to 64: Blank Padding (Punctuation) ---
-    font_pad2_00 .int16 = #0x0000 ; 7 blank characters
-    font_pad2_01 .int16 = #0x0000 
-    font_pad2_02 .int16 = #0x0000
-    font_pad2_03 .int16 = #0x0000
-    font_pad2_04 .int16 = #0x0000
-    font_pad2_05 .int16 = #0x0000
-    font_pad2_06 .int16 = #0x0000
-    font_pad2_07 .int16 = #0x0000
-    font_pad2_08 .int16 = #0x0000
-    font_pad2_09 .int16 = #0x0000
-    font_pad2_10 .int16 = #0x0000
-    font_pad2_11 .int16 = #0x0000
-    font_pad2_12 .int16 = #0x0000
-    font_pad2_13 .int16 = #0x0000
-    font_pad2_14 .int16 = #0x0000
-    font_pad2_15 .int16 = #0x0000
-    font_pad2_16 .int16 = #0x0000
-    font_pad2_17 .int16 = #0x0000
-    font_pad2_18 .int16 = #0x0000
-    font_pad2_19 .int16 = #0x0000
-    font_pad2_20 .int16 = #0x0000
-    font_pad2_21 .int16 = #0x0000
-    font_pad2_22 .int16 = #0x0000
-    font_pad2_23 .int16 = #0x0000
-    font_pad2_24 .int16 = #0x0000
-    font_pad2_25 .int16 = #0x0000
-    font_pad2_26 .int16 = #0x0000
-    font_pad2_27 .int16 = #0x0000
-
-    ; --- ASCII 65 to 90: Letters A - Z ---
-    font_A_0 .int16 = #0x3844 
-    font_A_1 .int16 = #0x447C
-    font_A_2 .int16 = #0x4444
-    font_A_3 .int16 = #0x4400
-
-    font_B_0 .int16 = #0x7844 
-    font_B_1 .int16 = #0x4478
-    font_B_2 .int16 = #0x4444
-    font_B_3 .int16 = #0x7800
-
-    font_C_0 .int16 = #0x3844 
-    font_C_1 .int16 = #0x4040
-    font_C_2 .int16 = #0x4044
-    font_C_3 .int16 = #0x3800
-
-    font_D_0 .int16 = #0x7844 
-    font_D_1 .int16 = #0x4444
-    font_D_2 .int16 = #0x4444
-    font_D_3 .int16 = #0x7800
-
-    font_E_0 .int16 = #0x7C40 
-    font_E_1 .int16 = #0x4078
-    font_E_2 .int16 = #0x4040
-    font_E_3 .int16 = #0x7C00
-
-    font_F_0 .int16 = #0x7C40 
-    font_F_1 .int16 = #0x4078
-    font_F_2 .int16 = #0x4040
-    font_F_3 .int16 = #0x4000
-
-    font_G_0 .int16 = #0x3844 
-    font_G_1 .int16 = #0x4040
-    font_G_2 .int16 = #0x5C44
-    font_G_3 .int16 = #0x3800
-
-    font_H_0 .int16 = #0x4444 
-    font_H_1 .int16 = #0x447C
-    font_H_2 .int16 = #0x4444
-    font_H_3 .int16 = #0x4400
-
-    font_I_0 .int16 = #0x3810 
-    font_I_1 .int16 = #0x1010
-    font_I_2 .int16 = #0x1010
-    font_I_3 .int16 = #0x3800
-
-    font_J_0 .int16 = #0x0404 
-    font_J_1 .int16 = #0x0404
-    font_J_2 .int16 = #0x0444
-    font_J_3 .int16 = #0x3800
-
-    font_K_0 .int16 = #0x4448 
-    font_K_1 .int16 = #0x5060
-    font_K_2 .int16 = #0x5048
-    font_K_3 .int16 = #0x4400
-
-    font_L_0 .int16 = #0x4040 
-    font_L_1 .int16 = #0x4040
-    font_L_2 .int16 = #0x4040
-    font_L_3 .int16 = #0x7C00
-
-    font_M_0 .int16 = #0x446C 
-    font_M_1 .int16 = #0x5444
-    font_M_2 .int16 = #0x4444
-    font_M_3 .int16 = #0x4400
-
-    font_N_0 .int16 = #0x4464 
-    font_N_1 .int16 = #0x544C
-    font_N_2 .int16 = #0x4444
-    font_N_3 .int16 = #0x4400
-
-    font_O_0 .int16 = #0x3844 
-    font_O_1 .int16 = #0x4444
-    font_O_2 .int16 = #0x4444
-    font_O_3 .int16 = #0x3800
-
-    font_P_0 .int16 = #0x7844 
-    font_P_1 .int16 = #0x4478
-    font_P_2 .int16 = #0x4040
-    font_P_3 .int16 = #0x4000
-
-    font_Q_0 .int16 = #0x3844 
-    font_Q_1 .int16 = #0x4444
-    font_Q_2 .int16 = #0x5448
-    font_Q_3 .int16 = #0x3400
-
-    font_R_0 .int16 = #0x7844 
-    font_R_1 .int16 = #0x4478
-    font_R_2 .int16 = #0x5048
-    font_R_3 .int16 = #0x4400
-
-    font_S_0 .int16 = #0x3844 
-    font_S_1 .int16 = #0x4038
-    font_S_2 .int16 = #0x0444
-    font_S_3 .int16 = #0x3800
-
-    font_T_0 .int16 = #0x7C10 
-    font_T_1 .int16 = #0x1010
-    font_T_2 .int16 = #0x1010
-    font_T_3 .int16 = #0x1000
-
-    font_U_0 .int16 = #0x4444 
-    font_U_1 .int16 = #0x4444
-    font_U_2 .int16 = #0x4444
-    font_U_3 .int16 = #0x3800
-
-    font_V_0 .int16 = #0x4444 
-    font_V_1 .int16 = #0x4444
-    font_V_2 .int16 = #0x4428
-    font_V_3 .int16 = #0x1000
-
-    font_W_0 .int16 = #0x4444 
-    font_W_1 .int16 = #0x4454
-    font_W_2 .int16 = #0x546C
-    font_W_3 .int16 = #0x4400
-
-    font_X_0 .int16 = #0x4444 
-    font_X_1 .int16 = #0x2810
-    font_X_2 .int16 = #0x2844
-    font_X_3 .int16 = #0x4400
-
-    font_Y_0 .int16 = #0x4444 
-    font_Y_1 .int16 = #0x2810
-    font_Y_2 .int16 = #0x1010
-    font_Y_3 .int16 = #0x1000
-
-    font_Z_0 .int16 = #0x7C04 
-    font_Z_1 .int16 = #0x0810
-    font_Z_2 .int16 = #0x2040
-    font_Z_3 .int16 = #0x7C00
 
     ; --- PITCH COLORS ---
     color_lgreen .int16 = #0x0740  ; Vibrant retro grass
@@ -945,7 +684,7 @@ _variables:
     color_yellow .int16 = #0xFFE0  ; Standard arcade color for "PRESS BUTTON TO START"
 
     ; --- DIFFERENT STATE VARIABLES ---
-    state      .int16 = #1  ; State of draw 1 - main menu 2 - playing
+    game_state      .int16 = #1; 0 - End, 1 - kick off for home team, 2 - game, 3 - out, 4 - corner, 5 - goal, 6 - kick of enemy team, 7 - goal enemy team    
     ai_level   .int16 = #1  ; Level of ai 1 - easiest 2 - medium 3 - hardest
     red_score  .int16 = #0  ; Team red score
     blue_score .int16 = #0  ; Team blue score
@@ -959,6 +698,72 @@ _variables:
 
     ball_x       .int16 = #312
     ball_y       .int16 = #164
+
+    ball_owner   .int16 = #255  ; 0-21 when someone dribbles
+    last_owner   .int16 = #9    ; Last player (0-21) who touched the ball
+    last_dir     .int16 = #255  ; 0 - Up, 1 - Down, 2 - Left, 3 - Right
+    ball_vx      .int16 = #0
+    ball_vy      .int16 = #0
+    ball_timer   .int16 = #0    ; For how many framese ball will move
+    tackle_cd    .int16 = #0    ; Cooldown frames after a tackle so ball doesn't ping-pong
+    ai_tick      .int16 = #0    ; Toggles 0/1 so AI moves at half speed
+    ai_wait      .int16 = #0    ; Short delay before Away AI takes a kickoff/out/corner
+
+    ; --- PLAYERS DEFAULT POSITIONs
+    ; HOME TEAM (4-3-3) - Left to Right
+    
+    d_player_0_x   .int16 = #25       ; P0  - GK (25, 168)
+    d_player_0_y   .int16 = #168
+
+    d_player_1_x   .int16 = #110      ; P1  - Left Back (110, 48)
+    d_player_1_y   .int16 = #48
+    d_player_2_x   .int16 = #110      ; P2  - Center Back Left (110, 128)
+    d_player_2_y   .int16 = #128
+    d_player_3_x   .int16 = #110      ; P3  - Center Back Right (110, 208)
+    d_player_3_y   .int16 = #208
+    d_player_4_x   .int16 = #110      ; P4  - Right Back (110, 288)
+    d_player_4_y   .int16 = #288
+
+    d_player_5_x   .int16 = #210      ; P5  - Left Midfielder (210, 88)
+    d_player_5_y   .int16 = #88
+    d_player_6_x   .int16 = #210      ; P6  - Central Midfielder (210, 168)
+    d_player_6_y   .int16 = #168
+    d_player_7_x   .int16 = #210      ; P7  - Right Midfielder (210, 248)
+    d_player_7_y   .int16 = #248
+
+    d_player_8_x   .int16 = #295      ; P8  - Left Winger (295, 72)
+    d_player_8_y   .int16 = #72
+    d_player_9_x   .int16 = #279      ; P9  - Center Forward (295, 168)
+    d_player_9_y   .int16 = #168
+    d_player_10_x  .int16 = #295      ; P10 - Right Winger (295, 264)
+    d_player_10_y  .int16 = #264
+
+    ; AWAY TEAM (4-3-3) - Right to Left (Mirrored across X = 320)
+    d_player_11_x  .int16 = #345      ; P11 - Left Winger (345, 72)
+    d_player_11_y  .int16 = #72
+    d_player_12_x  .int16 = #345      ; P12 - Center Forward (345, 168)
+    d_player_12_y  .int16 = #168
+    d_player_13_x  .int16 = #345      ; P13 - Right Winger (345, 264)
+    d_player_13_y  .int16 = #264
+
+    d_player_14_x  .int16 = #430      ; P14 - Left Midfielder (430, 88)
+    d_player_14_y  .int16 = #88
+    d_player_15_x  .int16 = #430      ; P15 - Central Midfielder (430, 168)
+    d_player_15_y  .int16 = #168
+    d_player_16_x  .int16 = #430      ; P16 - Right Midfielder (430, 248)
+    d_player_16_y  .int16 = #248
+
+    d_player_17_x  .int16 = #530      ; P17 - Left Back (530, 48)
+    d_player_17_y  .int16 = #48
+    d_player_18_x  .int16 = #530      ; P18 - Center Back Left (530, 128)
+    d_player_18_y  .int16 = #128
+    d_player_19_x  .int16 = #530      ; P19 - Center Back Right (530, 208)
+    d_player_19_y  .int16 = #208
+    d_player_20_x  .int16 = #530      ; P20 - Right Back (530, 288)
+    d_player_20_y  .int16 = #288
+
+    d_player_21_x  .int16 = #615      ; P21 - GK (615, 168)
+    d_player_21_y  .int16 = #168
 
     ; --- PLAYERS POSITION ---
 
@@ -984,8 +789,8 @@ _variables:
 
     player_8_x   .int16 = #295      ; P8  - Left Winger (295, 72)
     player_8_y   .int16 = #72
-    player_9_x   .int16 = #279      ; P9  - Center Forward (295, 168)
-    player_9_y   .int16 = #168
+    player_9_x   .int16 = #320      ; P9  - Center Forward (295, 168)
+    player_9_y   .int16 = #160
     player_10_x  .int16 = #295      ; P10 - Right Winger (295, 264)
     player_10_y  .int16 = #264
 
@@ -1023,6 +828,36 @@ _variables:
 _code:
 
 draw_loop:
+    ; Reset last_dir = 255 at the start of every frame
+    LOADI  R1, last_dir
+    LOADHI R1, last_dir
+    LOADI  R2, #255
+    STORE  R1, R2
+
+    LOADI R1, update_ball_logic
+    LOADHI R1, update_ball_logic
+    CALL R1
+
+    LOADI R1, reset_positions
+    LOADHI R1, reset_positions
+    CALL R1
+
+    LOADI R1, check_for_ball_collision
+    LOADHI R1, check_for_ball_collision
+    CALL R1
+
+    LOADI R1, home_t_ai
+    LOADHI R1, home_t_ai
+    CALL R1
+
+    LOADI R1, away_t_ai
+    LOADHI R1, away_t_ai
+    CALL R1
+
+    LOADI R1, update_camera
+    LOADHI R1, update_camera
+    CALL R1
+
     LOADI  R1, draw_pitch
     LOADHI R1, draw_pitch
     CALL   R1
@@ -1030,6 +865,14 @@ draw_loop:
     LOADI R2, draw_players
     LOADHI R2, draw_players
     CALL R2
+
+    LOADI R1, draw_scores
+    LOADHI R1, draw_scores
+    CALL R1
+
+    LOADI R1, check_end
+    LOADHI R1, check_end
+    CALL R1
 
     LOADI  R3, #0xFF02
     LOADHI R3, #0xFF02
@@ -1061,9 +904,268 @@ check_for_movement:
     AND R4 R4 R3
     JNE move_d
 
+check_actions:
+    LOADI R3 #0xFF01
+    LOADHI R3 #0xFF01
+    LOAD R3 R3
+
+    LOADI R4 #0x04
+    LOADHI R4 #0x04
+    AND R4 R4 R3
+    JNE press_k
+
+    LOADI R4 #0x02
+    LOADHI R4 #0x02
+    AND R4 R4 R3
+    JNE press_l
+
+    LOADI R4 #0x01
+    LOADHI R4 #0x01
+    AND R4 R4 R3
+    JNE press_p
+
+    JMP draw_loop
+
+press_k:
+    LOADI R1 ball_owner
+    LOADHI R1 ball_owner
+    LOAD R5 R1
+
+    LOADI R2 selected_p
+    LOADHI R2 selected_p
+    LOAD R2 R2
+    CMP  R5 R2
+    JEQ  press_k_allowed
+
+    ; Also allow kicking when Away CM (player 15) is taking an out (3) or corner (4)
+    LOADI R2 #15
+    CMP  R5 R2
+    JEQ  press_k_allowed
+
+    ; Also allow kicking when Away CF (player 12) is taking a kickoff (6)
+    LOADI R2 #12
+    CMP  R5 R2
+    JNE  draw_loop
+
+press_k_allowed:
+    LOADI R2 #255
+    STORE R1 R2                ; ball_owner = 255
+
+    LOADI R1 ball_timer
+    LOADHI R1 ball_timer
+    LOADI R2 #45
+    STORE R1 R2                ; pass timer = 45
+
+    LOADI R4 #3                ; pass speed = 3
+    JMP kick_dispatch
+
+press_l:
+    LOADI R1 ball_owner
+    LOADHI R1 ball_owner
+    LOAD R5 R1
+
+    LOADI R2 selected_p
+    LOADHI R2 selected_p
+    LOAD R2 R2
+    CMP  R5 R2
+    JEQ  press_l_allowed
+
+    ; Also allow kicking when Away CM (player 15) is taking an out (3) or corner (4)
+    LOADI R2 #15
+    CMP  R5 R2
+    JEQ  press_l_allowed
+
+    ; Also allow kicking when Away CF (player 12) is taking a kickoff (6)
+    LOADI R2 #12
+    CMP  R5 R2
+    JNE  draw_loop
+
+press_l_allowed:
+    LOADI R2 #255
+    STORE R1 R2                ; ball_owner = 255
+
+    LOADI R1 ball_timer
+    LOADHI R1 ball_timer
+    LOADI R2 #50
+    STORE R1 R2                ; shot timer = 50
+
+    LOADI R4 #4                ; shot speed = 4
+
+kick_dispatch:
+    ; set live game state
+    LOADI R1 game_state
+    LOADHI R1 game_state
+    LOADI R2 #2
+    STORE R1 R2
+
+    LOADI R2 last_dir
+    LOADHI R2 last_dir
+    LOAD R2 R2
+
+    LOADI R3 #0
+    CMP R2 R3
+    JEQ add_up_vy
+
+    LOADI R3 #1
+    CMP R2 R3
+    JEQ add_down_vy
+
+    LOADI R3 #2
+    CMP R2 R3
+    JEQ add_left_vx
+
+    LOADI R3 #3
+    CMP R2 R3
+    JEQ add_right_vx
+
+    ; default kick direction if idle
+    LOADI R2 ball_y
+    LOADHI R2 ball_y
+    LOAD R2 R2
+    LOADI R3 #20
+    CMP R2 R3
+    LOADI RA, #0x04
+    AND RA, RA, RC
+    JNE add_down_vy
+
+    LOADI R3 #320
+    LOADHI R3 #320
+    CMP R2 R3
+    LOADI RA, #0x04
+    AND RA, RA, RC
+    JEQ add_up_vy
+
+    LOADI R2 last_owner
+    LOADHI R2 last_owner
+    LOAD R2 R2
+    LOADI R3 #11
+    CMP R2 R3
+    LOADI RA, #0x04
+    AND RA, RA, RC
+    JEQ add_left_vx
+
+    JMP add_right_vx
+
+add_up_vy:
+    SUB R4 R0 R4               ; vy = -speed
+    LOADI R1 ball_vy
+    LOADHI R1 ball_vy
+    STORE R1 R4
+
+    LOADI R1 ball_vx
+    LOADHI R1 ball_vx
+    STORE R1 R0
+    JMP draw_loop
+
+add_down_vy:
+    LOADI R1 ball_vy
+    LOADHI R1 ball_vy
+    STORE R1 R4                ; vy = +speed
+
+    LOADI R1 ball_vx
+    LOADHI R1 ball_vx
+    STORE R1 R0
+    JMP draw_loop
+
+add_left_vx:
+    SUB R4 R0 R4               ; vx = -speed
+    LOADI R1 ball_vx
+    LOADHI R1 ball_vx
+    STORE R1 R4
+
+    LOADI R1 ball_vy
+    LOADHI R1 ball_vy
+    STORE R1 R0
+    JMP draw_loop
+
+add_right_vx:
+    LOADI R1 ball_vx
+    LOADHI R1 ball_vx
+    STORE R1 R4                ; vx = +speed
+
+    LOADI R1 ball_vy
+    LOADHI R1 ball_vy
+    STORE R1 R0
+    JMP draw_loop
+
+press_p:
+    ; find closest home outfield player to ball
+    LOADI R8 ball_x
+    LOADHI R8 ball_x
+    LOAD R8 R8                 ; R8 = ball_x
+
+    LOADI R9 ball_y
+    LOADHI R9 ball_y
+    LOAD R9 R9                 ; R9 = ball_y
+
+    LOADI R1 player_1_x
+    LOADHI R1 player_1_x       ; start at player 1
+
+    LOADI R3 #1                ; player index
+    LOADI R4 #0x7FFF
+    LOADHI R4 #0x7FFF          ; best distance
+    LOADI R5 #9                ; best player
+
+press_p_loop:
+    ; dx = |player_x - ball_x|
+    LOAD R6 R1
+    SUB R7 R6 R8
+    LOADI RA #0x04
+    AND RA RA RC
+    JEQ press_p_dx_ok
+    SUB R7 R8 R6
+press_p_dx_ok:
+    ADD RB R7 R0               ; RB = dx
+
+    ; dy = |player_y - ball_y|
+    LOADI R7 #1
+    ADD R6 R1 R7
+    LOAD R6 R6
+    SUB R7 R6 R9
+    LOADI RA #0x04
+    AND RA RA RC
+    JEQ press_p_dy_ok
+    SUB R7 R9 R6
+press_p_dy_ok:
+    ADD RB RB R7               ; dist = dx + dy
+
+    ; check best distance
+    CMP RB R4
+    LOADI RA #0x04
+    AND RA RA RC
+    JEQ press_p_next
+    ADD R4 RB R0
+    ADD R5 R3 R0
+
+press_p_next:
+    LOADI R7 #2
+    ADD R1 R1 R7               ; next player
+    LOADI R7 #1
+    ADD R3 R3 R7
+    LOADI RA #11
+    CMP R3 RA
+    JNE press_p_loop
+
+    LOADI R1 selected_p
+    LOADHI R1 selected_p
+    STORE R1 R5
     JMP draw_loop
 
 move_w:
+    ; Update last_dir = 0 (Up) so player can aim during restarts
+    LOADI R4 last_dir
+    LOADHI R4 last_dir
+    LOADI R5 #0
+    STORE R4 R5
+
+    ; Only move during live play (game_state == 2)
+    LOADI R4 game_state
+    LOADHI R4 game_state
+    LOAD R4 R4
+    LOADI R5 #2
+    CMP R4 R5
+    JNE check_actions
+
     LOADI RB #1
     LOADI R5 #2
 
@@ -1097,30 +1199,55 @@ move_w_end:
     ; Clamp player Y to top of field (Y >= 2)
     LOADI R5 #2
     CMP R7 R5
-    LOADI R8 #0x04
-    AND R8 R8 RC
-    JNE check_for_movement
+    LOADI R4 #0x04
+    AND R4 R4 RC
+    JNE check_actions
 
-    LOADI R8 #1
-    SUB R7 R7 R8
+    LOADI R4 #1
+    SUB R7 R7 R4
     STORE RA R7
 
-    ; Move camera_y only if camera_y >= 5
-    LOADI R4 camera_y
-    LOADHI R4 camera_y
-    LOAD R6 R4
+    ; Check for selected_p == ball_owner
+    LOADI R5 ball_owner
+    LOADHI R5 ball_owner
+    LOAD R5 R5
+    CMP R9 R5
+    JNE move_w_end_without_ball
 
-    LOADI R5 #5
-    CMP R6 R5
-    LOADI R7 #0x04             ; Load FLAG_N mask (1 << 2).
-    AND R7 R7 RC               ; Check if N-flag was set
-    JNE draw_loop              ; camera_y < 5: skip camera move, still redraw player
+    LOADI R5 ball_x
+    LOADHI R5 ball_x
+    
+    LOADI R6 player_0_x
+    LOADHI R6 player_0_x
+    ADD R6 R6 R8
+    ADD R6 R6 R8               ; 2 words per player (points to player_x)
+    LOAD R6 R6                 ; Load actual player_x value
+    STORE R5 R6
 
-    SUB R6 R6 R8
-    STORE R4 R6
-    JMP draw_loop
+    LOADI R5 ball_y
+    LOADHI R5 ball_y
+    LOADI R4 #9
+    SUB R7 R7 R4               ; ball_y = player_y - 9 (in front when moving Up)
+    STORE R5 R7
+
+move_w_end_without_ball:
+    JMP check_actions
 
 move_s:
+    ; Update last_dir = 1 (Down) so player can aim during restarts
+    LOADI R4 last_dir
+    LOADHI R4 last_dir
+    LOADI R5 #1
+    STORE R4 R5
+
+    ; Only move during live play (game_state == 2)
+    LOADI R4 game_state
+    LOADHI R4 game_state
+    LOAD R4 R4
+    LOADI R5 #2
+    CMP R4 R5
+    JNE check_actions
+
     LOADI RB #1
     LOADI R5 #2
 
@@ -1155,31 +1282,55 @@ move_s_end:
     LOADI R5 #324
     LOADHI R5 #324
     CMP R7 R5
-    LOADI R8 #0x04
-    AND R8 R8 RC
-    JEQ check_for_movement
+    LOADI R4 #0x04
+    AND R4 R4 RC
+    JEQ check_actions
 
-    LOADI R8 #1
-    ADD R7 R7 R8
+    LOADI R4 #1
+    ADD R7 R7 R4
     STORE RA R7
 
-    ; Move camera_y only if camera_y < 255
-    LOADI R4 camera_y
-    LOADHI R4 camera_y
-    LOAD R6 R4
+    ; Check for selected_p == ball_owner
+    LOADI R5 ball_owner
+    LOADHI R5 ball_owner
+    LOAD R5 R5
+    CMP R9 R5
+    JNE move_s_end_without_ball
 
-    LOADI R5 #255
-    LOADHI R5 #255
-    CMP R6 R5
-    LOADI R7 #0x04             ; Load FLAG_N mask (1 << 2).
-    AND R7 R7 RC               ; Check if N-flag was set
-    JEQ draw_loop              ; camera_y >= 255: skip camera move, still redraw player
+    LOADI R5 ball_x
+    LOADHI R5 ball_x
 
+    LOADI R6 player_0_x
+    LOADHI R6 player_0_x
     ADD R6 R6 R8
-    STORE R4 R6
-    JMP draw_loop
+    ADD R6 R6 R8               ; 2 words per player (points to player_x)
+    LOAD R6 R6                 ; Load actual player_x value
+    STORE R5 R6
+
+    LOADI R5 ball_y
+    LOADHI R5 ball_y
+    LOADI R4 #9
+    ADD R7 R7 R4               ; ball_y = player_y + 9 (at feet when moving Down)
+    STORE R5 R7
+
+move_s_end_without_ball:
+    JMP check_actions
 
 move_a:
+    ; Update last_dir = 2 (Left) so player can aim during restarts
+    LOADI R4 last_dir
+    LOADHI R4 last_dir
+    LOADI R5 #2
+    STORE R4 R5
+
+    ; Only move during live play (game_state == 2)
+    LOADI R4 game_state
+    LOADHI R4 game_state
+    LOAD R4 R4
+    LOADI R5 #2
+    CMP R4 R5
+    JNE check_actions
+
     LOADI RB #1
     LOADI R5 #2
 
@@ -1212,31 +1363,58 @@ move_a_end:
     ; Clamp player X to left of field (X >= 2)
     LOADI R5 #2
     CMP R7 R5
-    LOADI R8 #0x04
-    AND R8 R8 RC
-    JNE check_for_movement
+    LOADI R4 #0x04
+    AND R4 R4 RC
+    JNE check_actions
 
-    LOADI R8 #1
-    SUB R7 R7 R8
+    LOADI R4 #1
+    SUB R7 R7 R4
     STORE RA R7
 
-    ; Move camera_x only if camera_x >= 5
-    LOADI R4 camera_x
-    LOADHI R4 camera_x
-    LOAD R6 R4
+    ; Check for selected_p == ball_owner
+    LOADI R5 ball_owner
+    LOADHI R5 ball_owner
+    LOAD R5 R5
+    CMP R9 R5
+    JNE move_a_end_without_ball
 
-    LOADI R5 #5
-    LOADHI R5 #5
-    CMP R6 R5
-    LOADI R7 #0x04             ; Load FLAG_N mask (1 << 2).
-    AND R7 R7 RC               ; Check if N-flag was set
-    JNE draw_loop              ; camera_x < 5: skip camera move, still redraw player
+    LOADI R5 ball_x
+    LOADHI R5 ball_x
+    LOADI R4 #7
+    SUB R7 R7 R4               ; ball_x = player_x - 7 (at left foot)
+    STORE R5 R7
 
-    SUB R6 R6 R8
-    STORE R4 R6
-    JMP draw_loop
+    LOADI R5 ball_y
+    LOADHI R5 ball_y
+
+    LOADI R6 player_0_x
+    LOADHI R6 player_0_x
+    ADD R6 R6 R8
+    ADD R6 R6 R8               ; 2 words per player
+    ADD R6 R6 RB               ; +1 offset for player_y
+    LOAD R6 R6                 ; Load actual player_y value
+    LOADI R4 #5
+    ADD R6 R6 R4               ; ball_y = player_y + 5 (ground level by boots)
+    STORE R5 R6
+
+move_a_end_without_ball:
+    JMP check_actions
 
 move_d:
+    ; Update last_dir = 3 (Right) so player can aim during restarts
+    LOADI R4 last_dir
+    LOADHI R4 last_dir
+    LOADI R5 #3
+    STORE R4 R5
+
+    ; Only move during live play (game_state == 2)
+    LOADI R4 game_state
+    LOADHI R4 game_state
+    LOAD R4 R4
+    LOADI R5 #2
+    CMP R4 R5
+    JNE check_actions
+
     LOADI RB #1
     LOADI R5 #2
 
@@ -1270,29 +1448,42 @@ move_d_end:
     LOADI R5 #624
     LOADHI R5 #624
     CMP R7 R5
-    LOADI R8 #0x04
-    AND R8 R8 RC
-    JEQ check_for_movement
+    LOADI R4 #0x04
+    AND R4 R4 RC
+    JEQ check_actions
 
-    LOADI R8 #1
-    ADD R7 R7 R8
+    LOADI R4 #1
+    ADD R7 R7 R4
     STORE RA R7
 
-    ; Move camera_x only if camera_x < 480
-    LOADI R4 camera_x
-    LOADHI R4 camera_x
-    LOAD R6 R4
+    ; Check for selected_p == ball_owner
+    LOADI R5 ball_owner
+    LOADHI R5 ball_owner
+    LOAD R5 R5
+    CMP R9 R5
+    JNE move_d_end_without_ball
 
-    LOADI R5 #480
-    LOADHI R5 #480
-    CMP R6 R5
-    LOADI R7 #0x04             ; Load FLAG_N mask (1 << 2).
-    AND R7 R7 RC               ; Check if N-flag was set
-    JEQ draw_loop              ; camera_x >= 480: skip camera move, still redraw player
+    LOADI R5 ball_x
+    LOADHI R5 ball_x
+    LOADI R4 #6
+    ADD R7 R7 R4               ; ball_x = player_x + 6 (at right foot)
+    STORE R5 R7
 
+    LOADI R5 ball_y
+    LOADHI R5 ball_y
+
+    LOADI R6 player_0_x
+    LOADHI R6 player_0_x
     ADD R6 R6 R8
-    STORE R4 R6
-    JMP draw_loop
+    ADD R6 R6 R8               ; 2 words per player
+    ADD R6 R6 RB               ; +1 offset for player_y
+    LOAD R6 R6                 ; Load actual player_y value
+    LOADI R4 #5
+    ADD R6 R6 R4               ; ball_y = player_y + 5 (ground level by boots)
+    STORE R5 R6
+
+move_d_end_without_ball:
+    JMP check_actions
 
 draw_pitch:
     LOADI  R2, color_lgreen
@@ -2423,4 +2614,1668 @@ skip_sprite_pixel:
     JNE    draw_sprite_row
 
 abort_draw_sprite:
+    RET
+
+update_ball_logic:
+    LOADI R3 ball_x
+    LOADHI R3 ball_x
+    LOAD R5 R3
+
+    LOADI R4 ball_y
+    LOADHI R4 ball_y
+    LOAD R6 R4
+
+    LOADI R7 ball_timer
+    LOADHI R7 ball_timer
+    LOAD R8 R7
+    CMP R8 R0
+    JEQ update_ball_stop       ; If ball_timer == 0, reset velocity and check bounds
+
+    LOADI R9 #1
+    SUB R8 R8 R9
+    STORE R7 R8                ; ball_timer--
+
+    LOADI R1 ball_vx
+    LOADHI R1 ball_vx
+    LOAD R1 R1
+
+    LOADI R2 ball_vy
+    LOADHI R2 ball_vy
+    LOAD R2 R2
+
+    ADD R5 R5 R1
+    ADD R6 R6 R2
+    STORE R3 R5
+    STORE R4 R6
+    JMP check_ball_bounds
+
+update_ball_stop:
+    LOADI R1 ball_vx
+    LOADHI R1 ball_vx
+    STORE R1 R0
+    LOADI R2 ball_vy
+    LOADHI R2 ball_vy
+    STORE R2 R0
+
+check_ball_bounds:
+    ; Only check out/corner during live play (game_state == 2)
+    LOADI R1 game_state
+    LOADHI R1 game_state
+    LOAD R1 R1
+    LOADI R2 #2
+    CMP R1 R2
+    JNE update_ball_end
+
+
+
+    ; -- Check if there was a goal in the Home (left) goal -> Away team scores
+    LOADI R1 #20        ; goal x line (same as left corner line)
+
+    LOADI R7 #139       ; top y of goal mouth
+    LOADI R8 #187       ; bottom y of goal mouth
+
+    CMP R5 R1
+    LOADI RA, #0x04
+    AND   RA, RA, RC
+    JEQ check_ball_bounds_continue  ; ball_x >= 20 -> not in left goal
+
+    CMP R6 R7
+    LOADI RA, #0x04
+    AND   RA, RA, RC
+    JNE check_ball_bounds_continue  ; ball_y < 139 -> above goal (corner)
+
+    CMP R6 R8
+    LOADI RA, #0x04
+    AND   RA, RA, RC
+    JEQ check_ball_bounds_continue  ; ball_y >= 187 -> below goal (corner)
+
+    LOADI R1 #7
+    LOADI R2 game_state
+    LOADHI R2 game_state
+    STORE R2 R1         ; game_state = 7 (goal for enemy team)
+
+    LOADI R1 #1
+    LOADI R2 blue_score
+    LOADHI R2 blue_score
+    LOAD R7 R2
+    ADD R7 R7 R1
+    STORE R2 R7         ; blue_score++
+
+    JMP goal_scored
+
+check_ball_bounds_continue:
+    ; -- Check if there was a goal in the Away (right) goal -> Home team scores
+    LOADI R1 #620
+    LOADHI R1 #620      ; goal x line (same as right corner line)
+
+    LOADI R7 #139       ; top y of goal mouth
+    LOADI R8 #187       ; bottom y of goal mouth
+
+    CMP R5 R1
+    LOADI RA, #0x04
+    AND   RA, RA, RC
+    JNE check_ball_bounds_continue_c  ; ball_x < 620 -> not in right goal
+
+    CMP R6 R7
+    LOADI RA, #0x04
+    AND   RA, RA, RC
+    JNE check_ball_bounds_continue_c  ; ball_y < 139 -> above goal (corner)
+
+    CMP R6 R8
+    LOADI RA, #0x04
+    AND   RA, RA, RC
+    JEQ check_ball_bounds_continue_c  ; ball_y >= 187 -> below goal (corner)
+
+    LOADI R1 #5
+    LOADI R2 game_state
+    LOADHI R2 game_state
+    STORE R2 R1         ; game_state = 5 (goal for home team)
+
+    LOADI R1 #1
+    LOADI R2 red_score
+    LOADHI R2 red_score
+    LOAD R7 R2
+    ADD R7 R7 R1
+    STORE R2 R7         ; red_score++
+
+goal_scored:
+    ; Stop the ball and make it loose, then skip out/corner checks
+    LOADI R1 ball_timer
+    LOADHI R1 ball_timer
+    STORE R1 R0
+    LOADI R1 ball_vx
+    LOADHI R1 ball_vx
+    STORE R1 R0
+    LOADI R1 ball_vy
+    LOADHI R1 ball_vy
+    STORE R1 R0
+    LOADI R1 ball_owner
+    LOADHI R1 ball_owner
+    LOADI R2 #255
+    STORE R1 R2
+    RET
+
+check_ball_bounds_continue_c:
+    ; -- Check if the ball is out (top < 10 or bottom >= 330) ---
+    LOADI R1 #10
+    CMP R6 R1
+    LOADI RA, #0x04
+    AND   RA, RA, RC
+    JNE set_out_top
+
+    LOADI R1 #330
+    LOADHI R1 #330
+    CMP R6 R1
+    LOADI RA, #0x04
+    AND   RA, RA, RC
+    JEQ set_out_bottom
+
+    ; -- Check if the ball is corner (left < 20 or right >= 620) ---
+    LOADI R1 #20
+    CMP R5 R1
+    LOADI RA, #0x04
+    AND   RA, RA, RC
+    JNE set_corner_left
+
+    LOADI R1 #620
+    LOADHI R1 #620
+    CMP R5 R1
+    LOADI RA, #0x04
+    AND   RA, RA, RC
+    JEQ set_corner_right
+
+    RET
+
+set_out_top:
+    LOADI R6 #12               ; Place ball just inside top touchline
+    STORE R4 R6
+    JMP set_out
+
+set_out_bottom:
+    LOADI R6 #326              ; Place ball just inside bottom touchline
+    LOADHI R6 #326
+    STORE R4 R6
+
+set_out:
+    LOADI R1 #3
+    LOADI R2 game_state
+    LOADHI R2 game_state
+    STORE R2 R1
+    JMP teleport_restart_player
+
+set_corner_left:
+    LOADI R5 #22               ; Place ball at left corner X
+    STORE R3 R5
+    JMP set_corner_y
+
+set_corner_right:
+    LOADI R5 #618              ; Place ball at right corner X
+    LOADHI R5 #618
+    STORE R3 R5
+
+set_corner_y:
+    ; Snap ball_y to nearest corner (top = 12 if ball_y < 170, else bottom = 326)
+    LOADI R1 #170
+    LOADHI R1 #170
+    CMP R6 R1
+    LOADI RA, #0x04
+    AND RA, RA, RC
+    JNE set_corner_top_y
+    LOADI R6 #326
+    LOADHI R6 #326
+    STORE R4 R6
+    JMP set_corner
+
+set_corner_top_y:
+    LOADI R6 #12
+    STORE R4 R6
+
+set_corner:
+    LOADI R1 #4
+    LOADI R2 game_state
+    LOADHI R2 game_state
+    STORE R2 R1
+
+teleport_restart_player:
+    ; stop ball
+    LOADI R1 ball_timer
+    LOADHI R1 ball_timer
+    STORE R1 R0
+    LOADI R1 ball_vx
+    LOADHI R1 ball_vx
+    STORE R1 R0
+    LOADI R1 ball_vy
+    LOADHI R1 ball_vy
+    STORE R1 R0
+
+    ; last_owner < 11 -> away restart (player 15), else home restart (selected_p)
+    LOADI R1 last_owner
+    LOADHI R1 last_owner
+    LOAD R2 R1
+    LOADI R7 #11
+    CMP R2 R7
+    LOADI RA, #0x04
+    AND RA, RA, RC
+    JNE restart_away_team
+
+    ; home restart
+    LOADI R7 selected_p
+    LOADHI R7 selected_p
+    LOAD R7 R7
+    JMP do_teleport_player
+
+restart_away_team:
+    LOADI R7 #15
+
+do_teleport_player:
+    LOADI R1 ball_owner
+    LOADHI R1 ball_owner
+    STORE R1 R7
+    LOADI R1 last_owner
+    LOADHI R1 last_owner
+    STORE R1 R7
+
+    ; place player at ball
+    LOADI R1 player_0_x
+    LOADHI R1 player_0_x
+    ADD R1 R1 R7
+    ADD R1 R1 R7
+    STORE R1 R5                ; player_x = ball_x
+    LOADI R2 #1
+    ADD R1 R1 R2
+    STORE R1 R6                ; player_y = ball_y
+
+update_ball_end:
+    RET
+
+check_for_ball_collision:
+    ; tackle cooldown
+    LOADI R1 tackle_cd
+    LOADHI R1 tackle_cd
+    LOAD R2 R1
+    CMP R2 R0
+    JEQ check_ball_state_guard
+    LOADI R3 #1
+    SUB R2 R2 R3
+    STORE R1 R2
+
+check_ball_state_guard:
+    ; lock owner on out/corner
+    LOADI R1 game_state
+    LOADHI R1 game_state
+    LOAD R1 R1
+    LOADI R2 #3
+    CMP R1 R2
+    JEQ check_ball_end_end
+    LOADI R2 #4
+    CMP R1 R2
+    JEQ check_ball_end_end
+
+    LOADI R1 player_0_x
+    LOADHI R1 player_0_x
+
+    LOADI R2 #1          ; 1 - constant
+    LOADI R3 #0          ; player counter
+    LOADI R4 #2          ; 2 - constant
+
+    LOADI R5 ball_owner
+    LOADHI R5 ball_owner
+    LOAD RA R5
+    PUSH RA              ; save prev owner
+    LOADI RA #255
+    STORE R5 RA          ; reset owner
+
+    LOADI R6 #10         ; 10 - constant
+
+    LOADI R8 ball_x
+    LOADHI R8 ball_x
+    LOAD R8 R8
+
+    LOADI R9 ball_y
+    LOADHI R9 ball_y
+    LOAD R9 R9
+
+check_for_ball_collision_loop:
+    ; ignore kicker while ball is moving
+    LOADI RA ball_timer
+    LOADHI RA ball_timer
+    LOAD RA RA
+    CMP RA R0
+    JEQ check_ball_cd_guard
+    LOADI RA last_owner
+    LOADHI RA last_owner
+    LOAD RA RA
+    CMP R3 RA
+    JEQ check_ball_next_player_curr_x
+
+check_ball_cd_guard:
+    ; tackle cooldown check
+    POP RB
+    PUSH RB
+    LOADI RA #255
+    CMP RB RA
+    JEQ check_ball_do_x
+    LOADI RA tackle_cd
+    LOADHI RA tackle_cd
+    LOAD RA RA
+    CMP RA R0
+    JEQ check_ball_teammate_guard
+    CMP R3 RB
+    JNE check_ball_next_player_curr_x
+    JMP check_ball_do_x
+
+check_ball_teammate_guard:
+    ; don't steal from teammate
+    CMP R3 RB
+    JEQ check_ball_do_x
+    LOADI RA #11
+    CMP RB RA
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE check_ball_home_owner
+
+    LOADI RA #11
+    CMP R3 RA
+    LOADI RA #0x04
+    AND RA RA RC
+    JEQ check_ball_next_player_curr_x
+    JMP check_ball_do_x
+
+check_ball_home_owner:
+    LOADI RA #11
+    CMP R3 RA
+    LOADI RA, #0x04
+    AND   RA, RA, RC
+    JNE   check_ball_next_player_curr_x
+
+check_ball_do_x:
+    ; pickup radius
+    LOADI R6 #10
+
+check_ball_use_r6:
+    LOAD R7 R1           ; player_x
+    ADD R7 R7 R6
+    CMP R7 R8
+    LOADI RA, #0x04
+    AND   RA, RA, RC
+    JNE   check_ball_next_player_curr_x
+
+    SUB R7 R7 R6
+    ADD RB R8 R6
+    CMP RB R7
+    LOADI RA, #0x04
+    AND   RA, RA, RC
+    JNE   check_ball_next_player_curr_x
+
+    ADD R1 R1 R2
+    LOAD R7 R1           ; player_y
+
+    ADD R7 R7 R6
+    CMP R7 R9
+    LOADI RA, #0x04
+    AND   RA, RA, RC
+    JNE   check_ball_next_player_curr_y
+
+    SUB R7 R7 R6
+    ADD RB R9 R6
+    CMP RB R7
+    LOADI RA, #0x04
+    AND   RA, RA, RC
+    JNE   check_ball_next_player_curr_y
+
+    STORE R5 R3          ; ball_owner = player
+    LOADI RA last_owner
+    LOADHI RA last_owner
+    STORE RA R3
+    LOADI RA ball_timer
+    LOADHI RA ball_timer
+    STORE RA R0          ; stop ball
+    LOADI RA ball_vx
+    LOADHI RA ball_vx
+    STORE RA R0
+    LOADI RA ball_vy
+    LOADHI RA ball_vy
+    STORE RA R0
+
+    ; start tackle cooldown if taken
+    POP RB
+    PUSH RB
+    CMP R3 RB
+    JEQ check_ball_after_hit
+    LOADI R7 #25
+    LOADI RA tackle_cd
+    LOADHI RA tackle_cd
+    STORE RA R7
+
+check_ball_after_hit:
+    ; let away players tackle home owner
+    LOADI RA #11
+    CMP RB RA
+    LOADI RA #0x04
+    AND RA RA RC
+    JEQ check_ball_end
+    CMP R3 RB
+    JEQ check_ball_next_player_curr_y
+    JMP check_ball_end
+
+check_ball_next_player_curr_x:
+    ADD R1 R1 R4
+    ADD R3 R3 R2
+    LOADI RA #22
+    CMP   R3 RA
+    JEQ check_ball_end
+    JMP check_for_ball_collision_loop
+    
+
+check_ball_next_player_curr_y:
+    ADD R1 R1 R2
+    ADD R3 R3 R2
+    LOADI RA #22
+    CMP   R3 RA
+    JEQ check_ball_end
+    JMP check_for_ball_collision_loop
+
+check_ball_end:
+    POP RA
+
+    LOADI R1  ball_owner
+    LOADHI R1 ball_owner
+    LOAD R2 R1
+
+    LOADI R3 #10
+    CMP R3 R2
+    LOADI RA, #0x04
+    AND   RA, RA, RC
+    JNE   check_ball_end_end
+    
+    LOADI R3 selected_p
+    LOADHI R3 selected_p
+    LOAD R4 R3
+    CMP R4 R2
+    JEQ check_ball_end_end
+
+    STORE R3 R2
+
+check_ball_end_end:
+    RET
+
+update_camera:
+    LOADI R1 camera_x
+    LOADHI R1 camera_x
+
+    LOADI R2 camera_y
+    LOADHI R2 camera_y
+
+    ; Check if a player currently owns the ball
+    LOADI R7 ball_owner
+    LOADHI R7 ball_owner
+    LOAD R7 R7
+    LOADI R8 #255
+    CMP R7 R8
+    JEQ camera_target_ball
+
+    LOADI R3 player_0_x
+    LOADHI R3 player_0_x
+    ADD R3 R3 R7
+    ADD R3 R3 R7    ; 2 words per player (x, y)
+    LOAD R4 R3      ; R4 = owner player_x
+    LOADI R5 #1
+    ADD R3 R3 R5
+    LOAD R5 R3      ; R5 = owner player_y
+    JMP camera_compute_bounds
+
+camera_target_ball:
+    LOADI R4 ball_x
+    LOADHI R4 ball_x
+    LOAD R4 R4      ; R4 = ball_x
+    
+    LOADI R5 ball_y
+    LOADHI R5 ball_y
+    LOAD R5 R5      ; R5 = ball_y
+
+camera_compute_bounds:
+    LOADI R6 #72    ; width of the screen / 2
+    LOADI R7 #40    ; height of the screen / 2
+    
+    SUB R8 R4 R6
+    LOADI RA, #0x04
+    AND RA RA RC
+    JNE clamp_x_min_camera
+    LOADI RB #4
+    CMP R8 RB
+    LOADI RA, #0x04
+    AND RA RA RC
+    JEQ check_clamp_x_max_camera
+clamp_x_min_camera:
+    LOADI R8 #4
+    JMP skip_clamp_x_camera
+
+check_clamp_x_max_camera:
+    LOADI RB #480
+    LOADHI RB #480
+    CMP R8 RB
+    LOADI RA, #0x04
+    AND RA RA RC
+    JNE skip_clamp_x_camera
+    LOADI R8 #480
+    LOADHI R8 #480
+
+skip_clamp_x_camera:
+    ;  target camera_y = target_y - 40
+    LOADI RA, #0x04
+    AND RA RA RC
+    JNE clamp_y_min_camera
+    LOADI RB #4
+    CMP R9 RB
+    LOADI RA, #0x04
+    AND RA RA RC
+    JEQ check_clamp_y_max_camera
+clamp_y_min_camera:
+    LOADI R9 #4
+    JMP skip_clamp_y_camera
+
+check_clamp_y_max_camera:
+    LOADI RB #255
+    LOADHI RB #255
+    CMP R9 RB
+    LOADI RA, #0x04
+    AND RA RA RC
+    JNE skip_clamp_y_camera
+    LOADI R9 #255
+    LOADHI R9 #255
+
+skip_clamp_y_camera:
+    LOAD R6 R1      ; R6 = current camera_x
+    LOADI RB #1
+    CMP R6 R8
+    JEQ smooth_x_done
+    LOADI RA, #0x04
+    AND RA RA RC
+    JNE smooth_x_inc
+    ; camera_x > target R8 -> decrement (up to 2 px)
+    SUB R6 R6 RB
+    CMP R6 R8
+    JEQ smooth_x_done
+    SUB R6 R6 RB
+    JMP smooth_x_done
+smooth_x_inc:
+    ; camera_x < target R8 -> increment (up to 2 px)
+    ADD R6 R6 RB
+    CMP R6 R8
+    JEQ smooth_x_done
+    ADD R6 R6 RB
+smooth_x_done:
+    STORE R1 R6     ; store updated camera_x
+
+    LOAD R7 R2      ; R7 = current camera_y
+    CMP R7 R9
+    JEQ smooth_y_done
+    LOADI RA, #0x04
+    AND RA RA RC
+    JNE smooth_y_inc
+    ; camera_y > target R9 -> decrement (up to 2 px)
+    SUB R7 R7 RB
+    CMP R7 R9
+    JEQ smooth_y_done
+    SUB R7 R7 RB
+    JMP smooth_y_done
+smooth_y_inc:
+    ; camera_y < target R9 -> increment (up to 2 px)
+    ADD R7 R7 RB
+    CMP R7 R9
+    JEQ smooth_y_done
+    ADD R7 R7 RB
+smooth_y_done:
+    STORE R2 R7     ; store updated camera_y
+    RET
+
+reset_positions:
+    LOADI R2 game_state
+    LOADHI R2 game_state
+    LOAD R2 R2
+
+    LOADI R1 #5
+    CMP R2 R1
+    JEQ reset_positions_continue
+
+    LOADI R1 #7
+    CMP R2 R1
+    JEQ reset_positions_continue
+    RET
+
+reset_positions_continue:
+    LOADI R4 player_0_x
+    LOADHI R4 player_0_x
+
+    LOADI R5 d_player_0_x
+    LOADHI R5 d_player_0_x
+
+    LOADI R1 #1
+    LOADI R2 #0      ; counter
+    LOADI R3 #44     ; counter - limit
+
+reset_positions_loop:
+    LOAD R7 R5
+    STORE R4 R7
+
+    ADD R2 R2 R1
+    ADD R5 R5 R1
+    ADD R4 R4 R1
+    CMP R2 R3
+    JNE reset_positions_loop
+
+    ; Ball back to the centre spot, stopped and loose
+    LOADI R4 ball_x
+    LOADHI R4 ball_x
+    LOADI R7 #312
+    LOADHI R7 #312
+    STORE R4 R7
+
+    LOADI R4 ball_y
+    LOADHI R4 ball_y
+    LOADI R7 #164
+    STORE R4 R7
+
+    LOADI R4 ball_timer
+    LOADHI R4 ball_timer
+    STORE R4 R0
+    LOADI R4 ball_vx
+    LOADHI R4 ball_vx
+    STORE R4 R0
+    LOADI R4 ball_vy
+    LOADHI R4 ball_vy
+    STORE R4 R0
+    LOADI R4 ball_owner
+    LOADHI R4 ball_owner
+    LOADI R7 #255
+    STORE R4 R7
+
+    ; Control goes back to the Home centre forward
+    LOADI R4 selected_p
+    LOADHI R4 selected_p
+    LOADI R7 #9
+    STORE R4 R7
+
+    ; Home scored (5) -> Away kicks off, Away scored (7) -> Home kicks off
+    LOADI R2 game_state
+    LOADHI R2 game_state
+    LOAD R3 R2
+    LOADI R1 #5
+    CMP R3 R1
+    JEQ reset_away_kickoff
+
+reset_home_kickoff:
+    ; Move player_12 (Home CF) onto the ball at (320, 160)
+    LOADI R4 player_9_x
+    LOADHI R4 player_9_x
+    LOADI R7 #320
+    LOADHI R7 #320
+    STORE R4 R7
+    LOADI R4 player_9_y
+    LOADHI R4 player_9_y
+    LOADI R7 #160
+    STORE R4 R7
+
+    LOADI R7 #9
+    LOADI R4 last_owner
+    LOADHI R4 last_owner
+    STORE R4 R7
+
+    LOADI R1 #1
+    STORE R2 R1      ; game_state = 1 (Home kickoff)
+    RET
+
+reset_away_kickoff:
+    ; Move player_9 (Home CF) back to his own half at (295, 168)
+    LOADI R4 player_9_x
+    LOADHI R4 player_9_x
+    LOADI R7 #295
+    LOADHI R7 #295
+    STORE R4 R7
+    LOADI R4 player_9_y
+    LOADHI R4 player_9_y
+    LOADI R7 #168
+    STORE R4 R7
+
+    ; Move player_12 (Away CF) onto the ball at (320, 160)
+    LOADI R4 player_12_x
+    LOADHI R4 player_12_x
+    LOADI R7 #320
+    LOADHI R7 #320
+    STORE R4 R7
+    LOADI R4 player_12_y
+    LOADHI R4 player_12_y
+    LOADI R7 #160
+    STORE R4 R7
+
+    LOADI R7 #12
+    LOADI R4 ball_owner
+    LOADHI R4 ball_owner
+    STORE R4 R7
+    LOADI R4 last_owner
+    LOADHI R4 last_owner
+    STORE R4 R7
+
+    LOADI R1 #6
+    STORE R2 R1      ; game_state = 6 (Away kickoff)
+    RET
+
+draw_scores:
+    PUSH R13
+
+    LOADI R1 red_score
+    LOADHI R1 red_score
+    LOAD R4 R1
+
+    ; 1px black shadow at (X=69, Y=3) -> 3*160 + 69 = 549
+    LOADI R2 color_black
+    LOADHI R2 color_black
+    LOAD R2 R2
+    LOADI R6 #549
+    LOADHI R6 #549
+    LOADI R7 draw_font_digit
+    LOADHI R7 draw_font_digit
+    CALL R7
+
+    ; Foreground in red at (X=68, Y=2) -> 2*160 + 68 = 388
+    LOADI R1 red_score
+    LOADHI R1 red_score
+    LOAD R4 R1
+    LOADI R2 color_red
+    LOADHI R2 color_red
+    LOAD R2 R2
+    LOADI R6 #388
+    LOADHI R6 #388
+    LOADI R7 draw_font_digit
+    LOADHI R7 draw_font_digit
+    CALL R7
+
+    LOADI R1 blue_score
+    LOADHI R1 blue_score
+    LOAD R4 R1
+
+    ; 1px black shadow at (X=85, Y=3)
+    LOADHI R2 color_black
+    LOAD R2 R2
+    LOADI R6 #565
+    LOADHI R6 #565
+    LOADI R7 draw_font_digit
+    LOADHI R7 draw_font_digit
+    CALL R7
+
+    ; Foreground in blue at (X=84, Y=2)
+    LOADHI R1 blue_score
+    LOAD R4 R1
+    LOADI R2 color_blue
+    LOADHI R2 color_blue
+    LOAD R2 R2
+    LOADI R6 #404
+    LOADHI R6 #404
+    LOADI R7 draw_font_digit
+    LOADHI R7 draw_font_digit
+    CALL R7
+
+    POP R13
+    RET
+
+draw_font_digit:
+    LOADI R1 font_0_0
+    LOADHI R1 font_0_0
+    LOADI R3 #2
+    LSL R5 R4 R3     ; R5 = digit * 4
+    ADD R1 R1 R5     ; R1 = &font_{digit}_0
+
+    LOADI R3 #1      ; constant 1
+    LOADI R9 #4      ; 4 words per character
+
+draw_font_word:
+    LOAD R8 R1       ; R8 = 16-bit word (high byte = top row, low byte = bottom row)
+    ADD R1 R1 R3
+    LOADI R7 #2      ; 2 rows per word
+
+draw_font_row:
+    LOADI RB #8      ; 8 columns per row
+
+draw_font_col:
+    LOADI RA #15
+    LSR RA R8 RA     ; Extract top bit (bit 15)
+    JEQ skip_font_px
+    STORE R6 R2      ; Draw pixel to VRAM
+
+skip_font_px:
+    ADD R8 R8 R8     ; Shift R8 left by 1 bit
+    ADD R6 R6 R3     ; Next screen column
+    SUB RB RB R3
+    JNE draw_font_col
+
+    LOADI RA #152    ; Advance VRAM to next row (160 - 8 = 152)
+    ADD R6 R6 RA
+    SUB R7 R7 R3
+    JNE draw_font_row
+
+    SUB R9 R9 R3
+    JNE draw_font_word
+    RET
+
+check_end:
+    LOADI R1 red_score
+    LOADHI R1 red_score
+    LOAD R1 R1
+
+    LOADI R2 blue_score
+    LOADHI R2 blue_score
+    LOAD R2 R2
+
+    LOADI R3 #3
+
+    CMP R1 R3
+    JEQ set_end
+
+    CMP R2 R3
+    JEQ set_end
+
+    RET
+
+set_end:
+    LOADI R1 game_state
+    LOADHI R1 game_state
+    STORE R1 R0
+    RET
+
+home_t_ai:
+    ;  ai_tick every frame so AI moves at 0.5x speed 
+    LOADI R1 ai_tick
+    LOADHI R1 ai_tick
+    LOAD R2 R1
+    LOADI R3 #1
+    XOR R2 R2 R3
+    STORE R1 R2
+    CMP R2 R0
+    JEQ home_ai_ret
+
+    LOADI R1 game_state
+    LOADHI R1 game_state
+    LOAD R1 R1
+    LOADI R2 #2
+    CMP R1 R2
+    JNE home_ai_ret
+
+    ; Load ball_x (R8) and selected_p (R9)
+    LOADI R8 ball_x
+    LOADHI R8 ball_x
+    LOAD R8 R8
+
+    LOADI R9 selected_p
+    LOADHI R9 selected_p
+    LOAD R9 R9
+
+    LOADI R1 player_0_x
+    LOADHI R1 player_0_x
+    LOADI R2 d_player_0_x
+    LOADHI R2 d_player_0_x
+
+    LOADI R3 #0                ; Start at player_0 (Home GK)
+
+home_ai_loop:
+    CMP R3 R0
+    JNE home_ai_not_gk
+
+    LOADI R4 ball_owner
+    LOADHI R4 ball_owner
+    LOAD R5 R4
+    CMP R5 R0
+    JNE home_ai_gk_guard
+
+    LOADI R7 #255
+    STORE R4 R7                ; ball_owner = 255
+    LOADI R4 ball_timer
+    LOADHI R4 ball_timer
+    LOADI R7 #45
+    STORE R4 R7                ; ball_timer = 45
+    LOADI R4 ball_vx
+    LOADHI R4 ball_vx
+    LOADI R7 #3
+    STORE R4 R7                ; ball_vx = +3 (clear Right)
+    LOADI R4 ball_vy
+    LOADHI R4 ball_vy
+    STORE R4 R0
+    JMP home_ai_next
+
+home_ai_gk_guard:
+    ; Home GK stays stationed at center of goal (25, 163) so top/bottom corners are open
+    LOADI R6 #25
+    LOADI R5 #163
+    JMP home_ai_move_x
+
+home_ai_not_gk:
+    CMP R3 R9
+    JEQ home_ai_next
+
+    ; Default target_y (R5) = home lane d_player_y ([R2 + 1])
+    LOADI R7 #1
+    ADD R5 R2 R7
+    LOAD R5 R5                 ; R5 = d_player_y
+
+    ; Check if Home team (< 11) or Enemy team (>= 11) has possession
+    LOADI R4 ball_owner
+    LOADHI R4 ball_owner
+    LOAD R4 R4
+    LOADI R7 #255
+    CMP R4 R7
+    JNE home_ai_team_cmp
+    LOADI R4 last_owner
+    LOADHI R4 last_owner
+    LOAD R4 R4
+
+home_ai_team_cmp:
+    LOADI R7 #11
+    CMP R4 R7
+    LOADI RA #0x04
+    AND RA RA RC
+    JEQ home_ai_enemy_ball     ; Possession >= 11 -> Enemy has the ball (defend)
+
+    ; ATTACKING MODE (Home team has the ball)
+    ;   1..4  = Defenders (CB/FB): target_x = ball_x - 140, clamped [110, 310]
+    ;   5..7  = Midfielders (CM):  target_x = ball_x - 50,  clamped [160, 520]
+    ;   8..10 = Forwards (FW):     target_x = ball_x + 15,  clamped [250, 590]
+    LOADI RA #5
+    CMP R3 RA
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE home_ai_def
+
+    LOADI RA #8
+    CMP R3 RA
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE home_ai_mid
+
+    ; --- Forwards (8..10): move with the ball (ball_x + 15, clamped [250, 590]) ---
+    LOADI R6 #15
+    ADD R6 R8 R6               ; R6 = ball_x + 15
+    LOADI R7 #250
+    CMP R6 R7
+    LOADI RA #0x04
+    AND RA RA RC
+    JEQ home_ai_fw_max
+    LOADI R6 #250
+home_ai_fw_max:
+    LOADI R7 #590
+    LOADHI R7 #590
+    CMP R6 R7
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE home_ai_move_x
+    LOADI R6 #590
+    LOADHI R6 #590
+    JMP home_ai_move_x
+
+home_ai_mid:
+    ; --- Midfielders (5..7): slightly behind ball (ball_x - 50, clamped [160, 520]) ---
+    LOADI R6 #50
+    SUB R6 R8 R6               ; R6 = ball_x - 50
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE home_ai_mid_min
+    LOADI R7 #160
+    CMP R6 R7
+    LOADI RA #0x04
+    AND RA RA RC
+    JEQ home_ai_mid_max
+home_ai_mid_min:
+    LOADI R6 #160
+    JMP home_ai_move_x
+home_ai_mid_max:
+    LOADI R7 #520
+    LOADHI R7 #520
+    CMP R6 R7
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE home_ai_move_x
+    LOADI R6 #520
+    LOADHI R6 #520
+    JMP home_ai_move_x
+
+home_ai_def:
+    ; --- Defenders (1..4): stay back (ball_x - 140) and never cross midline (clamped [110, 310]) ---
+    LOADI R6 #140
+    SUB R6 R8 R6               ; R6 = ball_x - 140
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE home_ai_def_min
+    LOADI R7 #110
+    CMP R6 R7
+    LOADI RA #0x04
+    AND RA RA RC
+    JEQ home_ai_def_max
+home_ai_def_min:
+    LOADI R6 #110
+    JMP home_ai_move_x
+home_ai_def_max:
+    LOADI R7 #310
+    LOADHI R7 #310
+    CMP R6 R7
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE home_ai_move_x
+    LOADI R6 #310
+    LOADHI R6 #310
+    JMP home_ai_move_x
+
+    ; DEFENDING MODE (Enemy team has the ball)
+    ;   - Default: return to home position (d_player_x, d_player_y)
+    ;   - If inside a 90x90 square around the ball (|px - bx| <= 45 and |py - by| <= 45),
+    ;     press/tackle toward (ball_x, ball_y) (Defenders 1..4 only press in own half < 320)
+
+home_ai_enemy_ball:
+    LOAD R6 R2                 ; Default target_x (R6) = d_player_x (R5 is already d_player_y)
+
+    ; Defenders (1..4) do not chase the ball past the midline (ball_x >= 320)
+    LOADI RA #5
+    CMP R3 RA
+    LOADI RA #0x04
+    AND RA RA RC
+    JEQ home_ai_check_box
+    LOADI R7 #320
+    LOADHI R7 #320
+    CMP R8 R7
+    LOADI RA #0x04
+    AND RA RA RC
+    JEQ home_ai_move_x         ; ball_x >= 320 -> defender returns home
+
+home_ai_check_box:
+    ; Check |player_x - ball_x| <= 48
+    LOAD R4 R1                 ; R4 = player_x
+    LOADI RB #48
+    ADD R7 R4 RB               ; R7 = player_x + 48
+    CMP R7 R8                  ; (player_x + 48) - ball_x
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE home_ai_move_x         ; player_x + 48 < ball_x -> outside box, return home
+
+    ADD R7 R8 RB               ; R7 = ball_x + 48
+    CMP R7 R4                  ; (ball_x + 48) - player_x
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE home_ai_move_x         ; ball_x + 48 < player_x -> outside box, return home
+
+    ; Check |player_y - ball_y| <= 48
+    LOADI R7 #1
+    ADD R4 R1 R7
+    LOAD R4 R4                 ; R4 = player_y
+    LOADI R7 ball_y
+    LOADHI R7 ball_y
+    LOAD R7 R7                 ; R7 = ball_y
+
+    ADD RA R4 RB               ; RA = player_y + 48
+    CMP RA R7                  ; (player_y + 48) - ball_y
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE home_ai_move_x         ; player_y + 48 < ball_y -> outside box, return home
+
+    ADD RA R7 RB               ; RA = ball_y + 48
+    CMP RA R4                  ; (ball_y + 48) - player_y
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE home_ai_move_x         ; ball_y + 48 < player_y -> outside box, return home
+
+    ; Inside tackle square around ball -> cut ahead of ball if in front, else chase ball
+    ADD R6 R8 R0               ; target_x (R6) = ball_x
+    ADD R5 R7 R0               ; target_y (R5) = ball_y
+
+    ; If defender is between ball and home goal (player_x < ball_x),  cut off (ball_x - 8)
+    LOAD R4 R1
+    CMP R4 R8
+    LOADI RA #0x04
+    AND RA RA RC
+    JEQ home_ai_move_x         ; player_x >= ball_x -> chase ball directly
+    LOADI RA #8
+    SUB R6 R8 RA               ; cut ahead: target_x = ball_x - 8
+
+home_ai_move_x:
+    ; Step player_x ([R1]) toward target_x (R6) by 1 px 
+    LOAD R4 R1                 ; R4 = current player_x
+    LOADI R7 #1
+    CMP R4 R6
+    JEQ home_ai_move_y
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE home_ai_inc_x
+    SUB R4 R4 R7
+    STORE R1 R4
+    JMP home_ai_next
+home_ai_inc_x:
+    ADD R4 R4 R7
+    STORE R1 R4
+    JMP home_ai_next
+
+home_ai_move_y:
+    ; Step player_y ([R1 + 1]) toward target_y (R5) by 1 px
+    LOADI R7 #1
+    ADD R4 R1 R7               ; R4 = &player_y
+    LOAD R6 R4                 ; R6 = current player_y
+    CMP R6 R5
+    JEQ home_ai_next
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE home_ai_inc_y
+    SUB R6 R6 R7
+    STORE R4 R6
+    JMP home_ai_next
+home_ai_inc_y:
+    ADD R6 R6 R7
+    STORE R4 R6
+
+home_ai_next:
+    LOADI R7 #2
+    ADD R1 R1 R7               ; Next player_x
+    ADD R2 R2 R7               ; Next d_player_x
+    LOADI R7 #1
+    ADD R3 R3 R7               ; player index++
+    LOADI RA #11
+    CMP R3 RA
+    JNE home_ai_loop
+
+home_ai_ret:
+    RET
+
+away_t_ai:
+    ; Check if Away AI needs to take a kickoff (game_state == 6), out (3), or corner (4)
+    LOADI R1 game_state
+    LOADHI R1 game_state
+    LOAD R1 R1
+
+    LOADI R2 #6
+    CMP R1 R2
+    JEQ away_ai_restart
+
+    LOADI R2 #3
+    CMP R1 R2
+    JEQ away_ai_check_restart_owner
+
+    LOADI R2 #4
+    CMP R1 R2
+    JEQ away_ai_check_restart_owner
+
+    ; Otherwise only run during live play (game_state == 2)
+    LOADI R2 #2
+    CMP R1 R2
+    JNE away_ai_ret
+
+    ; Reset ai_wait timer during live play
+    LOADI R1 ai_wait
+    LOADHI R1 ai_wait
+    STORE R1 R0
+
+    ; Move only on active ai_tick frames (0.5x speed so human can outrun defenders)
+    LOADI R1 ai_tick
+    LOADHI R1 ai_tick
+    LOAD R2 R1
+    CMP R2 R0
+    JEQ away_ai_ret
+    JMP away_ai_live
+
+away_ai_check_restart_owner:
+    ; For out (3) or corner (4), only auto-kick if an Away player (>= 11) is taking it
+    LOADI R3 ball_owner
+    LOADHI R3 ball_owner
+    LOAD R3 R3
+    LOADI R4 #11
+    CMP R3 R4
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE away_ai_ret            ; Home team owns the restart -> wait for human input
+
+away_ai_restart:
+    ; Wait 35 frames so the camera pans to the restart spot before Away AI kicks
+    LOADI R1 ai_wait
+    LOADHI R1 ai_wait
+    LOAD R2 R1
+    LOADI R3 #1
+    ADD R2 R2 R3
+    STORE R1 R2
+    LOADI R3 #35
+    CMP R2 R3
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE away_ai_ret
+
+    ; Reset ai_wait and transition to live play (game_state = 2)
+    STORE R1 R0
+    LOADI R1 game_state
+    LOADHI R1 game_state
+    LOADI R2 #2
+    STORE R1 R2
+
+    LOADI R1 ball_owner
+    LOADHI R1 ball_owner
+    LOADI R2 #255
+    STORE R1 R2
+
+    LOADI R1 ball_timer
+    LOADHI R1 ball_timer
+    LOADI R2 #30
+    STORE R1 R2
+
+    ; Kickoff (game_state == 6): always pass toward Home side (Left)
+    LOADI R1 game_state
+    LOADHI R1 game_state
+    LOAD R1 R1
+    LOADI R3 #6
+    CMP R1 R3
+    JEQ away_ai_kick_left
+
+    ; Choose kick direction for throw-in / corner based on ball_y (top line -> Down, bottom line -> Up, else Left)
+    LOADI R1 ball_y
+    LOADHI R1 ball_y
+    LOAD R2 R1
+
+    LOADI R3 #20
+    CMP R2 R3
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE away_ai_kick_down
+
+    LOADI R3 #320
+    LOADHI R3 #320
+    CMP R2 R3
+    LOADI RA #0x04
+    AND RA RA RC
+    JEQ away_ai_kick_up
+
+away_ai_kick_left:
+    LOADI R4 #3
+    SUB R4 R0 R4               ; vx = -3 (pass left toward Home half)
+    LOADI R1 ball_vx
+    LOADHI R1 ball_vx
+    STORE R1 R4
+    LOADI R1 ball_vy
+    LOADHI R1 ball_vy
+    STORE R1 R0
+    RET
+
+away_ai_kick_down:
+    LOADI R4 #2
+    LOADI R1 ball_vy
+    LOADHI R1 ball_vy
+    STORE R1 R4
+    LOADI R1 ball_vx
+    LOADHI R1 ball_vx
+    STORE R1 R0
+    RET
+
+away_ai_kick_up:
+    LOADI R4 #2
+    SUB R4 R0 R4
+    LOADI R1 ball_vy
+    LOADHI R1 ball_vy
+    STORE R1 R4
+    LOADI R1 ball_vx
+    LOADHI R1 ball_vx
+    STORE R1 R0
+    RET
+
+away_ai_live:
+    ; Load ball_x (R8) and ball_owner (R9)
+    LOADI R8 ball_x
+    LOADHI R8 ball_x
+    LOAD R8 R8
+
+    LOADI R9 ball_owner
+    LOADHI R9 ball_owner
+    LOAD R9 R9
+
+    LOADI R1 player_11_x
+    LOADHI R1 player_11_x
+    LOADI R2 d_player_11_x
+    LOADHI R2 d_player_11_x
+
+    LOADI R3 #11               ; Start at player_11 (Away LW)
+
+away_ai_loop:
+    ; --- Special handling for Away Goalkeeper (player_21) ---
+    LOADI RA #21
+    CMP R3 RA
+    JNE away_ai_not_gk
+
+    ; If Away GK (player_21) has the ball, immediately clear/punt it Left upfield!
+    CMP R3 R9
+    JNE away_ai_gk_guard
+
+    LOADI R4 ball_owner
+    LOADHI R4 ball_owner
+    LOADI R7 #255
+    STORE R4 R7                ; ball_owner = 255
+    LOADI R4 ball_timer
+    LOADHI R4 ball_timer
+    LOADI R7 #45
+    STORE R4 R7                ; ball_timer = 45
+    LOADI R7 #3
+    SUB R7 R0 R7               ; R7 = -3 (clear Left)
+    LOADI R4 ball_vx
+    LOADHI R4 ball_vx
+    STORE R4 R7
+    LOADI R4 ball_vy
+    LOADHI R4 ball_vy
+    STORE R4 R0
+    JMP away_ai_next
+
+away_ai_gk_guard:
+    ; Away GK stays stationed at center of goal (615, 163) so top/bottom corners are open to score!
+    LOADI R6 #615
+    LOADHI R6 #615
+    LOADI R5 #163
+    JMP away_ai_move_x
+
+away_ai_not_gk:
+    ; Check if this Away player (R3) currently owns the ball!
+    CMP R3 R9
+    JNE away_ai_off_ball
+
+    ; BALL CARRIER (R3 == ball_owner): Dribble toward Home goal (20, 163) or Shoot
+
+    LOAD R4 R1                 ; R4 = carrier player_x
+    LOADI R7 #95
+    CMP R4 R7
+    LOADI RA #0x04
+    AND RA RA RC
+    JEQ away_ai_dribble        ; player_x >= 95 -> keep dribbling toward goal
+
+    ; In shooting range (player_x < 95) -> Shoot left at Home goal!
+    LOADI R4 ball_owner
+    LOADHI R4 ball_owner
+    LOADI R7 #255
+    STORE R4 R7                ; ball_owner = 255
+
+    LOADI R4 ball_timer
+    LOADHI R4 ball_timer
+    LOADI R7 #45
+    STORE R4 R7                ; ball_timer = 45
+
+    LOADI R7 #3
+    SUB R7 R0 R7               ; R7 = -3 (shoot left)
+    LOADI R4 ball_vx
+    LOADHI R4 ball_vx
+    STORE R4 R7                ; ball_vx = -3
+
+    LOADI R4 ball_vy
+    LOADHI R4 ball_vy
+    STORE R4 R0                ; ball_vy = 0
+    JMP away_ai_next
+
+away_ai_dribble:
+    ; Dribble toward center of Home goal mouth (X = 25, Y = 163)
+    LOADI R6 #25               ; target_x = 25
+    LOADI R5 #163              ; target_y = 163
+
+    ; Step player_x ([R1]) toward R6
+    LOAD R4 R1
+    LOADI R7 #1
+    CMP R4 R6
+    JEQ away_ai_drib_y
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE away_ai_drib_inc_x
+    SUB R4 R4 R7
+    STORE R1 R4
+    JMP away_ai_drib_y
+away_ai_drib_inc_x:
+    ADD R4 R4 R7
+    STORE R1 R4
+
+away_ai_drib_y:
+    ; Step player_y ([R1 + 1]) toward R5
+    LOADI R7 #1
+    ADD R6 R1 R7               ; R6 = &player_y
+    LOAD R7 R6                 ; R7 = current player_y
+    LOADI RB #1
+    CMP R7 R5
+    JEQ away_ai_stick_ball
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE away_ai_drib_inc_y
+    SUB R7 R7 RB
+    STORE R6 R7
+    JMP away_ai_stick_ball
+away_ai_drib_inc_y:
+    ADD R7 R7 RB
+    STORE R6 R7
+
+away_ai_stick_ball:
+    ; Stick ball to left foot of Away carrier (ball_x = player_x - 6, ball_y = player_y + 4)
+    LOAD R4 R1                 ; R4 = updated player_x
+    LOADI RB #6
+    SUB R4 R4 RB
+    LOADI R6 ball_x
+    LOADHI R6 ball_x
+    STORE R6 R4
+    ADD R8 R4 R0               ; Keep R8 (ball_x) updated
+
+    LOADI RB #1
+    ADD R6 R1 RB
+    LOAD R7 R6                 ; R7 = updated player_y
+    LOADI RB #4
+    ADD R7 R7 RB
+    LOADI R6 ball_y
+    LOADHI R6 ball_y
+    STORE R6 R7
+    JMP away_ai_next
+
+away_ai_off_ball:
+    ; Default target_y (R5) = home lane d_player_y ([R2 + 1])
+    LOADI R7 #1
+    ADD R5 R2 R7
+    LOAD R5 R5                 ; R5 = d_player_y
+
+    ; Check if Away team (>= 11) or Home team (< 11) has possession
+    LOADI R7 #255
+    CMP R9 R7
+    JNE away_ai_team_cmp
+    LOADI R4 last_owner
+    LOADHI R4 last_owner
+    LOAD R4 R4
+    JMP away_ai_do_cmp
+away_ai_team_cmp:
+    ADD R4 R9 R0
+away_ai_do_cmp:
+    LOADI R7 #11
+    CMP R4 R7
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE away_ai_defend         ; Possession < 11 -> Home team has ball (Away defends)
+
+    ; ATTACKING SUPPORT (Away team has the ball, attacking Right-to-Left)
+    ;   11..13 = Forwards (FW):     target_x = ball_x - 15,  clamped [50, 390]
+    ;   14..16 = Midfielders (CM):  target_x = ball_x + 50,  clamped [120, 480]
+    ;   17..20 = Defenders (CB/FB): target_x = ball_x + 140, clamped [330, 530] (don't cross midline 320)
+
+    LOADI RA #14
+    CMP R3 RA
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE away_ai_fw
+
+    LOADI RA #17
+    CMP R3 RA
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE away_ai_mid
+
+    ; --- Defenders (17..20): stay back (ball_x + 140) and never cross midline (clamped [330, 530]) ---
+    LOADI R6 #140
+    ADD R6 R8 R6               ; R6 = ball_x + 140
+    LOADI R7 #330
+    LOADHI R7 #330
+    CMP R6 R7
+    LOADI RA #0x04
+    AND RA RA RC
+    JEQ away_ai_def_max
+    LOADI R6 #330
+    LOADHI R6 #330
+    JMP away_ai_move_x
+away_ai_def_max:
+    LOADI R7 #530
+    LOADHI R7 #530
+    CMP R6 R7
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE away_ai_move_x
+    LOADI R6 #530
+    LOADHI R6 #530
+    JMP away_ai_move_x
+
+away_ai_mid:
+    ; --- Midfielders (14..16): slightly behind ball (ball_x + 50, clamped [120, 480]) ---
+    LOADI R6 #50
+    ADD R6 R8 R6               ; R6 = ball_x + 50
+    LOADI R7 #120
+    CMP R6 R7
+    LOADI RA #0x04
+    AND RA RA RC
+    JEQ away_ai_mid_max
+    LOADI R6 #120
+    JMP away_ai_move_x
+away_ai_mid_max:
+    LOADI R7 #480
+    LOADHI R7 #480
+    CMP R6 R7
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE away_ai_move_x
+    LOADI R6 #480
+    LOADHI R6 #480
+    JMP away_ai_move_x
+
+away_ai_fw:
+    ; --- Forwards (11..13): move with the ball (ball_x - 15, clamped [50, 390]) ---
+    LOADI R6 #15
+    SUB R6 R8 R6               ; R6 = ball_x - 15
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE away_ai_fw_min
+    LOADI R7 #50
+    CMP R6 R7
+    LOADI RA #0x04
+    AND RA RA RC
+    JEQ away_ai_fw_max
+away_ai_fw_min:
+    LOADI R6 #50
+    JMP away_ai_move_x
+away_ai_fw_max:
+    LOADI R7 #390
+    LOADHI R7 #390
+    CMP R6 R7
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE away_ai_move_x
+    LOADI R6 #390
+    LOADHI R6 #390
+    JMP away_ai_move_x
+
+    ; DEFENDING MODE (Home team has the ball)
+    ;   - Default: return to home position (d_player_x, d_player_y)
+    ;   - If inside 90x90 square around ball (|px - bx| <= 45 and |py - by| <= 45),
+    ;     press/tackle toward (ball_x, ball_y) (Defenders 17..20 only press in own half >= 320)
+
+away_ai_defend:
+    LOAD R6 R2                 ; Default target_x (R6) = d_player_x (R5 is already d_player_y)
+
+    ; Defenders (17..20) do not chase the ball past the midline (ball_x < 320)
+    LOADI RA #17
+    CMP R3 RA
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE away_ai_check_box
+    LOADI R7 #320
+    LOADHI R7 #320
+    CMP R8 R7
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE away_ai_move_x         ; ball_x < 320 -> Away defender returns home
+
+away_ai_check_box:
+    ; Smaler enemy press square (46 px) so only 1 defender presses when you walk close, no swarming
+    LOAD R4 R1                 ; R4 = player_x
+    LOADI RB #46
+    ADD R7 R4 RB               ; R7 = player_x + 46
+    CMP R7 R8                  ; (player_x + 46) - ball_x
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE away_ai_move_x
+
+    ADD R7 R8 RB               ; R7 = ball_x + 46
+    CMP R7 R4                  ; (ball_x + 46) - player_x
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE away_ai_move_x
+
+    ; Check |player_y - ball_y| <= 46
+    LOADI R7 #1
+    ADD R4 R1 R7
+    LOAD R4 R4                 ; R4 = player_y
+    LOADI R7 ball_y
+    LOADHI R7 ball_y
+    LOAD R7 R7                 ; R7 = ball_y
+
+    ADD RA R4 RB               ; RA = player_y + 46
+    CMP RA R7                  ; (player_y + 46) - ball_y
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE away_ai_move_x
+
+    ADD RA R7 RB               ; RA = ball_y + 46
+    CMP RA R4                  ; (ball_y + 46) - player_y
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE away_ai_move_x
+
+    ; Inside tackle square around ball -> chase (ball_x, ball_y) without cutting ahead
+    ADD R6 R8 R0               ; target_x (R6) = ball_x
+    ADD R5 R7 R0               ; target_y (R5) = ball_y
+
+away_ai_move_x:
+    ; Step player_x ([R1]) toward target_x (R6) by 1 px (no diagonal boost: if X moves, skip Y)
+    LOAD R4 R1                 ; R4 = current player_x
+    LOADI R7 #1
+    CMP R4 R6
+    JEQ away_ai_move_y
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE away_ai_inc_x
+    SUB R4 R4 R7
+    STORE R1 R4
+    JMP away_ai_next
+away_ai_inc_x:
+    ADD R4 R4 R7
+    STORE R1 R4
+    JMP away_ai_next
+
+away_ai_move_y:
+    ; Step player_y ([R1 + 1]) toward target_y (R5) by 1 px
+    LOADI R7 #1
+    ADD R4 R1 R7               ; R4 = &player_y
+    LOAD R6 R4                 ; R6 = current player_y
+    CMP R6 R5
+    JEQ away_ai_next
+    LOADI RA #0x04
+    AND RA RA RC
+    JNE away_ai_inc_y
+    SUB R6 R6 R7
+    STORE R4 R6
+    JMP away_ai_next
+away_ai_inc_y:
+    ADD R6 R6 R7
+    STORE R4 R6
+
+away_ai_next:
+    LOADI R7 #2
+    ADD R1 R1 R7               ; Next player_x
+    ADD R2 R2 R7               ; Next d_player_x
+    LOADI R7 #1
+    ADD R3 R3 R7               ; player index++
+    LOADI RA #22               ; Include player_21 (Away GK), stop at 22
+    CMP R3 RA
+    JNE away_ai_loop
+
+away_ai_ret:
     RET
