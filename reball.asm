@@ -3162,6 +3162,7 @@ check_clamp_x_max_camera:
 
 skip_clamp_x_camera:
     ;  target camera_y = target_y - 40
+    SUB R9 R5 R7
     LOADI RA, #0x04
     AND RA RA RC
     JNE clamp_y_min_camera
@@ -3404,6 +3405,7 @@ draw_scores:
     CALL R7
 
     ; Foreground in blue at (X=84, Y=2)
+    LOADI R1 blue_score
     LOADHI R1 blue_score
     LOAD R4 R1
     LOADI R2 color_blue
